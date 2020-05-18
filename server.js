@@ -20,4 +20,17 @@ http.createServer((request, response) => {
       console.log('Added to log.');
     }
   })
-}).listen(8080)
+
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      throw err;
+    }
+
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    response.write(data);
+    response.end();
+  });
+
+}).listen(8080, () => {
+  console.log('Server has been started successfully');
+});
