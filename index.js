@@ -92,6 +92,63 @@ let genres = [
   }
 ];
 
+let directors = [
+  {
+    name: 'Robert Zemeckis',
+    bio: 'American director',
+    birth: '1952',
+    death:''
+  },
+  {
+    name: 'Peter Jackson',
+    bio: 'New Zealand film director',
+    birth: '1961',
+    death:''
+  },
+  {
+    name: 'Edward Zwick',
+    bio: 'American filmmaker',
+    birth: '1952',
+    death:''
+  },
+  {
+    name: 'Mel Gibson',
+    bio: 'American-Australian actor and filmmaker',
+    birth: '1956'
+    death:''
+  },
+  {
+    name: 'Ridley Scott',
+    bio: 'English filmmaker',
+    birth: '1937',
+    death:''
+  },
+  {
+    name: 'Wolfgang Petersen',
+    bio: 'German film director',
+    birth: '1941',
+    death:''
+  },
+  {
+    name: 'Carroll Ballard',
+    bio: 'American film director',
+    birth: '1937',
+    death:''
+  },
+  {
+    name: 'Jon Turteltaub',
+    bio: 'American film director and producer',
+    birth:'1963'
+    death:''
+  },
+  {
+    name: 'Billy Wilder',
+    bio: 'Austrian-born American film director',
+    birth:'1906',
+    death:'2002'
+  },
+]
+
 // Message upon hitting the root folder / home
 app.get('/', (req, res) => {
   res.send('Welcome to myFlix!');
@@ -108,13 +165,27 @@ app.get('/movies/:title', (req, res) => {
     { return movie.title === req.params.title }));
 });
 
-// Returns data about a genre
-app.get('/movies/:genres/:name', (req, res) => {
+// Returns the data about All genres, by name
+app.get('/genres', function(req, res) {
+  res.json(genres)
+});
+
+// Returns data about a SINGLE genre
+app.get('/genres/:name', (req, res) => {
   res.json(genres.find((genre) =>
     { return genre.name === req.params.name  }));
 });
 
+// Returns the list of ALL directors
+app.get('/directors', function (req, res) {
+  res.json(directors)
+});
 
+// Returns data about a SINGLE director, by name
+app.get('/directors/:name', (req, res) => {
+  res.json(directors.find((director) =>
+    { return director.name === req.params.name }));
+});
 
 
 
