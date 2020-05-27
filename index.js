@@ -155,13 +155,12 @@ let directors = [
 
 let users = [
   {
-    user_id : '',
     username : 'Peter Smith',
     password : 'Password123',
     email : 'petersmith@yahoo.com',
     birth : '1990-12-01',
-    favorites : ''
-  }
+    favorites : ["4"],
+  },
 ];
 
 // Message upon hitting the root folder / home
@@ -211,7 +210,7 @@ app.get('/users', function(req, res) {
 app.post('/users', (req, res) => {
   let newUser = req.body;
 
-  if (!newUser.name) {
+  if (!newUser.username) {
     const message = 'Missing name in request body';
     res.status(400).send(message);
   } else {
@@ -232,15 +231,15 @@ app.get('/users/:username', (req, res) => {
     { return user.username === req.params.username}));
 });
 
-// Deletes a user by ID
-app.delete('/users/:id', (req, res) => {
+// Deletes a user by username
+app.delete('/users/:username', (req, res) => {
   let user = users.find((user) =>
-  { return user.id === req.params.id });
+  { return user.username === req.params.username });
 
   if (user) {
     users = users.filter((obj) =>
-    { return obj.id !==req.params.id });
-    res.status(201).send('User ' + user.username + 'with id: ' + req.params.id + ' was deleted.')
+    { return obj.username !==req.params.username });
+    res.status(201).send('User ' + user.username + ' was deleted.')
   }
 });
 
@@ -259,15 +258,8 @@ app.post("/users/:username/favorites", (req, res) => {
 });
 
 // Removes a movie from a user's favorites
-app.delete("/users/:username/favorites/:title", (req, res) => {
-    let favorite = favorites.find((favorite) =>
-    { return favorite.title === req.params.title });
-
-    if (favorite) {
-        favorites = favorites.filter((obj) =>
-        { return obj.title !== req.params.title });
-        res.status(201).send(req.params.title + " was removed from favorites.");
-    }
+app.delete("/favorites/:username/:title", (req, res) => {
+  res.send("Movie successfully deleted from favorites.");
 });
 
 // Error handling
