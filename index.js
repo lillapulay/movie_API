@@ -12,56 +12,66 @@ app.use(morgan('common')); // Logging requests using Morgan
 // Defining a list of movies
 let movies = [
   {
+    id: 1,
     title: 'Forrest Gump',
     director: 'Robert Zemeckis',
     genre: 'Drama'
   },
   {
+    id: 2,
     title: 'Lord of the Rings',
     director: 'Peter Jackson',
     genre: 'Fantasy'
   },
   {
+    id: 3,
     title: 'Legends of the Fall',
     director: 'Edward Zwick',
     genre: 'Drama'
     }
   },
   {
+    id: 4,
     title: 'Braveheart',
     director: 'Mel Gibson',
     genre: 'Historical fiction'
   },
   {
+    id: 5,
     title: 'Gladiator',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
     }
   },
   {
+    id: 6,
     title: 'Kingdom of Heaven',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
     }
   },
   {
+    id: 7,
     title: 'Troy',
     director: 'Wolfgang Petersen',
     genre: 'Historical drama'
     }
   },
   {
+    id: 8,
     title: 'Fly Away Home',
     director: 'Carroll Ballard',
     genre: 'Drama'
     }
   },
   {
+    id: 9,
     title: 'Last Vegas',
     director: 'Jon Turteltaub',
     genre: 'Comedy'
   },
   {
+    id: 10,
     title: 'Some Like It Hot',
     director: 'Billy Wilder',
     genre: 'Comedy'
@@ -147,7 +157,7 @@ let directors = [
     birth:'1906',
     death:'2002'
   },
-]
+];
 
 // Message upon hitting the root folder / home
 app.get('/', (req, res) => {
