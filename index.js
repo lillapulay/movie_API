@@ -1,8 +1,8 @@
-const express = require('express'),
-  app = express(),
-  morgan = require('morgan'),
-  bodyParser = require('body-parser'),
-  uuid = require('uuid');
+const express = require('express');
+const app = express();
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const uuid = require('uuid');
 
 // Middleware
 app.use(bodyParser.json()); // Parsing JSON
@@ -28,7 +28,6 @@ let movies = [
     title: 'Legends of the Fall',
     director: 'Edward Zwick',
     genre: 'Drama'
-    }
   },
   {
     id: '4',
@@ -41,28 +40,24 @@ let movies = [
     title: 'Gladiator',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
-    }
   },
   {
     id: '6',
     title: 'Kingdom of Heaven',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
-    }
   },
   {
     id: '7',
     title: 'Troy',
     director: 'Wolfgang Petersen',
     genre: 'Historical drama'
-    }
   },
   {
     id: '8',
     title: 'Fly Away Home',
     director: 'Carroll Ballard',
     genre: 'Drama'
-    }
   },
   {
     id: '9',
@@ -75,7 +70,6 @@ let movies = [
     title: 'Some Like It Hot',
     director: 'Billy Wilder',
     genre: 'Comedy'
-    }
   }
 ];
 
@@ -124,7 +118,7 @@ let directors = [
   {
     name: 'Mel Gibson',
     bio: 'American-Australian actor and filmmaker',
-    birth: '1956'
+    birth: '1956',
     death:''
   },
   {
@@ -148,7 +142,7 @@ let directors = [
   {
     name: 'Jon Turteltaub',
     bio: 'American film director and producer',
-    birth:'1963'
+    birth:'1963',
     death:''
   },
   {
@@ -166,8 +160,7 @@ let users = [
     password : 'Password123',
     email : 'petersmith@yahoo.com',
     birth : '1990-12-01',
-    favorites : {''
-    }
+    favorites : ''
   }
 ];
 
