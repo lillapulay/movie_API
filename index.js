@@ -1,8 +1,16 @@
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
+const express = require('express'),
+  app = express(),
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  uuid = require('uuid');
 
-let favMovies = [
+// Middleware
+app.use(bodyParser.json()); // Parsing JSON
+app.use(express.static('public')); // Returning documentation.html
+app.use(morgan('common')); // Logging requests using Morgan
+
+// Defining a list of movies
+let movies = [
   {
     title: 'Forrest Gump',
     director: 'Robert Zemeckis'
@@ -45,21 +53,29 @@ let favMovies = [
   }
 ];
 
-// Logging requests using Morgan
-app.use(morgan('common'));
 
-// GET route at the endpoint '/movies' - returns a JSON object with data about 10 movies (favMovies)
-app.get('/movies', (req, res) => {
-  res.json(favMovies);
-});
-
-// GET route at '/' returning a textual response
+// Message upon hitting the root folder / home
 app.get('/', (req, res) => {
   res.send('Welcome to myFlix!');
 });
 
-// Returning documentation.html
-app.use(express.static('public'));
+// Returns the list of ALL movies
+app.get('/movies', (req, res) => {
+  res.json(movies);
+});
+
+// Returns the data about a SINGLE movie, by title
+app.get('/movies/:title', (req, res) => {
+  res.json(movies.find((movie) =>
+    { return movie.title === req.params.title }));
+});
+
+
+
+
+
+
+
 
 // Error handling
 app.use((err, req, res, next) => {
