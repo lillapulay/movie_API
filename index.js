@@ -166,8 +166,7 @@ let users = [
     password : 'Password123',
     email : 'petersmith@yahoo.com',
     birth : '1990-12-01',
-    favorites : {
-      movie: 'Troy'
+    favorites : {''
     }
   }
 ];
@@ -252,6 +251,31 @@ app.delete('/users/:id', (req, res) => {
   }
 });
 
+// Adds a movie to a user's favorites
+app.post("/users/:username/favorites", (req, res) => {
+    let addFavorite = req.body;
+
+    if (!addFavorite.title) {
+        const message = "Missing title in request body";
+        res.status(400).send(message);
+    } else {
+        addFavorite.id = uuid.v4();
+        favorites.push(addFavorite);
+        res.status(201).send(addFavorite);
+    }
+});
+
+// Removes a movie from a user's favorites
+app.delete("/users/:username/favorites/:title", (req, res) => {
+    let favorite = favorites.find((favorite) =>
+    { return favorite.title === req.params.title });
+
+    if (favorite) {
+        favorites = favorites.filter((obj) =>
+        { return obj.title !== req.params.title });
+        res.status(201).send(req.params.title + " was removed from favorites.");
+    }
+});
 
 // Error handling
 app.use((err, req, res, next) => {
