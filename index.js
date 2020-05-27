@@ -70,6 +70,8 @@ app.get('/movies/:title', (req, res) => {
     { return movie.title === req.params.title }));
 });
 
+// Returns data about a genre
+
 
 
 
