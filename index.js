@@ -159,6 +159,19 @@ let directors = [
   },
 ];
 
+let users = [
+  {
+    user_id : '',
+    username : 'Peter Smith',
+    password : 'PassWord123',
+    email : 'petersmith@yahoo.com',
+    birth : '1990-12-01',
+    favorites : {
+      movie: 'Troy'
+    }
+  }
+];
+
 // Message upon hitting the root folder / home
 app.get('/', (req, res) => {
   res.send('Welcome to myFlix!');
@@ -197,7 +210,24 @@ app.get('/directors/:name', (req, res) => {
     { return director.name === req.params.name }));
 });
 
+// Returns data on ALL users
+app.get('/users', function(req, res) {
+  res.json(users)
+});
 
+//Registers a new user
+app.post('/users', (req, res) => {
+  let newUser = req.body;
+
+  if (!newUser.name) {
+    const message = 'Missing name in request body';
+    res.status(400).send(message);
+  } else {
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    res.status(201).send(newUser);
+    }
+});
 
 
 
