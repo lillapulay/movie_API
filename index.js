@@ -12,66 +12,66 @@ app.use(morgan('common')); // Logging requests using Morgan
 // Defining a list of movies
 let movies = [
   {
-    id: 1,
+    id: '1',
     title: 'Forrest Gump',
     director: 'Robert Zemeckis',
     genre: 'Drama'
   },
   {
-    id: 2,
+    id: '2',
     title: 'Lord of the Rings',
     director: 'Peter Jackson',
     genre: 'Fantasy'
   },
   {
-    id: 3,
+    id: '3',
     title: 'Legends of the Fall',
     director: 'Edward Zwick',
     genre: 'Drama'
     }
   },
   {
-    id: 4,
+    id: '4',
     title: 'Braveheart',
     director: 'Mel Gibson',
     genre: 'Historical fiction'
   },
   {
-    id: 5,
+    id: '5',
     title: 'Gladiator',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
     }
   },
   {
-    id: 6,
+    id: '6',
     title: 'Kingdom of Heaven',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
     }
   },
   {
-    id: 7,
+    id: '7',
     title: 'Troy',
     director: 'Wolfgang Petersen',
     genre: 'Historical drama'
     }
   },
   {
-    id: 8,
+    id: '8',
     title: 'Fly Away Home',
     director: 'Carroll Ballard',
     genre: 'Drama'
     }
   },
   {
-    id: 9,
+    id: '9',
     title: 'Last Vegas',
     director: 'Jon Turteltaub',
     genre: 'Comedy'
   },
   {
-    id: 10,
+    id: '10',
     title: 'Some Like It Hot',
     director: 'Billy Wilder',
     genre: 'Comedy'
@@ -163,7 +163,7 @@ let users = [
   {
     user_id : '',
     username : 'Peter Smith',
-    password : 'PassWord123',
+    password : 'Password123',
     email : 'petersmith@yahoo.com',
     birth : '1990-12-01',
     favorites : {
@@ -215,7 +215,7 @@ app.get('/users', function(req, res) {
   res.json(users)
 });
 
-//Registers a new user
+// Registers a new user
 app.post('/users', (req, res) => {
   let newUser = req.body;
 
@@ -226,9 +226,31 @@ app.post('/users', (req, res) => {
     newUser.id = uuid.v4();
     users.push(newUser);
     res.status(201).send(newUser);
-    }
+  }
 });
 
+// Updates the data of a user
+app.put("/users/:username", (req, res) => {
+    res.send("Successful User information updated");
+});
+
+// Returns data about a SINGLE user, by username - needs details!
+app.get('/users/:username', (req, res) => {
+  res.json(users.find((user) =>
+    { return user.username === req.params.username}));
+});
+
+// Deletes a user by ID
+app.delete('/users/:id', (req, res) => {
+  let user = users.find((user) =>
+  { return user.id === req.params.id });
+
+  if (user) {
+    users = users.filter((obj) =>
+    { return obj.id !==req.params.id });
+    res.status(201).send('User ' + user.username + 'with id: ' + req.params.id + ' was deleted.')
+  }
+});
 
 
 // Error handling
