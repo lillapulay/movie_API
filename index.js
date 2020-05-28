@@ -222,7 +222,7 @@ app.post('/users', (req, res) => {
 
 // Updates the data of a user
 app.put("/users/:username", (req, res) => {
-    res.send("Successful User information updated");
+    res.send("User information successfully updated");
 });
 
 // Returns data about a SINGLE user, by username - needs details!
