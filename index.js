@@ -12,61 +12,61 @@ app.use(morgan('common')); // Logging requests using Morgan
 // Defining a list of movies
 let movies = [
   {
-    id: '1',
+    movieID: '1',
     title: 'Forrest Gump',
     director: 'Robert Zemeckis',
     genre: 'Drama'
   },
   {
-    id: '2',
+    movieID: '2',
     title: 'Lord of the Rings',
     director: 'Peter Jackson',
     genre: 'Fantasy'
   },
   {
-    id: '3',
+    movieID: '3',
     title: 'Legends of the Fall',
     director: 'Edward Zwick',
     genre: 'Drama'
   },
   {
-    id: '4',
+    movieID: '4',
     title: 'Braveheart',
     director: 'Mel Gibson',
     genre: 'Historical fiction'
   },
   {
-    id: '5',
+    movieID: '5',
     title: 'Gladiator',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
   },
   {
-    id: '6',
+    movieID: '6',
     title: 'Kingdom of Heaven',
     director: 'Ridley Scott',
     genre: 'Historical fiction'
   },
   {
-    id: '7',
+    movieID: '7',
     title: 'Troy',
     director: 'Wolfgang Petersen',
     genre: 'Historical drama'
   },
   {
-    id: '8',
+    movieID: '8',
     title: 'Fly Away Home',
     director: 'Carroll Ballard',
     genre: 'Drama'
   },
   {
-    id: '9',
+    movieID: '9',
     title: 'Last Vegas',
     director: 'Jon Turteltaub',
     genre: 'Comedy'
   },
   {
-    id: '10',
+    movieID: '10',
     title: 'Some Like It Hot',
     director: 'Billy Wilder',
     genre: 'Comedy'
@@ -244,22 +244,13 @@ app.delete('/users/:username', (req, res) => {
 });
 
 // Adds a movie to a user's favorites
-app.post("/users/:username/favorites", (req, res) => {
-    let addFavorite = req.body;
-
-    if (!addFavorite.title) {
-        const message = "Missing title in request body";
-        res.status(400).send(message);
-    } else {
-        addFavorite.id = uuid.v4();
-        favorites.push(addFavorite);
-        res.status(201).send(addFavorite);
-    }
+app.put("/users/:username/favorites/:movieID", (req, res) => {
+    res.send("Movie added to favorites.");
 });
 
 // Removes a movie from a user's favorites
-app.delete("/favorites/:username/:title", (req, res) => {
-  res.send("Movie successfully deleted from favorites.");
+app.delete("/users/:username/favorites/:movieID", (req, res) => {
+  res.send("Movie removed from favorites.");
 });
 
 // Error handling
