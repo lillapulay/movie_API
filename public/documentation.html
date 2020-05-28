@@ -41,11 +41,11 @@
             <td> /movies </td>
             <td> GET </td>
             <td> None </td>
-            <td> A JSON object holding data about all movies. </td>
+            <td> An array of JSON objects listing all movies. </td>
           </tr>
 
           <tr>
-            <td> 2) Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user </td>
+            <td> 2) Return data (title, director, genre) about a single movie by title to the user </td>
             <td> /movies/[title] </td>
             <td> GET </td>
             <td> None </td>
@@ -139,38 +139,19 @@
 
           <tr>
             <td> 7) Allow users to add a movie to their list of favorites </td>
-            <td> /users/[username]/favorites </td>
-            <td> POST </td>
-            <td> A JSON object holding data to be modified. Example:
-              <p>
-                {<br>
-                  "username" : "Sarah <b>Jane</b> White",<br>
-                  "password" : "MyAccount10",<br>
-                  "email" : "sarah.white@gmail.com",<br>
-                  "birth" : "1995-06-04",<br>
-                  "favorites" : ["2"]<br>
-                  }
-              </p>
-            </td>
-            <td> A JSON object holding the updated data. Example:
-              <p>
-                {<br>
-                  "username" : "Sarah White",<br>
-                  "password" : "MyAccount10",<br>
-                  "email" : "sarah.white@gmail.com",<br>
-                  "birth" : "1995-06-04",<br>
-                  "favorites" : ["2"]<br>
-                  }
-              </p>
+            <td> /users/[username]<br>/favorites/[movieID] </td>
+            <td> PUT </td>
+            <td> None </td>
+            <td> A text message indicating whether the movie was succesfully added to the list.
              </td>
           </tr>
 
           <tr>
             <td> 8) Allow users to remove a movie from their list of favorites </td>
-            <td> /favorites/[username]/[title] </td>
+            <td> /users/[username]<br>/favorites/[movieID] </td>
             <td> DELETE </td>
             <td> None </td>
-            <td> A text message indicating whether the movie was succesfully removed from list. </td>
+            <td> A text message indicating whether the movie was succesfully removed from the list. </td>
           </tr>
 
           <tr>
