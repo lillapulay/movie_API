@@ -50,14 +50,14 @@
             <td> GET </td>
             <td> None </td>
             <td> A JSON object holding data about a single movie by title. Example:
-              <p>
+              <pre>
                 { <br>
                   id: '1', <br>
                   title: 'Forrest Gump', <br>
                   director: 'Robert Zemeckis', <br>
                   genre: 'Drama' <br>
                 }
-              </p>
+              </pre>
             </td>
           </tr>
 
@@ -67,12 +67,13 @@
             <td> GET </td>
             <td> None</td>
             <td> A JSON object holding data about a genre (description) by name or title. Example:
-              <p>
+              <pre>
                 {<br>
                   name: 'Drama',<br>
-                  description: 'Within film, television and radio, drama is a genre of narrative fiction...'<br>
+                  description: 'Within film, television and radio,<br>
+                  drama is a genre of narrative fiction...'<br>
                 }
-              </p>
+              </pre>
             </td>
           </tr>
 
@@ -82,14 +83,14 @@
             <td> GET </td>
             <td> None</td>
             <td> A JSON object holding data about a single director. Example:
-              <p>
+              <pre>
                 {<br>
                   name: 'Robert Zemeckis',<br>
                   bio: 'American director',<br>
                   birth: '1952',<br>
                   death:''<br>
                 }
-              </p>
+              </pre>
             </td>
           </tr>
 
@@ -98,25 +99,25 @@
             <td> /users </td>
             <td> POST </td>
             <td> A JSON object holding data about the new user to register. Example:
-              <p>
+              <pre>
                 {<br>
                   "username" : "Sarah White",<br>
                   "password" : "MyAccount10",<br>
                   "email" : "sarah.white@gmail.com",<br>
                   "birth" : "1995-06-04"<br>
                   }
-              </p>
+              </pre>
             </td>
             <td> A JSON object holding data about the new user created. Example:
-              <p>
+              <pre>
                 {<br>
                   "username" : "Sarah White",<br>
                   "password" : "MyAccount10",<br>
                   "email" : "sarah.white@gmail.com",<br>
-                  "birth" : "1995-06-04"<br>
+                  "birth" : "1995-06-04",<br>
                   "id": "0b6812dd-9a96-4039-91b1-70876861273a"<br>
                   }
-              </p>
+              </pre>
             </td>
           </tr>
 
@@ -125,14 +126,14 @@
             <td> /users/[username] </td>
             <td> PUT </td>
             <td> A JSON object holding user data to be updated. Example:
-              <p>
+              <pre>
                 {<br>
                   "username" : "Sarah <b>Jane</b> White",<br>
                   "password" : "MyAccount10",<br>
                   "email" : "sarah.white@gmail.com",<br>
                   "birth" : "1995-06-04"<br>
                   }
-              </p>
+              </pre>
             </td>
             <td> A text message indicating whether the user's information was succesfully updated. </td>
           </tr>

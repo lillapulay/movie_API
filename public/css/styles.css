@@ -23,7 +23,7 @@ body {
   border-collapse: collapse;
   margin: 0 auto;
   width: 85%;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 #requests caption {
@@ -32,11 +32,11 @@ body {
 }
 
 #col1 {
-  width: 15%;
+  width: 10%;
 }
 
 #col2 {
-  width: 20%;
+  width: 15%;
 }
 
 #col3 {
@@ -44,17 +44,16 @@ body {
 }
 
 #col4 {
-  width: 20%;
+  width: 30%;
 }
 
 #col5 {
-  width: 40%;
+  width: 30%;
 }
 
 #requests th {
   padding-top: 10px;
   padding-bottom: 10px;
-  text-align: center;
   background-color: #5F9EA0;
   color: white;
 }
@@ -64,6 +63,10 @@ body {
 }
 
 #requests td {
-  text-align: center;
   padding: 10px 15px;
+  text-align: center;
+}
+
+pre {
+  text-align: left;
 }
