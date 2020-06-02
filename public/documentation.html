@@ -45,17 +45,38 @@
           </tr>
 
           <tr>
-            <td> 2) Return data (title, director, genre) about a single movie by title to the user </td>
+            <td> 2) Return data (title, description, genre, director, image, actors, release year, featured or not) about a single movie by title to the user </td>
             <td> /movies/[title] </td>
             <td> GET </td>
             <td> None </td>
             <td> A JSON object holding data about a single movie by title. Example:
               <pre>
-                { <br>
-                  id: '1', <br>
-                  title: 'Forrest Gump', <br>
-                  director: 'Robert Zemeckis', <br>
-                  genre: 'Drama' <br>
+                {
+                  "_id" : ObjectId("5ed63ee8a64b15a0c8fd3d44"),
+                  "Title" : "Silence of the Lambs",
+                  "Description" : "A young FBI cadet must receive
+                  the help of an incarcerated and manipulative cannibal killer
+                  to help catch another serial killer.",
+                  "Genre" : {
+                          "Name" : "Thriller",
+                          "Description" : "Thriller film, also known as
+                          suspense film or suspense thriller, is a broad film genre
+                          that involves excitement and suspense in the audience."
+                  },
+                  "Director" : {
+                          "Name" : "Jonathan Demme",
+                          "Bio" : "Robert Jonathan Demme was an
+                          American director, producer, and screenwriter.",
+                          "Birth" : "1944",
+                          "Death" : "2017"
+                  },
+                  "ImagePath" : "https://www.imdb.com/title/tt0102926/mediaviewer/rm3242988544",
+                  "Actors" : [
+                          "Anthony Hopkins",
+                          "Jodie Foster"
+                  ],
+                  "ReleaseYear" : "1991",
+                  "Featured" : true
                 }
               </pre>
             </td>
