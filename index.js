@@ -25,6 +25,18 @@ app.get('/movies', (req, res) => {
   res.json(movies);
 });
 
+// GET all movies
+app.get('/movies', (req, res) => {
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
 // Returns the data about a SINGLE movie, by title
 app.get('/movies/:title', (req, res) => {
   res.json(movies.find((movie) =>
