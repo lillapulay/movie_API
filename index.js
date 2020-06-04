@@ -166,7 +166,7 @@ app.delete('/users/:Username/Movies/:_id', (req, res) => {
   });
 });
 
-// Delete a user by username
+// DELETE a user by username
 app.delete('/users/:Username', (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username })
     .then((user) => {
@@ -181,9 +181,6 @@ app.delete('/users/:Username', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-
-
-
 
 /* GET all users
 app.get('/users', (req, res) => {
