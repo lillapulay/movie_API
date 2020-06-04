@@ -68,19 +68,6 @@ app.get('/movies/Director/:Name', (req, res) => {
     });
 });
 
-/* Get all users
-app.get('/users', (req, res) => {
-  Users.find()
-    .then((users) => {
-      res.status(201).json(users);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
-*/
-
 // POST a user
 /* We’ll expect JSON in this format
 {
@@ -147,18 +134,23 @@ app.put('/users/:Username', (req, res) => {
   });
 });
 
-/* GET a user by username
-app.get('/users/:Username', (req, res) => {
-  Users.findOne({ Username: req.params.Username })
-    .then((user) => {
-      res.json(user);
-    })
-    .catch((err) => {
+// POST favorite movie
+app.post('/users/:Username/Movies/:MovieID', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, {
+     $push: { Favorites: req.params.MovieID }
+   },
+   { new: true }, // This line makes sure that the updated document is returned
+  (err, updatedUser) => {
+    if (err) {
       console.error(err);
       res.status(500).send('Error: ' + err);
-    });
+    } else {
+      res.json(updatedUser);
+    }
+  });
 });
-*/
+
+
 
 // Delete a user by username
 app.delete('/users/:Username', (req, res) => {
@@ -176,26 +168,38 @@ app.delete('/users/:Username', (req, res) => {
     });
 });
 
-// Add a movie to a user's list of favorites
-app.post('/users/:Username/Movies/:MovieID', (req, res) => {
-  Users.findOneAndUpdate({ Username: req.params.Username }, {
-     $push: { Favorites: req.params.MovieID }
-   },
-   { new: true }, // This line makes sure that the updated document is returned
-  (err, updatedUser) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    } else {
-      res.json(updatedUser);
-    }
-  });
-});
+
 
 // Removes a movie from a user's favorites
 app.delete("/users/:username/favorites/:movieID", (req, res) => {
   res.send("Movie removed from favorites.");
 });
+
+/* GET all users
+app.get('/users', (req, res) => {
+  Users.find()
+    .then((users) => {
+      res.status(201).json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+*/
+
+/* GET a user by username
+app.get('/users/:Username', (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+*/
 
 // Error handling
 app.use((err, req, res, next) => {
