@@ -53,11 +53,6 @@ app.get('/directors/:name', (req, res) => {
     { return director.name === req.params.name }));
 });
 
-/* Returns data on ALL users
-app.get('/users', function(req, res) {
-  res.json(users)
-});*/
-
 // Get all users
 app.get('/users', (req, res) => {
   Users.find()
@@ -105,11 +100,6 @@ app.post('/users', (req, res) => {
     });
 });
 
-/* Updates the data of a user
-app.put("/users/:username", (req, res) => {
-    res.send("User information successfully updated");
-});*/
-
 // Update a user's info, by username
 /* We’ll expect JSON in this format
 {
@@ -141,12 +131,6 @@ app.put('/users/:Username', (req, res) => {
   });
 });
 
-/* Returns data about a SINGLE user, by username - needs details!
-app.get('/users/:username', (req, res) => {
-  res.json(users.find((user) =>
-    { return user.username === req.params.username}));
-});*/
-
 // Get a user by username
 app.get('/users/:Username', (req, res) => {
   Users.findOne({ Username: req.params.Username })
@@ -158,18 +142,6 @@ app.get('/users/:Username', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-
-/* Deletes a user by username
-app.delete('/users/:username', (req, res) => {
-  let user = users.find((user) =>
-  { return user.username === req.params.username });
-
-  if (user) {
-    users = users.filter((obj) =>
-    { return obj.username !==req.params.username });
-    res.status(201).send('User ' + user.username + ' was deleted.')
-  }
-});*/
 
 // Delete a user by username
 app.delete('/users/:Username', (req, res) => {
@@ -186,11 +158,6 @@ app.delete('/users/:Username', (req, res) => {
       res.status(500).send('Error: ' + err);
     });
 });
-
-/* Adds a movie to a user's favorites
-app.put("/users/:username/favorites/:movieID", (req, res) => {
-    res.send("Movie added to favorites.");
-});*/
 
 // Add a movie to a user's list of favorites
 app.post('/users/:Username/Movies/:MovieID', (req, res) => {
