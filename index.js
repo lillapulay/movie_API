@@ -56,10 +56,16 @@ app.get('/movies/Genre/:Name', (req, res) => {
     });
 });
 
-// Returns data about a SINGLE director, by name
-app.get('/directors/:name', (req, res) => {
-  res.json(directors.find((director) =>
-    { return director.name === req.params.name }));
+// GET a single director by name
+app.get('/movies/Director/:Name', (req, res) => {
+  Movies.findOne({ 'Director.Name' : req.params.Name })
+    .then((movies) => {
+      res.json(movies.Director)
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // Get all users
