@@ -41,58 +41,66 @@
             <td> /movies </td>
             <td> GET </td>
             <td> None </td>
-            <td> An array of JSON objects listing all movies. </td>
+            <td> An array consisting of JSON objects listing all movies. </td>
           </tr>
 
           <tr>
             <td> 2) Return data (title, description, genre, director, image, actors, release year, featured or not) about a single movie by title to the user </td>
-            <td> /movies/[title] </td>
+            <td> /movies/:Title </td>
             <td> GET </td>
             <td> None </td>
             <td> A JSON object holding data about a single movie by title. Example:
               <pre>
                 {
-                  "_id" : ObjectId("5ed63ee8a64b15a0c8fd3d44"),
-                  "Title" : "Silence of the Lambs",
-                  "Description" : "A young FBI cadet must receive
-                  the help of an incarcerated and manipulative cannibal killer
-                  to help catch another serial killer.",
-                  "Genre" : {
-                          "Name" : "Thriller",
-                          "Description" : "Thriller film, also known as
-                          suspense film or suspense thriller, is a broad film genre
-                          that involves excitement and suspense in the audience."
+                  "Genre": {
+                      "Name": "Drama",
+                      "Description": "Within film, television and radio
+                      (but not theatre), drama is a genre of narrative
+                      fiction (or semi-fiction) intended to be more
+                      serious than humorous in tone, focusing on in-depth
+                      development of realistic characters who must deal
+                      with realistic emotional struggles. A drama is
+                      commonly considered the opposite of a comedy, but
+                      may also be considered separate from other works
+                      of some broad genre, such as a fantasy."
                   },
-                  "Director" : {
-                          "Name" : "Jonathan Demme",
-                          "Bio" : "Robert Jonathan Demme was an
-                          American director, producer, and screenwriter.",
-                          "Birth" : "1944",
-                          "Death" : "2017"
+                  "Director": {
+                      "Name": "Carroll Ballard",
+                      "Bio": "Carroll Ballard was born on October 14, 1937
+                      in Los Angeles, California, USA as Carroll James Ballard.",
+                      "Birth": "1937"
                   },
-                  "ImagePath" : "https://www.imdb.com/title/tt0102926/mediaviewer/rm3242988544",
-                  "Actors" : [
-                          "Anthony Hopkins",
-                          "Jodie Foster"
+                  "Actors": [
+                      "Jeff Daniels",
+                      "Anna Paquin",
+                      "Dana Delany"
                   ],
-                  "ReleaseYear" : "1991",
-                  "Featured" : true
+                  "_id": "5ed670fe6f553290a8069c22",
+                  "Title": "Fly Away Home",
+                  "Description": "A father and daughter decide to attempt
+                  to lead a flock of orphaned Canada Geese south by air.",
+                  "ImagePath": "https://www.imdb.com/title/tt0116329/mediaviewer/
+                  rm1852897536",
+                  "ReleaseYear": "1996",
+                  "Featured": false
                 }
               </pre>
             </td>
           </tr>
 
           <tr>
-            <td> 3) Return data about a genre (description) by name/title (e.g., “Thriller”) </td>
-            <td> /genres/[name]</td>
+            <td> 3) Return data about a genre (description) by name (e.g., “Thriller”) </td>
+            <td> /movies/Genre/:Name </td>
             <td> GET </td>
             <td> None</td>
             <td> A JSON object holding data about a genre (description) by name or title. Example:
               <pre>
-                {<br>
-                  name: 'Drama',<br>
-                  description: 'Within film, television and radio,<br>
-                  drama is a genre of narrative fiction...'<br>
+                {
+                  "Name": "Comedy",
+                  "Description": "Comedy is a story that tells about a
+                  series of funny, or comical events, intended to make
+                  the audience laugh. It is a very open genre, and thus
+                  crosses over with many other genres on a frequent basis."
                 }
               </pre>
             </td>
@@ -100,16 +108,18 @@
 
           <tr>
             <td> 4) Return data about a director (bio, birth year, death year) by name </td>
-            <td> /directors/[name]</td>
+            <td> /movies/Director/<br>:Name</td>
             <td> GET </td>
             <td> None</td>
             <td> A JSON object holding data about a single director. Example:
               <pre>
-                {<br>
-                  name: 'Robert Zemeckis',<br>
-                  bio: 'American director',<br>
-                  birth: '1952',<br>
-                  death:''<br>
+                {
+                  "Name": "Mel Gibson",
+                  "Bio": "Mel Columcille Gerard Gibson was born January 3,
+                  1956 in Peekskill, New York, USA, as the sixth of eleven
+                  children of Hutton Gibson, a railroad brakeman, and Anne
+                  Patricia (Reilly) Gibson (who died in December of 1990).",
+                  "Birth": "1956"
                 }
               </pre>
             </td>
@@ -121,64 +131,103 @@
             <td> POST </td>
             <td> A JSON object holding data about the new user to register. Example:
               <pre>
-                {<br>
-                  "username" : "Sarah White",<br>
-                  "password" : "MyAccount10",<br>
-                  "email" : "sarah.white@gmail.com",<br>
-                  "birth" : "1995-06-04"<br>
-                  }
+                {
+                  "Username": "mytestuser2",
+                  "Password": "12345678",
+                  "Email": "mytestuser@gmail.com",
+                  "Birthday": "04/02/1995"
+                }
               </pre>
             </td>
             <td> A JSON object holding data about the new user created. Example:
               <pre>
-                {<br>
-                  "username" : "Sarah White",<br>
-                  "password" : "MyAccount10",<br>
-                  "email" : "sarah.white@gmail.com",<br>
-                  "birth" : "1995-06-04",<br>
-                  "id": "0b6812dd-9a96-4039-91b1-70876861273a"<br>
-                  }
+                {
+                  "Favorites": [],
+                  "_id": "5ed9093c49e2ad044ea6fdfc",
+                  "Username": "mytestuser2",
+                  "Password": "12345678",
+                  "Email": "mytestuser@gmail.com",
+                  "Birthday": "1995-04-01T22:00:00.000Z",
+                  "__v": 0
+                }
               </pre>
             </td>
           </tr>
 
           <tr>
             <td> 6) Allow users to update their user info (username, password, email, date of birth) </td>
-            <td> /users/[username] </td>
+            <td> /users/:Username </td>
             <td> PUT </td>
             <td> A JSON object holding user data to be updated. Example:
               <pre>
-                {<br>
-                  "username" : "Sarah <b>Jane</b> White",<br>
-                  "password" : "MyAccount10",<br>
-                  "email" : "sarah.white@gmail.com",<br>
-                  "birth" : "1995-06-04"<br>
-                  }
+                {
+                  "Username": "michelle89",
+                  "Password": "12345678",
+                  "Email": "newemailaddress@gmail.com",
+                  "Birthday": "04/02/1995"
+                }
               </pre>
             </td>
-            <td> A text message indicating whether the user's information was succesfully updated. </td>
+            <td> A JSON object holding the updated user data. Example:
+              <pre>
+                {
+                  "Favorites": [],
+                  "_id": "5ed8dc1f5331ca03d6d03a0a",
+                  "Username": "michelle89",
+                  "Password": "12345678",
+                  "Email": "newemailaddress@gmail.com",
+                  "Birthday": "1995-04-01T22:00:00.000Z",
+                  "__v": 0
+                }
+              </pre>
+            </td>
           </tr>
 
           <tr>
             <td> 7) Allow users to add a movie to their list of favorites </td>
-            <td> /users/[username]<br>/favorites/[movieID] </td>
-            <td> PUT </td>
+            <td> /users/:Username/<br>Movies/:_id </td>
+            <td> POST </td>
             <td> None </td>
-            <td> A text message indicating whether the movie was succesfully added to the list.
+            <td> A JSON object holding the updated user data. Example:
+              <pre>
+                {
+                    "Favorites": [
+                        "5ed640eea64b15a0c8fd3d45"
+                    ],
+                    "_id": "5ed8dc1f5331ca03d6d03a0a",
+                    "Username": "michelle89",
+                    "Password": "12345678",
+                    "Email": "newemailaddress@gmail.com",
+                    "Birthday": "1995-04-01T22:00:00.000Z",
+                    "__v": 0
+                }
+              </pre>
              </td>
           </tr>
 
           <tr>
             <td> 8) Allow users to remove a movie from their list of favorites </td>
-            <td> /users/[username]<br>/favorites/[movieID] </td>
+            <td> /users/:Username/<br>Movies/:_id </td>
             <td> DELETE </td>
             <td> None </td>
-            <td> A text message indicating whether the movie was succesfully removed from the list. </td>
+            <td> A JSON object holding the updated user data. Example:
+              <pre>
+                {
+                  "Favorites": [],
+                  "_id": "5ed8dc1f5331ca03d6d03a0a",
+                  "Username": "michelle89",
+                  "Password": "12345678",
+                  "Email": "newemailaddress@gmail.com",
+                  "Birthday": "1995-04-01T22:00:00.000Z",
+                  "__v": 0
+                }
+              </pre>
+            </td>
           </tr>
 
           <tr>
             <td> 9) Allow existing users to deregister </td>
-            <td> /users/[username]/ </td>
+            <td> /users/:Username </td>
             <td> DELETE </td>
             <td> None </td>
             <td> A text message indicating whether the user was succesfully removed. </td>
