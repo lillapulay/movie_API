@@ -56,17 +56,6 @@ app.get('/movies/Genre/:Name', (req, res) => {
     });
 });
 
-// Returns data about a SINGLE genre
-app.get('/genres/:name', (req, res) => {
-  res.json(genres.find((genre) =>
-    { return genre.name === req.params.name  }));
-});
-
-// Returns the list of ALL directors
-app.get('/directors', function (req, res) {
-  res.json(directors)
-});
-
 // Returns data about a SINGLE director, by name
 app.get('/directors/:name', (req, res) => {
   res.json(directors.find((director) =>
