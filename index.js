@@ -53,9 +53,21 @@ app.get('/directors/:name', (req, res) => {
     { return director.name === req.params.name }));
 });
 
-// Returns data on ALL users
+/* Returns data on ALL users
 app.get('/users', function(req, res) {
   res.json(users)
+});*/
+
+// Get all users
+app.get('/users', (req, res) => {
+  Users.find()
+    .then((users) => {
+      res.status(201).json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 //Add a user
