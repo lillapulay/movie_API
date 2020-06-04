@@ -20,11 +20,6 @@ app.get('/', (req, res) => {
   res.send('Welcome to myFlix!');
 });
 
-// Returns the list of ALL movies
-app.get('/movies', (req, res) => {
-  res.json(movies);
-});
-
 // GET all movies
 app.get('/movies', (req, res) => {
   Movies.find()
@@ -37,7 +32,7 @@ app.get('/movies', (req, res) => {
     });
 });
 
-// Get a movie by title
+// GET a single movie by title
 app.get('/movies/:Title', (req, res) => {
   Movies.findOne({ Title: req.params.Title })
     .then((movie) => {
