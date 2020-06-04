@@ -135,11 +135,11 @@ app.put('/users/:Username', (req, res) => {
 });
 
 // POST favorite movie
-app.post('/users/:Username/Movies/:MovieID', (req, res) => {
+app.post('/users/:Username/Movies/:_id', (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
-     $push: { Favorites: req.params.MovieID }
-   },
-   { new: true }, // This line makes sure that the updated document is returned
+    $push: { Favorites: req.params._id }
+  },
+  { new: true }, // This line makes sure that the updated document is returned
   (err, updatedUser) => {
     if (err) {
       console.error(err);
@@ -150,7 +150,21 @@ app.post('/users/:Username/Movies/:MovieID', (req, res) => {
   });
 });
 
-
+// DELETE a favorite movie
+app.delete('/users/:Username/Movies/:_id', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, {
+    $pull: { Favorites: req.params._id }
+  },
+  { new: true }, // This line makes sure that the updated document is returned
+  (err, updatedUser) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser).send('Movie ' + req.params._id + ' was removed from favorites.')
+    }
+  });
+});
 
 // Delete a user by username
 app.delete('/users/:Username', (req, res) => {
@@ -170,10 +184,6 @@ app.delete('/users/:Username', (req, res) => {
 
 
 
-// Removes a movie from a user's favorites
-app.delete("/users/:username/favorites/:movieID", (req, res) => {
-  res.send("Movie removed from favorites.");
-});
 
 /* GET all users
 app.get('/users', (req, res) => {
