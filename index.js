@@ -171,9 +171,25 @@ app.delete('/users/:username', (req, res) => {
   }
 });
 
-// Adds a movie to a user's favorites
+/* Adds a movie to a user's favorites
 app.put("/users/:username/favorites/:movieID", (req, res) => {
     res.send("Movie added to favorites.");
+});*/
+
+// Add a movie to a user's list of favorites
+app.post('/users/:Username/Movies/:MovieID', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, {
+     $push: { Favorites: req.params.MovieID }
+   },
+   { new: true }, // This line makes sure that the updated document is returned
+  (err, updatedUser) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser);
+    }
+  });
 });
 
 // Removes a movie from a user's favorites
