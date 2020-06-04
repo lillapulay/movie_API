@@ -90,7 +90,7 @@
 
           <tr>
             <td> 3) Return data about a genre (description) by name (e.g., “Thriller”) </td>
-            <td> /movies/Genre/:Name </td>
+            <td> /genres/:Name </td>
             <td> GET </td>
             <td> None</td>
             <td> A JSON object holding data about a genre (description) by name or title. Example:
@@ -108,7 +108,7 @@
 
           <tr>
             <td> 4) Return data about a director (bio, birth year, death year) by name </td>
-            <td> /movies/Director/<br>:Name</td>
+            <td> /directors/<br>:Name</td>
             <td> GET </td>
             <td> None</td>
             <td> A JSON object holding data about a single director. Example:
@@ -185,7 +185,7 @@
 
           <tr>
             <td> 7) Allow users to add a movie to their list of favorites </td>
-            <td> /users/:Username/<br>Movies/:_id </td>
+            <td> /users/:Username/<br>movies/:_id </td>
             <td> POST </td>
             <td> None </td>
             <td> A JSON object holding the updated user data. Example:
@@ -207,7 +207,7 @@
 
           <tr>
             <td> 8) Allow users to remove a movie from their list of favorites </td>
-            <td> /users/:Username/<br>Movies/:_id </td>
+            <td> /users/:Username/<br>movies/:_id </td>
             <td> DELETE </td>
             <td> None </td>
             <td> A JSON object holding the updated user data. Example:
