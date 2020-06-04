@@ -159,7 +159,7 @@ app.get('/users/:Username', (req, res) => {
     });
 });
 
-// Deletes a user by username
+/* Deletes a user by username
 app.delete('/users/:username', (req, res) => {
   let user = users.find((user) =>
   { return user.username === req.params.username });
@@ -169,6 +169,22 @@ app.delete('/users/:username', (req, res) => {
     { return obj.username !==req.params.username });
     res.status(201).send('User ' + user.username + ' was deleted.')
   }
+});*/
+
+// Delete a user by username
+app.delete('/users/:Username', (req, res) => {
+  Users.findOneAndRemove({ Username: req.params.Username })
+    .then((user) => {
+      if (!user) {
+        res.status(400).send(req.params.Username + ' was not found');
+      } else {
+        res.status(200).send(req.params.Username + ' was deleted.');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 /* Adds a movie to a user's favorites
