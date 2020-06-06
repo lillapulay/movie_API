@@ -25,6 +25,7 @@
         <col id="col3">
         <col id="col4">
         <col id="col5">
+        <col id="col6">
         <thead>
           <tr>
             <th> Business Logic </th>
@@ -32,6 +33,7 @@
             <th> HTTP Method </th>
             <th> Request body data format </th>
             <th> Response body data format </th>
+            <th> Authentication strategy </th>
           </tr>
         </thead>
 
@@ -42,6 +44,7 @@
             <td> GET </td>
             <td> None </td>
             <td> An array consisting of JSON objects listing all movies. </td>
+            <td> JWT </td>
           </tr>
 
           <tr>
@@ -86,6 +89,7 @@
                 }
               </pre>
             </td>
+            <td> JWT </td>
           </tr>
 
           <tr>
@@ -104,6 +108,7 @@
                 }
               </pre>
             </td>
+            <td> JWT </td>
           </tr>
 
           <tr>
@@ -123,6 +128,7 @@
                 }
               </pre>
             </td>
+            <td> JWT </td>
           </tr>
 
           <tr>
@@ -152,6 +158,7 @@
                 }
               </pre>
             </td>
+            <td> None </td>
           </tr>
 
           <tr>
@@ -181,6 +188,7 @@
                 }
               </pre>
             </td>
+            <td> JWT </td>
           </tr>
 
           <tr>
@@ -203,6 +211,7 @@
                 }
               </pre>
              </td>
+             <td> JWT </td>
           </tr>
 
           <tr>
@@ -223,6 +232,7 @@
                 }
               </pre>
             </td>
+            <td> JWT </td>
           </tr>
 
           <tr>
@@ -231,6 +241,46 @@
             <td> DELETE </td>
             <td> None </td>
             <td> A text message indicating whether the user was succesfully removed. </td>
+            <td> JWT </td>
+          </tr>
+
+          <tr>
+            <td> 10) Login for registered users </td>
+            <td> /login </td>
+            <td> POST </td>
+            <td> A JSON object containing the username and the password of the registered user. Example:
+              <pre>
+                {
+                  "Username": "garfield",
+                  "Password": "lasagna"
+                }
+              </pre>
+            </td>
+            <td> A JSON object holding the appropriate user data. Example:
+              <pre>
+                {
+                  "user": {
+                      "Favorites": [],
+                      "_id": "5edbb90c81daff0390f1eb63",
+                      "Username": "garfield",
+                      "Password": "lasagna",
+                      "Email": "hatemondays@gmail.com",
+                      "Birthday": "1995-04-01T22:00:00.000Z",
+                      "__v": 0
+                    },
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+                  eyJGYXZvcml0ZXMiOltdLCJfaWQiOiI1ZWRiYjkwYzgxZGF
+                  mZjAzOTBmMWViNjMiLCJVc2VybmFtZSI6ImdhcmZpZWxkIi
+                  wiUGFzc3dvcmQiOiJsYXNhZ25hIiwiRW1haWwiOiJoYXRlb
+                  W9uZGF5c0BnbWFpbC5jb20iLCJCaXJ0aGRheSI6IjE5OTUt
+                  MDQtMDFUMjI6MDA6MDAuMDAwWiIsIl9fdiI6MCwiaWF0Ijo
+                  xNTkxNDU4MTAzLCJleHAiOjE1OTIwNjI5MDMsInN1YiI6Im
+                  dhcmZpZWxkIn0.I2UOZlWAistYM2hhu24BBfHDf_h99tVDy
+                  Nky6drsxto"
+                }
+              </pre>
+            </td>
+            <td> Local </td>
           </tr>
 
     </div>
