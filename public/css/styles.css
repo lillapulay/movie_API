@@ -32,7 +32,7 @@ body {
 }
 
 #col1 {
-  width: 15%;
+  width: 10%;
 }
 
 #col2 {
@@ -48,7 +48,11 @@ body {
 }
 
 #col5 {
-  width: 40%;
+  width: 35%;
+}
+
+#col6 {
+  width: 10%;
 }
 
 #requests th {
