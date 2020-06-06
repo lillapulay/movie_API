@@ -15,6 +15,10 @@ app.use(bodyParser.json()); // Parsing JSON
 app.use(express.static('public')); // Returning documentation.html
 app.use(morgan('common')); // Logging requests using Morgan
 
+let auth = require('./auth')(app); // Needs to be after the bodyParser middleware
+const passport = require('passport');
+require('./passport');
+
 // Message upon hitting the root folder / home
 app.get('/', (req, res) => {
   res.send('Welcome to myFlix!');
