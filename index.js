@@ -99,15 +99,16 @@ app.get('/directors/:Name', passport.authenticate('jwt', { session: false }), (r
   Birthday: Date
 }*/
 app.post('/users', (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password); // Password hashing
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
-        return res.status(400).send(req.body.Username + 'already exists');
+        return res.status(400).send(req.body.Username + 'already exists'); //If the user is found, send a response that it already exists
       } else {
         Users
           .create({
             Username: req.body.Username,
-            Password: req.body.Password,
+            Password: hashedPassword, // Password hashing
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })
