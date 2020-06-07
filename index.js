@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
+const cors = require('cors');
 
 mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -14,10 +15,26 @@ mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, 
 app.use(bodyParser.json()); // Parsing JSON
 app.use(express.static('public')); // Returning documentation.html
 app.use(morgan('common')); // Logging requests using Morgan
+app.use(cors()); // CORS allows requests from all origins by default
 
+// Importing Passport and auth
 let auth = require('./auth')(app); // Needs to be after the bodyParser middleware
 const passport = require('passport');
 require('./passport');
+
+// CORS list of allowed domains
+let allowedOrigins = *; // CORS allows all origins to make requests (for now)
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){ // If a specific origin isn’t found on the list of allowed origins
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message ), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 // Message upon hitting the root folder / home
 app.get('/', (req, res) => {
