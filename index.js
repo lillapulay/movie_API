@@ -11,7 +11,7 @@ const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true }); // CONNECTION_URI is set on Heroku! - environment variable
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true }); // CONNECTION_URI is set on Heroku!
 
 // Middleware
 app.use(bodyParser.json()); // Parsing JSON
