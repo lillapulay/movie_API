@@ -25,7 +25,7 @@ const passport = require('passport');
 require('./passport');
 
 // CORS list of allowed domains
-let allowedOrigins = *; // CORS allows all origins to make requests (for now)
+let allowedOrigins = ['*']; // CORS allows all origins to make requests (for now)
 
 app.use(cors({
   origin: (origin, callback) => {
