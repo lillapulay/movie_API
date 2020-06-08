@@ -102,7 +102,7 @@ app.post('/users',
 /* Validation logic as middleware, e.g. a chain of methods like .not().isEmpty() (=is not empty)
 or .isLength({min: 5}) */
   [
-    check('Username', 'Username is required').isLength({min: 5}),
+    check('Username', 'Username is required').isLength({min: 8}),
     check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
     check('Email', 'Email does not appear to be valid').isEmail()
@@ -151,7 +151,7 @@ or .isLength({min: 5}) */
   } */
 app.put('/users/:Username',
 [
-  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username is required').isLength({min: 8}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
   check('Email', 'Email does not appear to be valid').isEmail()
