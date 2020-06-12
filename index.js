@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 });
 
 // GET all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies', (req, res) => { /*passport.authenticate('jwt', { session: false }), - Removed in order to allow access for everyone */
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
