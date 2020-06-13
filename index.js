@@ -24,8 +24,8 @@ let auth = require('./auth')(app); // Needs to be after the bodyParser middlewar
 const passport = require('passport');
 require('./passport');
 
-// CORS list of allowed domains
-let allowedOrigins = ['*']; // CORS allows all origins to make requests (for now)
+/* CORS list of allowed domains - commenting it out for now, all domains allowed
+let allowedOrigins = ['*']; // 
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -37,6 +37,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+*/
 
 // Message upon hitting the root folder / home
 app.get('/', (req, res) => {
