@@ -35,7 +35,7 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-actors">
           <span className="label">Actors: </span>
-          <span className="value">{movie.Actors}</span>
+          <span className="value">{movie.Actors.join(', ')}</span>
         </div>
         <div className="movie-release">
           <span className="label">Release year: </span>
