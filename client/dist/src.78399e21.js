@@ -33217,8 +33217,7 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Sign In"), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "button",
-    "class": "btn btn-link",
-    onClick: handleRegistration
+    "class": "btn btn-link"
   }, "Not a member yet? Sign up here!"));
 }
 },{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
@@ -33458,7 +33457,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59821" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49423" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
