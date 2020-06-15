@@ -33217,20 +33217,7 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Sign In"), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "button",
-    className: "btn btn-link",
-    onClick: function (_onClick) {
-      function onClick() {
-        return _onClick.apply(this, arguments);
-      }
-
-      onClick.toString = function () {
-        return _onClick.toString();
-      };
-
-      return onClick;
-    }(function () {
-      return onClick(register);
-    })
+    className: "btn btn-link"
   }, "Not a member yet? Sign up here!"));
 }
 },{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
@@ -33334,13 +33321,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "toRegister",
-    value: function toRegister(register) {
-      this.setState({
-        register: register
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -33353,11 +33333,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!user) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
           return _this3.onLoggedIn(user);
-        }
-      });
-      if (!register) return _react.default.createElement(_registrationView.RegistrationView, {
-        toRegister: function toRegister(register) {
-          return _this3.toRegister(register);
         }
       }); // Before the movies have been loaded
 
