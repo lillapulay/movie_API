@@ -1,6 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+import "./main-view.scss";
+
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
@@ -44,8 +50,6 @@ export class MainView extends React.Component {
     });
   }
 
-
-
   render() {
     const { movies, selectedMovie, user } = this.state;
 
@@ -56,12 +60,18 @@ export class MainView extends React.Component {
 
     return (
       <div className="main-view">
-        {selectedMovie
-          ? <MovieView movie={selectedMovie} onClick={() => this.onMovieClick(null)} />
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-          ))
-        }
+        <Container>
+          <Row>
+            {selectedMovie
+              ? (<MovieView movie={selectedMovie} onClick={() => this.onMovieClick()} />)
+              : (movies.map((movie) => (
+                <Col key={movie._id}>
+                  <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
+                </Col>
+              ))
+              )}
+          </Row>
+        </Container>
       </div>
     );
   }
