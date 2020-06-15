@@ -33217,7 +33217,7 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Sign In"), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "button",
-    "class": "btn btn-link"
+    className: "btn btn-link"
   }, "Not a member yet? Sign up here!"));
 }
 },{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {

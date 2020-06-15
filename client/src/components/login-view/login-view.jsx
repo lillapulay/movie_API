@@ -34,7 +34,7 @@ export function LoginView(props) {
       </Form.Group>
 
       <Button variant="primary" type="submit" onClick={handleSubmit}>Sign In</Button><br></br>
-      <button type="button" class="btn btn-link" >
+      <button type="button" className="btn btn-link" >
         Not a member yet? Sign up here!
       </button>
     </Form>
