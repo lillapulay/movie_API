@@ -15,7 +15,11 @@ export function LoginView(props) {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication, then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+    props.onSignedIn(username);
+  };
+
+  const notMemberYet = (e) => {
+    props.notReggedYet(username);
   };
 
   return (
@@ -34,7 +38,7 @@ export function LoginView(props) {
       </Form.Group>
 
       <Button variant="primary" type="submit" onClick={handleSubmit}>Sign In</Button><br></br>
-      <button type="button" className="btn btn-link" >
+      <button type="button" className="btn btn-link" onClick={notMemberYet}>
         Not a member yet? Sign up here!
       </button>
     </Form>

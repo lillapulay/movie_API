@@ -33188,7 +33188,11 @@ function LoginView(props) {
     console.log(username, password);
     /* Send a request to the server for authentication, then call props.onLoggedIn(username) */
 
-    props.onLoggedIn(username);
+    props.onSignedIn(username);
+  };
+
+  var notMemberYet = function notMemberYet(e) {
+    props.notReggedYet(username);
   };
 
   return _react.default.createElement(_Form.default, {
@@ -33217,7 +33221,8 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Sign In"), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "button",
-    className: "btn btn-link"
+    className: "btn btn-link",
+    onClick: notMemberYet
   }, "Not a member yet? Sign up here!"));
 }
 },{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
@@ -33286,7 +33291,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       movies: null,
       selectedMovie: null,
-      user: null
+      user: null,
+      register: false
     };
     return _this;
   } // One of the "hooks" available in a React Component
@@ -33321,6 +33327,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "onRegister",
+    value: function onRegister(register) {
+      this.setState({
+        register: true
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -33330,11 +33343,15 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           selectedMovie = _this$state.selectedMovie,
           user = _this$state.user,
           register = _this$state.register;
-      if (!user) return _react.default.createElement(_loginView.LoginView, {
-        onLoggedIn: function onLoggedIn(user) {
+      if (!user && register === false) return _react.default.createElement(_loginView.LoginView, {
+        onSignedIn: function onSignedIn(user) {
           return _this3.onLoggedIn(user);
+        },
+        notReggedYet: function notReggedYet(register) {
+          return _this3.onRegister(register);
         }
-      }); // Before the movies have been loaded
+      });
+      if (register) return _react.default.createElement(_registrationView.RegistrationView, null); // Before the movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
