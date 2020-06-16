@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import Container from 'react-bootstrap/Container';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -19,28 +20,30 @@ export function LoginView(props) {
   };
 
   const notMemberYet = (e) => {
-    props.notReggedYet(username);
+    e.preventDefault();
+    props.notReggedYet(true);
   };
 
   return (
+    <Container className="login-container">
+      <Form className="login-form">
 
-    <Form className="login-form">
+        <Form.Group controlId="formBasicUsername">
+          <h3>Log In</h3>
+          <Form.Label>Username:</Form.Label>
+          <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicUsername">
-        <h3>Sign In</h3>
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </Form.Group>
-
-      <Button variant="primary" type="submit" onClick={handleSubmit}>Sign In</Button><br></br>
-      <button type="button" className="btn btn-link" onClick={notMemberYet}>
-        Not a member yet? Sign up here!
-      </button>
-    </Form>
+        <Button variant="info" type="submit" onClick={handleSubmit}>Sign In</Button><br></br>
+        <button type="button" className="btn btn-link" onClick={notMemberYet}>
+          Not a member yet? Sign up here!
+        </button>
+      </Form>
+    </Container>
   );
 }
