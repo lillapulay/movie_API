@@ -38,7 +38,7 @@ export function RegistrationView(props) {
     // https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
     <Container className="registration-container">
       <Form className="registration-form">
-        <h3>Register</h3>
+        <h3 className="form-title">Register</h3>
 
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username:</Form.Label>

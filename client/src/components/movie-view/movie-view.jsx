@@ -1,5 +1,10 @@
 import React from 'react';
 
+import Button from "react-bootstrap/Button";
+import ListGroup from 'react-bootstrap/ListGroup'
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image'
+
 export class MovieView extends React.Component {
 
   constructor() {
@@ -15,37 +20,41 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
-        <img className="movie-poster" src={movie.ImagePath} />
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-        <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="movie-director">
-          <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
-        </div>
-        <div className="movie-actors">
-          <span className="label">Actors: </span>
-          <span className="value">{movie.Actors.join(', ')}</span>
-        </div>
-        <div className="movie-release">
-          <span className="label">Release year: </span>
-          <span className="value">{movie.ReleaseYear}</span>
-        </div>
-        <div className="back-button" onClick={() => onClick()}>
-          <button type="button" variant="info">Back</button>
-        </div>
+        <Container className="movie-container">
+          <ListGroup>
+            <ListGroup.Item>
+              <Image className="movie-poster" src={movie.ImagePath} />
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="label">Title: <br></br> </span>
+              <span className="value">{movie.Title}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="label">Description: <br></br> </span>
+              <span className="value">{movie.Description}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="label">Genre: <br></br> </span>
+              <span className="value">{movie.Genre.Name}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="label">Director: <br></br> </span>
+              <span className="value">{movie.Director.Name}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="label">Actors: <br></br> </span>
+              <span className="value">{movie.Actors.join(', ')}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span className="label">Release year: <br></br> </span>
+              <span className="value">{movie.ReleaseYear}</span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button onClick={() => onClick()} className="back-button" type="button" variant="info">Back</Button>
+            </ListGroup.Item>
+          </ListGroup>
+        </Container >
       </div>
-
-
     );
   }
 }

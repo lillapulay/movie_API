@@ -12,8 +12,19 @@ body {
 }
 
 .login-container {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+}
+
+.main-title {
+  position: relative;
+  top: 280px;
+  color: $form-color;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 10px grey;
 }
 
 .login-form {

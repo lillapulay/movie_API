@@ -26,10 +26,10 @@ export function LoginView(props) {
 
   return (
     <Container className="login-container">
+      <h1 className="main-title">myFlix</h1>
       <Form className="login-form">
-
         <Form.Group controlId="formBasicUsername">
-          <h3>Log In</h3>
+          <h3 className="form-title">Log In</h3>
           <Form.Label>Username:</Form.Label>
           <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
         </Form.Group>

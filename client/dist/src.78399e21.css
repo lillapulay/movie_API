@@ -7,9 +7,106 @@ body {
   background-color: #F5F5DC;
 }
 
-.login-container {
-  display: inline-block;
+div.card-body {
+  height: 18rem;
+}
+
+.form-title {
+  font-weight: bold;
+  text-shadow: 1px 1px 20px white;
+}
+
+.card {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card-img-top {
+  height: 440px;
+}
+
+.card button {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+#backbutton {
+  border-radius: 1px 25px;
+}
+
+.button {
+  background-color: #5F9EA0;
+  border: 2px solid white;
+  border-radius: 1px 20px;
+  color: #FFFAFA;
+  align: center;
+}
+
+.button:hover {
+  opacity: 80%;
+  border: 2px solid white;
+}
+
+.btn-link {
+  color: #FFFAFA;
+}
+
+.btn-link:hover {
+  opacity: 80%;
+  color: #FFFAFA;
+  text-decoration-color: none;
+}
+
+.movie-view {
+  margin: 0 auto;
+}
+
+.movie-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 35rem;
+}
+
+.movie-poster {
+  width: 22rem;
+  height: auto;
+  margin: 0.5rem;
+}
+
+.list-group-item {
+  width: 100%;
   text-align: center;
+  padding: 5px 10px;
+  border: none;
+}
+
+.label {
+  font-weight: bold;
+}
+* {
+  box-sizing: border-box;
+  font-family: serif;
+}
+
+body {
+  background-color: #F5F5DC;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main-title {
+  position: relative;
+  top: 280px;
+  color: #5F9EA0;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 10px grey;
 }
 
 .login-form {
