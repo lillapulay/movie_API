@@ -41,7 +41,7 @@ export class MovieView extends React.Component {
           <span className="value">{movie.ReleaseYear}</span>
         </div>
         <div className="back-button" onClick={() => onClick()}>
-          <button type="button">Back</button>
+          <button type="button" variant="info">Back</button>
         </div>
       </div>
 

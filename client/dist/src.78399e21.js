@@ -31852,7 +31852,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _onClick(movie);
         },
-        variant: "link"
+        variant: "info"
       }, "Open")));
     }
   }]);
@@ -31972,7 +31972,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           return _onClick();
         }
       }, _react.default.createElement("button", {
-        type: "button"
+        type: "button",
+        variant: "info"
       }, "Back")));
     }
   }]);
@@ -33018,6 +33019,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
@@ -33074,18 +33077,20 @@ function RegistrationView(props) {
       Birthday: birthday
     }).then(function (response) {
       var data = response.data;
-      alert('Account successfully created.');
+      alert('Account successfully created. Please sign in to continue.');
       console.log(data);
       window.open("/", "_self"); // _self - URL replaces the current page
     }).catch(function (e) {
-      console.log("Something went wrong.");
+      alert("Something went wrong.");
     });
   };
 
   return (// https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
-    _react.default.createElement(_Form.default, {
+    _react.default.createElement(_Container.default, {
+      className: "registration-container"
+    }, _react.default.createElement(_Form.default, {
       className: "registration-form"
-    }, _react.default.createElement(_Form.default.Group, {
+    }, _react.default.createElement("h3", null, "Register"), _react.default.createElement(_Form.default.Group, {
       controlId: "formBasicUsername"
     }, _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
       type: "text",
@@ -33130,13 +33135,13 @@ function RegistrationView(props) {
     }), _react.default.createElement(_Form.default.Text, {
       className: "text-muted"
     }, "Please use the following format: dd/mm/yyyy.")), _react.default.createElement(_Button.default, {
-      variant: "primary",
+      variant: "info",
       type: "submit",
       onClick: handleRegistration
-    }, "Sign Up"))
+    }, "Sign Up")))
   );
 }
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33145,6 +33150,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.LoginView = LoginView;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
@@ -33192,14 +33199,17 @@ function LoginView(props) {
   };
 
   var notMemberYet = function notMemberYet(e) {
-    props.notReggedYet(username);
+    e.preventDefault();
+    props.notReggedYet(true);
   };
 
-  return _react.default.createElement(_Form.default, {
+  return _react.default.createElement(_Container.default, {
+    className: "login-container"
+  }, _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
-  }, _react.default.createElement("h3", null, "Sign In"), _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement("h3", null, "Log In"), _react.default.createElement(_Form.default.Label, null, "Username:"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter username",
     value: username,
@@ -33216,16 +33226,16 @@ function LoginView(props) {
       return setPassword(e.target.value);
     }
   })), _react.default.createElement(_Button.default, {
-    variant: "primary",
+    variant: "info",
     type: "submit",
     onClick: handleSubmit
   }, "Sign In"), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "button",
     className: "btn btn-link",
     onClick: notMemberYet
-  }, "Not a member yet? Sign up here!"));
+  }, "Not a member yet? Sign up here!")));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33330,7 +33340,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     key: "onRegister",
     value: function onRegister(register) {
       this.setState({
-        register: true
+        register: register
       });
     }
   }, {
