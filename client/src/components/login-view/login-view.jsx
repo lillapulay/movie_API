@@ -53,5 +53,6 @@ export function LoginView(props) {
 }
 
 LoginView.propTypes = {
-  onSignedIn: PropTypes.func.isRequired
+  onSignedIn: PropTypes.func.isRequired,
+  notReggedYet: PropTypes.func.isRequired
 };

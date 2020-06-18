@@ -33164,9 +33164,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           movie = _this$props.movie,
           _onClick = _this$props.onClick;
       if (!movie) return null;
-      return _react.default.createElement("div", {
+      return _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
-      }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_ListGroup.default, null, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Image.default, {
+      }, _react.default.createElement(_ListGroup.default, null, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Image.default, {
         className: "img-fluid",
         src: movie.ImagePath
       })), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement("span", {
@@ -33200,7 +33200,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "back-button",
         type: "button",
         variant: "info"
-      }, "Back"))))));
+      }, "Back")))));
     }
   }]);
 
@@ -34278,7 +34278,8 @@ function LoginView(props) {
 }
 
 LoginView.propTypes = {
-  onSignedIn: _propTypes.default.func.isRequired
+  onSignedIn: _propTypes.default.func.isRequired,
+  notReggedYet: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -34697,7 +34698,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50373" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50140" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
