@@ -57,7 +57,6 @@ export class MovieView extends React.Component {
           </ListGroup>
         </div>
       </Col>
-      </div >
     );
   }
 }
