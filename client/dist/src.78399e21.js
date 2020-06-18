@@ -34283,6 +34283,10 @@ function LoginView(props) {
     onClick: notMemberYet
   }, "Not a member yet? Sign up here!")))));
 }
+
+LoginView.propTypes = {
+  onSignedIn: _propTypes.default.func.isRequired
+};
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -34440,6 +34444,10 @@ function RegistrationView(props) {
     }, "Already registered? Click here to sign in!")))))
   );
 }
+
+RegistrationView.propTypes = {
+  notReggedYet: _propTypes.default.func.isRequired
+};
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -34694,7 +34702,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64199" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50373" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

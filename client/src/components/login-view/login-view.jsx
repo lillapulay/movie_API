@@ -45,10 +45,14 @@ export function LoginView(props) {
             <Button variant="info" type="submit" onClick={handleSubmit}>Sign In</Button><br></br>
             <button type="button" className="btn btn-link" onClick={notMemberYet}>
               Not a member yet? Sign up here!
-        </button>
+            </button>
           </Form>
         </Col>
       </Row>
     </Container>
   );
 }
+
+LoginView.propTypes = {
+  onSignedIn: PropTypes.func.isRequired
+};

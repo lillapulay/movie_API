@@ -92,3 +92,7 @@ export function RegistrationView(props) {
     </Container>
   );
 }
+
+RegistrationView.propTypes = {
+  notReggedYet: PropTypes.func.isRequired
+};
