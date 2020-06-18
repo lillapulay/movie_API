@@ -31846,6 +31846,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
           width: '18rem'
         }
       }, _react.default.createElement(_Card.default.Img, {
+        className: "img-fluid",
         variant: "top",
         src: movie.ImagePath
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_Button.default, {
@@ -33168,7 +33169,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Container.default, {
         className: "movie-container"
       }, _react.default.createElement(_ListGroup.default, null, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Image.default, {
-        className: "movie-poster",
+        className: "img-fluid",
         src: movie.ImagePath
       })), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement("span", {
         className: "label"
@@ -34248,6 +34249,11 @@ function RegistrationView(props) {
     });
   };
 
+  var alreadyMember = function alreadyMember(e) {
+    e.preventDefault();
+    props.notReggedYet(false);
+  };
+
   return (// https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
     _react.default.createElement(_Container.default, {
       className: "registration-container"
@@ -34303,7 +34309,11 @@ function RegistrationView(props) {
       variant: "info",
       type: "submit",
       onClick: handleRegistration
-    }, "Sign Up")))
+    }, "Sign Up"), _react.default.createElement("br", null), _react.default.createElement("button", {
+      type: "button",
+      className: "btn btn-link",
+      onClick: alreadyMember
+    }, "Already registered? Click here to sign in!")))
   );
 }
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
@@ -34530,7 +34540,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return _this3.onRegister(register);
         }
       });
-      if (register) return _react.default.createElement(_registrationView.RegistrationView, null); // Before the movies have been loaded
+      if (register) return _react.default.createElement(_registrationView.RegistrationView, {
+        notReggedYet: function notReggedYet(register) {
+          return _this3.onRegister(register);
+        }
+      }); // Before the movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
@@ -34654,7 +34668,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60225" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64199" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

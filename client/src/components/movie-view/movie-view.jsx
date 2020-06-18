@@ -23,7 +23,7 @@ export class MovieView extends React.Component {
         <Container className="movie-container">
           <ListGroup>
             <ListGroup.Item>
-              <Image className="movie-poster" src={movie.ImagePath} />
+              <Image className="img-fluid" src={movie.ImagePath} />
             </ListGroup.Item>
             <ListGroup.Item>
               <span className="label">Title: <br></br> </span>
