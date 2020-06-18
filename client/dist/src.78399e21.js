@@ -34185,6 +34185,10 @@ var _axios = _interopRequireDefault(require("axios"));
 
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
@@ -34256,8 +34260,9 @@ function RegistrationView(props) {
 
   return (// https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
     _react.default.createElement(_Container.default, {
+      fluid: true,
       className: "registration-container"
-    }, _react.default.createElement(_Form.default, {
+    }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
       className: "registration-form"
     }, _react.default.createElement("h3", {
       className: "form-title"
@@ -34313,10 +34318,10 @@ function RegistrationView(props) {
       type: "button",
       className: "btn btn-link",
       onClick: alreadyMember
-    }, "Already registered? Click here to sign in!")))
+    }, "Already registered? Click here to sign in!")))))
   );
 }
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34327,6 +34332,10 @@ exports.LoginView = LoginView;
 var _react = _interopRequireWildcard(require("react"));
 
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
@@ -34379,8 +34388,9 @@ function LoginView(props) {
   };
 
   return _react.default.createElement(_Container.default, {
+    fluid: true,
     className: "login-container"
-  }, _react.default.createElement("h1", {
+  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("h1", {
     className: "main-title"
   }, "myFlix"), _react.default.createElement(_Form.default, {
     className: "login-form"
@@ -34412,9 +34422,9 @@ function LoginView(props) {
     type: "button",
     className: "btn btn-link",
     onClick: notMemberYet
-  }, "Not a member yet? Sign up here!")));
+  }, "Not a member yet? Sign up here!")))));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss","../registration-view/registration-view":"components/registration-view/registration-view.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
