@@ -31841,11 +31841,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           movie = _this$props.movie,
           _onClick = _this$props.onClick;
-      return _react.default.createElement(_Card.default, {
-        style: {
-          width: '18rem'
-        }
-      }, _react.default.createElement(_Card.default.Img, {
+      return _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
         className: "img-fluid",
         variant: "top",
         src: movie.ImagePath
@@ -34247,11 +34243,8 @@ function LoginView(props) {
   };
 
   return _react.default.createElement(_Container.default, {
-    fluid: true,
     className: "login-container"
-  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("h1", {
-    className: "main-title"
-  }, "myFlix"), _react.default.createElement(_Form.default, {
+  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
@@ -34383,7 +34376,6 @@ function RegistrationView(props) {
 
   return (// https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
     _react.default.createElement(_Container.default, {
-      fluid: true,
       className: "registration-container"
     }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
       className: "registration-form"
@@ -34592,6 +34584,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         }
       }) : movies.map(function (movie) {
         return _react.default.createElement(_Col.default, {
+          xs: 12,
+          sm: 6,
+          md: 4,
           key: movie._id
         }, _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,

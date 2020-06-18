@@ -26,10 +26,9 @@ export function LoginView(props) {
   };
 
   return (
-    <Container fluid className="login-container">
+    <Container className="login-container">
       <Row>
         <Col>
-          <h1 className="main-title">myFlix</h1>
           <Form className="login-form">
             <Form.Group controlId="formBasicUsername">
               <h3 className="form-title">Log In</h3>

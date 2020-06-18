@@ -44,7 +44,7 @@ export function RegistrationView(props) {
 
   return (
     // https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
-    <Container fluid className="registration-container">
+    <Container className="registration-container">
       <Row>
         <Col>
           <Form className="registration-form">
