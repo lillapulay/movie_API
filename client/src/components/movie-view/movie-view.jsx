@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from "react-bootstrap/Button";
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -61,3 +62,16 @@ export class MovieView extends React.Component {
     );
   }
 }
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.object.isRequired,
+    Director: PropTypes.object.isRequired,
+    Actors: PropTypes.array.isRequired,
+    ReleaseYear: PropTypes.string.isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
+};

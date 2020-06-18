@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import PropTypes from 'prop-types';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
