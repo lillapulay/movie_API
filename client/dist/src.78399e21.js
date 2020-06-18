@@ -33114,7 +33114,9 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _ListGroup = _interopRequireDefault(require("react-bootstrap/ListGroup"));
 
-var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Image = _interopRequireDefault(require("react-bootstrap/Image"));
 
@@ -33166,9 +33168,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       if (!movie) return null;
       return _react.default.createElement("div", {
         className: "movie-view"
-      }, _react.default.createElement(_Container.default, {
-        className: "movie-container"
-      }, _react.default.createElement(_ListGroup.default, null, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Image.default, {
+      }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_ListGroup.default, null, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Image.default, {
         className: "img-fluid",
         src: movie.ImagePath
       })), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement("span", {
@@ -33202,7 +33202,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "back-button",
         type: "button",
         variant: "info"
-      }, "Back")))));
+      }, "Back"))))));
     }
   }]);
 
@@ -33210,7 +33210,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
-},{"react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js"}],"../node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js"}],"../node_modules/prop-types-extra/lib/utils/createChainableTypeChecker.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
