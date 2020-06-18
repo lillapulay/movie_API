@@ -63,7 +63,7 @@ export class MainView extends React.Component {
     if (!user && register === false) return <LoginView onSignedIn={user => this.onLoggedIn(user)}
       notReggedYet={(register) => this.onRegister(register)} />;
 
-    if (register) return <RegistrationView />;
+    if (register) return <RegistrationView notReggedYet={(register) => this.onRegister(register)} />;
 
     // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;

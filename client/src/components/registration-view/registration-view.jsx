@@ -34,6 +34,11 @@ export function RegistrationView(props) {
       });
   };
 
+  const alreadyMember = (e) => {
+    e.preventDefault();
+    props.notReggedYet(false);
+  };
+
   return (
     // https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
     <Container className="registration-container">
@@ -72,7 +77,10 @@ export function RegistrationView(props) {
           </Form.Text>
         </Form.Group>
 
-        <Button variant="info" type="submit" onClick={handleRegistration}>Sign Up</Button>
+        <Button variant="info" type="submit" onClick={handleRegistration}>Sign Up</Button><br></br>
+        <button type="button" className="btn btn-link" onClick={alreadyMember}>
+          Already registered? Click here to sign in!
+        </button>
       </Form>
     </Container>
   );
