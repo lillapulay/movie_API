@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -15,9 +16,18 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication, then call props.onLoggedIn(username) */
-    props.onSignedIn(username);
+    /* Send a request to the server for authentication */
+    axios.post('https://mymovieapi2020.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+      .then(response => {
+        const data = response.data;
+        props.onSignedIn(data); // Username changed to data because we also need the token
+      })
+      .catch(e => {
+        console.log('User not found.')
+      });
   };
 
   const notMemberYet = (e) => {

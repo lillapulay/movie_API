@@ -29,8 +29,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to myFlix!');
 });
 
-// GET all movies - auth removed so this function can be accessed by anyone, not just regged users
-app.get('/movies', (req, res) => {
+// GET all movies
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);

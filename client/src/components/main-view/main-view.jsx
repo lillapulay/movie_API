@@ -45,10 +45,30 @@ export class MainView extends React.Component {
     });
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {    // Parameter renamed as we need to use both user and token
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username  // Username has been saved in the user state
     });
+
+    localStorage.setItem('token', authData.token);  //Auth info received from the handleSubmit method (token+user) has been saved in localStorage
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token); // this refers to the MainView class here
+  }
+
+  getMovies(token) {
+    axios.get('https://mymovieapi2020.herokuapp.com/movies', {
+      headers: { Authorization: 'Bearer ${token}' }
+    })
+      .then(response => {
+        // Assign the result of the state
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   onRegister(register) {
