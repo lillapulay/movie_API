@@ -4,6 +4,10 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Nav from 'react-bootstrap/Nav';
+import Button from "react-bootstrap/Button";
 
 import "./main-view.scss";
 
@@ -27,6 +31,7 @@ export class MainView extends React.Component {
 
   // One of the "hooks" available in a React Component
   componentDidMount() {
+    // Persisting auth. data
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
       this.setState({
@@ -51,6 +56,16 @@ export class MainView extends React.Component {
     localStorage.setItem('token', authData.token);  //Auth info received from the handleSubmit method (token+user) has been saved in localStorage
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token); // this refers to the MainView class here
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null,
+    });
+    alert("Goodbye!");
+    window.open('/', '_self');
   }
 
   getMovies(token) {
@@ -85,8 +100,12 @@ export class MainView extends React.Component {
     // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
 
+    //Temporary position for logout button!!!! Add navbar
     return (
       <div className="main-view">
+        <Button type="button" className="logout" variant="info" onClick={() => this.onLoggedOut()}>
+          <b>Log Out</b>
+        </Button>
         <Container>
           <Row>
             {selectedMovie
