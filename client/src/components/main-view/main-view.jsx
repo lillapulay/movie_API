@@ -85,10 +85,10 @@ export class MainView extends React.Component {
 
     return (
       <Router>
-        <Navbar bg="light" expand="lg">
+        {user ? (<Navbar bg="light" expand="lg">
           <Navbar.Brand as={Link} to="/">
-            MyFlix
-					</Navbar.Brand>
+            <b>MyFlix</b>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -109,7 +109,7 @@ export class MainView extends React.Component {
               </Button>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar>) : null}
         <br />
 
         <div className="main-view">
