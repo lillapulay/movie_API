@@ -43109,6 +43109,8 @@ var _axios = _interopRequireDefault(require("axios"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
@@ -43170,7 +43172,8 @@ function RegistrationView(props) {
       Birthday: birthday
     }).then(function (response) {
       var data = response.data;
-      alert('Account successfully created. Please sign in to continue.');
+      alert('Account successfully created. Please log in to continue.'); // Will remove this later
+
       console.log(data);
       window.open("/", "_self"); // _self - URL replaces the current page
     }).catch(function (e) {
@@ -43178,12 +43181,7 @@ function RegistrationView(props) {
     });
   };
 
-  var alreadyMember = function alreadyMember(e) {
-    e.preventDefault();
-    props.notReggedYet(false);
-  };
-
-  return (// https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
+  return (// https://react-bootstrap.github.io/components/forms/ 
     _react.default.createElement(_Container.default, {
       className: "registration-container"
     }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
@@ -43238,18 +43236,20 @@ function RegistrationView(props) {
       variant: "info",
       type: "submit",
       onClick: handleRegistration
-    }, _react.default.createElement("b", null, "Sign Up")), _react.default.createElement("br", null), _react.default.createElement("button", {
+    }, _react.default.createElement("b", null, "Sign Up")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+      to: "/"
+    }, _react.default.createElement("button", {
       type: "button",
-      className: "btn btn-link",
-      onClick: alreadyMember
-    }, _react.default.createElement("i", null, "Already registered? Click here to sign in!"))))))
+      className: "btn btn-link"
+    }, _react.default.createElement("i", null, "Already registered? Click here to log in!")))))))
   );
 }
-
+/* Needs to be updated / removed?
 RegistrationView.propTypes = {
-  notReggedYet: _propTypes.default.func.isRequired
+  notReggedYet: PropTypes.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+*/
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

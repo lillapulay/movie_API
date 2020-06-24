@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -28,7 +29,7 @@ export function RegistrationView(props) {
     })
       .then((response) => {
         const data = response.data;
-        alert('Account successfully created. Please sign in to continue.');
+        alert('Account successfully created. Please log in to continue.'); // Will remove this later
         console.log(data);
         window.open("/", "_self"); // _self - URL replaces the current page
       })
@@ -37,13 +38,8 @@ export function RegistrationView(props) {
       });
   };
 
-  const alreadyMember = (e) => {
-    e.preventDefault();
-    props.notReggedYet(false);
-  };
-
   return (
-    // https://react-bootstrap.github.io/components/forms/ / birthday needs fix - type: date suitable?
+    // https://react-bootstrap.github.io/components/forms/ 
     <Container className="registration-container">
       <Row>
         <Col>
@@ -82,10 +78,14 @@ export function RegistrationView(props) {
               </Form.Text>
             </Form.Group>
 
-            <Button variant="info" type="submit" onClick={handleRegistration}><b>Sign Up</b></Button><br></br>
-            <button type="button" className="btn btn-link" onClick={alreadyMember}>
-              <i>Already registered? Click here to sign in!</i>
-            </button>
+            <Button variant="info" type="submit" onClick={handleRegistration}><b>Sign Up</b></Button>
+            <br />
+
+            <Link to={`/`}>
+              <button type="button" className="btn btn-link" >
+                <i>Already registered? Click here to log in!</i>
+              </button>
+            </Link>
           </Form>
         </Col>
       </Row>
@@ -93,6 +93,8 @@ export function RegistrationView(props) {
   );
 }
 
+/* Needs to be updated / removed?
 RegistrationView.propTypes = {
   notReggedYet: PropTypes.func.isRequired
 };
+*/
