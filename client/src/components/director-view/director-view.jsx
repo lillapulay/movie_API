@@ -20,7 +20,7 @@ export class DirectorView extends React.Component {
 
     if (!director) return null;
 
-    // Death year needs to be added to the database!
+    // Death year needs to be added to the database! + Add movies that belong with this director?
     return (
       <div className="director-view">
         <Container>
@@ -31,7 +31,7 @@ export class DirectorView extends React.Component {
               <Card.Text> Born: {director.Birth}</Card.Text>
               <Card.Text> Died: {director.Death}</Card.Text>
               <Link to={`/`}>
-                <Button variant="info">Back</Button>
+                <Button variant="info"><b>Back</b></Button>
               </Link>
             </Card.Body>
           </Card>
@@ -44,6 +44,8 @@ export class DirectorView extends React.Component {
 DirectorView.propTypes = {
   director: PropTypes.shape({
     Name: PropTypes.string,
-    Description: PropTypes.string,
+    Bio: PropTypes.string,
+    Birth: PropTypes.string,
+    Death: PropTypes.string
   }).isRequired,
 };
