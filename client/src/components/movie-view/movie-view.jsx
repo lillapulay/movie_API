@@ -19,7 +19,7 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie, onClick } = this.props;
+    const { movie } = this.props;
 
     if (!movie) return null;
 
@@ -30,43 +30,64 @@ export class MovieView extends React.Component {
             <ListGroup.Item>
               <Image className="img-fluid" src={movie.ImagePath} />
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <span className="label">Title: <br></br> </span>
+              <span className="label">Title: <br /> </span>
               <span className="value">{movie.Title}</span>
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <span className="label">Description: <br></br> </span>
+              <span className="label">Description: <br /> </span>
               <span className="value">{movie.Description}</span>
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <span className="label">Genre: <br></br> </span>
+              <span className="label">Genre: <br /> </span>
               <span className="value">{movie.Genre.Name}</span>
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <span className="label">Director: <br></br> </span>
+              <span className="label">Director: <br /> </span>
               <span className="value">{movie.Director.Name}</span>
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <span className="label">Actors: <br></br> </span>
+              <span className="label">Actors: <br /> </span>
               <span className="value">{movie.Actors.join(', ')}</span>
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <span className="label">Release year: <br></br> </span>
+              <span className="label">Release year: <br /> </span>
               <span className="value">{movie.ReleaseYear}</span>
             </ListGroup.Item>
+
             <ListGroup.Item>
-              <Button onClick={() => onClick()} className="back-button" type="button" variant="info"><b>Back</b></Button>
+              <Link to={`/`}>
+                <Button variant="info">
+                  <b>Back</b>
+                </Button>
+              </Link>
             </ListGroup.Item>
           </ListGroup>
-          <Link to={`/directors/${movie.Director.Name}`}>
-            <Button variant="info">Director</Button>
-          </Link>
-          <br></br>
-          <Link to={`/genres/${movie.Genre.Name}`}>
-            <Button variant="info">Genre</Button>
-          </Link>
+
+          <ListGroup.Item>
+            <Link to={`/movies/director/${movie.Director.Name}`}>
+              <Button variant="info">
+                <b>View Director</b>
+              </Button>
+            </Link>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <Link to={`/movies/genres/${movie.Genre.Name}`}>
+              <Button variant="info">
+                <b>View Genre</b>
+              </Button>
+            </Link>
+          </ListGroup.Item>
+
+          <br />
         </div>
-      </Col>
+      </Col >
     );
   }
 }
@@ -80,6 +101,5 @@ MovieView.propTypes = {
     Director: PropTypes.object.isRequired,
     Actors: PropTypes.array.isRequired,
     ReleaseYear: PropTypes.string.isRequired
-  }).isRequired,
-  onClick: PropTypes.func.isRequired
+  }).isRequired
 };

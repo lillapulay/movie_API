@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Card from 'react-bootstrap/Card';
 
 import "./director-view.scss";
 
@@ -18,7 +19,7 @@ export class DirectorView extends React.Component {
   }
 
   render() {
-    const { movies, director } = this.props;
+    const { director } = this.props;
 
     if (!director) return null;
 
@@ -28,8 +29,8 @@ export class DirectorView extends React.Component {
         <Container>
           <Card>
             <Card.Body>
-              <Card.Title> Name: {director.Name}</Card.Title>
-              <Card.Text> Bio: {director.Bio}</Card.Text>
+              <Card.Title> {director.Name}</Card.Title>
+              <Card.Text> {director.Bio}</Card.Text>
               <Card.Text> Born: {director.Birth}</Card.Text>
               <Card.Text> Died: {director.Death}</Card.Text>
               <Link to={`/`}>

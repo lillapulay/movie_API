@@ -22,18 +22,7 @@ export class MovieCard extends React.Component {
               <b>View details</b>
             </Button>
           </Link>
-          <br />
-          <Link to={`/movies/director/${movie.Director.Name}`}>
-            <Button variant="info">
-              <b>View Director</b>
-            </Button>
-          </Link>
-          <br />
-          <Link to={`/movies/genres/${movie.Genre.Name}`}>
-            <Button variant="info">
-              <b>View Genre</b>
-            </Button>
-          </Link>
+
         </Card.Body>
       </Card >
     );
@@ -48,3 +37,18 @@ MovieCard.propTypes = {
     ImagePath: PropTypes.string.isRequired
   }).isRequired
 };
+
+/* Functions available on movie-view - removing them from this view for now
+<br />
+          <Link to={`/movies/director/${movie.Director.Name}`}>
+            <Button variant="info">
+              <b>View Director</b>
+            </Button>
+          </Link>
+          <br />
+          <Link to={`/movies/genres/${movie.Genre.Name}`}>
+            <Button variant="info">
+              <b>View Genre</b>
+            </Button>
+          </Link>
+          */

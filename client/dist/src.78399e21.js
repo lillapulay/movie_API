@@ -41773,15 +41773,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, _react.default.createElement("b", null, "View details"))), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/movies/director/".concat(movie.Director.Name)
-      }, _react.default.createElement(_Button.default, {
-        variant: "info"
-      }, _react.default.createElement("b", null, "View Director"))), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/movies/genres/".concat(movie.Genre.Name)
-      }, _react.default.createElement(_Button.default, {
-        variant: "info"
-      }, _react.default.createElement("b", null, "View Genre")))));
+      }, _react.default.createElement("b", null, "View details")))));
     }
   }]);
 
@@ -41797,6 +41789,20 @@ MovieCard.propTypes = {
     ImagePath: _propTypes.default.string.isRequired
   }).isRequired
 };
+/* Functions available on movie-view - removing them from this view for now
+<br />
+          <Link to={`/movies/director/${movie.Director.Name}`}>
+            <Button variant="info">
+              <b>View Director</b>
+            </Button>
+          </Link>
+          <br />
+          <Link to={`/movies/genres/${movie.Genre.Name}`}>
+            <Button variant="info">
+              <b>View Genre</b>
+            </Button>
+          </Link>
+          */
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"../node_modules/react-bootstrap/esm/ListGroupItem.js":[function(require,module,exports) {
 "use strict";
 
@@ -41984,7 +41990,12 @@ Image.displayName = 'Image';
 Image.defaultProps = defaultProps;
 var _default = Image;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../home/lillapulay/.nvm/versions/node/v12.17.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42007,6 +42018,8 @@ var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Image = _interopRequireDefault(require("react-bootstrap/Image"));
+
+require("./movie-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42050,9 +42063,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieView, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          _onClick = _this$props.onClick;
+      var movie = this.props.movie;
       if (!movie) return null;
       return _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
@@ -42083,22 +42094,19 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Release year: ", _react.default.createElement("br", null), " "), _react.default.createElement("span", {
         className: "value"
-      }, movie.ReleaseYear)), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Button.default, {
-        onClick: function onClick() {
-          return _onClick();
-        },
-        className: "back-button",
-        type: "button",
-        variant: "info"
-      }, _react.default.createElement("b", null, "Back")))), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/directors/".concat(movie.Director.Name)
+      }, movie.ReleaseYear)), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, "Director")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/genres/".concat(movie.Genre.Name)
+      }, _react.default.createElement("b", null, "Back"))))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/movies/director/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, "Genre"))));
+      }, _react.default.createElement("b", null, "View Director")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/movies/genres/".concat(movie.Genre.Name)
+      }, _react.default.createElement(_Button.default, {
+        variant: "info"
+      }, _react.default.createElement("b", null, "View Genre")))), _react.default.createElement("br", null)));
     }
   }]);
 
@@ -42115,10 +42123,9 @@ MovieView.propTypes = {
     Director: _propTypes.default.object.isRequired,
     Actors: _propTypes.default.array.isRequired,
     ReleaseYear: _propTypes.default.string.isRequired
-  }).isRequired,
-  onClick: _propTypes.default.func.isRequired
+  }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js"}],"../node_modules/react-bootstrap/esm/Feedback.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"../node_modules/react-bootstrap/esm/Feedback.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43286,6 +43293,8 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
+var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
+
 require("./director-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -43330,14 +43339,12 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
   _createClass(DirectorView, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          movies = _this$props.movies,
-          director = _this$props.director;
+      var director = this.props.director;
       if (!director) return null; // Death year needs to be added to the database! + Add movies that belong with this director?
 
       return _react.default.createElement("div", {
         className: "director-view"
-      }, _react.default.createElement(_Container.default, null, _react.default.createElement(Card, null, _react.default.createElement(Card.Body, null, _react.default.createElement(Card.Title, null, " Name: ", director.Name), _react.default.createElement(Card.Text, null, " Bio: ", director.Bio), _react.default.createElement(Card.Text, null, " Born: ", director.Birth), _react.default.createElement(Card.Text, null, " Died: ", director.Death), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_Container.default, null, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", director.Name), _react.default.createElement(_Card.default.Text, null, " ", director.Bio), _react.default.createElement(_Card.default.Text, null, " Born: ", director.Birth), _react.default.createElement(_Card.default.Text, null, " Died: ", director.Death), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "info"
@@ -43357,7 +43364,7 @@ DirectorView.propTypes = {
     Death: _propTypes.default.string
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
