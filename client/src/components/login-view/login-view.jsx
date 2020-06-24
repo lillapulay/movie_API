@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -30,11 +31,6 @@ export function LoginView(props) {
       });
   };
 
-  const notMemberYet = (e) => {
-    e.preventDefault();
-    props.notReggedYet(true);
-  };
-
   return (
     <Container className="login-container">
       <Row>
@@ -52,9 +48,11 @@ export function LoginView(props) {
             </Form.Group>
 
             <Button variant="info" type="submit" onClick={handleSubmit}><b>Sign In</b></Button><br></br>
-            <button type="button" className="btn btn-link" onClick={notMemberYet}>
-              <i>Not a member yet? Sign up here!</i>
-            </button>
+            <Link to={`/register`}>
+              <button type="button" className="btn btn-link">
+                <i>Not a member yet? Click here to register!</i>
+              </button>
+            </Link>
           </Form>
         </Col>
       </Row>
@@ -63,6 +61,5 @@ export function LoginView(props) {
 }
 
 LoginView.propTypes = {
-  onSignedIn: PropTypes.func.isRequired,
-  notReggedYet: PropTypes.func.isRequired
+  onSignedIn: PropTypes.func.isRequired
 };

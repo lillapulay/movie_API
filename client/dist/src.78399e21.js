@@ -42986,6 +42986,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
@@ -43042,11 +43044,6 @@ function LoginView(props) {
     });
   };
 
-  var notMemberYet = function notMemberYet(e) {
-    e.preventDefault();
-    props.notReggedYet(true);
-  };
-
   return _react.default.createElement(_Container.default, {
     className: "login-container"
   }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
@@ -43075,18 +43072,18 @@ function LoginView(props) {
     variant: "info",
     type: "submit",
     onClick: handleSubmit
-  }, _react.default.createElement("b", null, "Sign In")), _react.default.createElement("br", null), _react.default.createElement("button", {
+  }, _react.default.createElement("b", null, "Sign In")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/register"
+  }, _react.default.createElement("button", {
     type: "button",
-    className: "btn btn-link",
-    onClick: notMemberYet
-  }, _react.default.createElement("i", null, "Not a member yet? Sign up here!"))))));
+    className: "btn btn-link"
+  }, _react.default.createElement("i", null, "Not a member yet? Click here to register!")))))));
 }
 
 LoginView.propTypes = {
-  onSignedIn: _propTypes.default.func.isRequired,
-  notReggedYet: _propTypes.default.func.isRequired
+  onSignedIn: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -43621,7 +43618,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         path: "/",
         render: function render() {
           if (!user) return _react.default.createElement(_loginView.LoginView, {
-            onLoggedIn: function onLoggedIn(user) {
+            onSignedIn: function onSignedIn(user) {
               return _this3.onLoggedIn(user);
             }
           });
