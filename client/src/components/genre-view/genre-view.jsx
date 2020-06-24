@@ -9,6 +9,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from 'react-bootstrap/Card';
 
+import "./genre-view.scss";
+
 export class GenreView extends React.Component {
   constructor() {
     super();
