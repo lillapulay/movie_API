@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route } from "react-router-dom"; // BrowserRouter handles state-based routing, hash-based routing WOULD be handled by HashRouter
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -22,11 +23,26 @@ export class MainView extends React.Component {
     super();
 
     this.state = {
-      movies: null,
+      movies: [],
       selectedMovie: null,
       user: null,
       register: false
     };
+  }
+
+  getMovies(token) {
+    axios.get('https://mymovieapi2020.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` } // Not '' !!!!
+    })
+      .then(response => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   // One of the "hooks" available in a React Component
@@ -68,21 +84,6 @@ export class MainView extends React.Component {
     window.open('/', '_self');
   }
 
-  getMovies(token) {
-    axios.get('https://mymovieapi2020.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` } // Not '' !!!!
-    })
-      .then(response => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   onRegister(register) {
     this.setState({
       register: register
@@ -97,28 +98,49 @@ export class MainView extends React.Component {
 
     if (register) return <RegistrationView notReggedYet={(register) => this.onRegister(register)} />;
 
-    // Before the movies have been loaded
-    if (!movies) return <div className="main-view" />;
+
+    return (
+      <Router>
+        <div className="main-view">
+          <Route exact path="/" render={() => {
+            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+            return movies.map(m => <MovieCard key={m._id} movie={m} />)
+          }
+          } />
+          <Route path="/register" render={() => <RegistrationView />} />
+          <Route exact path="/" render={() => movies.map(m =>
+            <MovieCard key={m._id} movie={m} />)} />
+          <Route path="/movies/:movieId" render={({ match }) =>
+            <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+          <Route path="/directors/:name" render={({ match }) => {
+            if (!movies) return <div className="main-view" />;
+            return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} />
+          }
+          } />
+        </div>
+      </Router>
+    );
 
     //Temporary position for logout button!!!! Add navbar
-    return (
-      <div className="main-view">
-        <Button type="button" className="logout" variant="info" onClick={() => this.onLoggedOut()}>
-          <b>Log Out</b>
-        </Button>
-        <Container>
-          <Row>
-            {selectedMovie
-              ? (<MovieView movie={selectedMovie} onClick={() => this.onMovieClick()} />)
-              : (movies.map((movie) => (
-                <Col xs={12} sm={6} md={4} key={movie._id}>
-                  <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
-                </Col>
-              ))
-              )}
-          </Row>
-        </Container>
-      </div>
-    );
+    /* RETURN - code before router
+     return (
+       <div className="main-view">
+         <Button type="button" className="logout" variant="info" onClick={() => this.onLoggedOut()}>
+           <b>Log Out</b>
+         </Button>
+         <Container>
+           <Row>
+             {selectedMovie
+               ? (<MovieView movie={selectedMovie} onClick={() => this.onMovieClick()} />)
+               : (movies.map((movie) => (
+                 <Col xs={12} sm={6} md={4} key={movie._id}>
+                   <MovieCard key={movie._id} movie={movie} onClick={(movie) => this.onMovieClick(movie)} />
+                 </Col>
+               ))
+               )}
+           </Row>
+         </Container>
+       </div>
+     ); */
   }
 }

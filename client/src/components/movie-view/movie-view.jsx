@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -52,9 +53,16 @@ export class MovieView extends React.Component {
               <span className="value">{movie.ReleaseYear}</span>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Button onClick={() => onClick()} className="back-button" type="button" variant="info">Back</Button>
+              <Button onClick={() => onClick()} className="back-button" type="button" variant="info"><b>Back</b></Button>
             </ListGroup.Item>
           </ListGroup>
+          <Link to={`/directors/${movie.Director.Name}`}>
+            <Button variant="info">Director</Button>
+          </Link>
+          <br></br>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="info">Genre</Button>
+          </Link>
         </div>
       </Col>
     );
