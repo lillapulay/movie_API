@@ -41773,12 +41773,21 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, _react.default.createElement("b", null, "View details")))));
+      }, _react.default.createElement("b", null, "View details"))), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/movies/director/".concat(movie.Director.Name)
+      }, _react.default.createElement(_Button.default, {
+        variant: "info"
+      }, _react.default.createElement("b", null, "View Director"))), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/movies/genres/".concat(movie.Genre.Name)
+      }, _react.default.createElement(_Button.default, {
+        variant: "info"
+      }, _react.default.createElement("b", null, "View Genre")))));
     }
   }]);
 
   return MovieCard;
-}(_react.default.Component);
+}(_react.default.Component); // Needs to be updated
+
 
 exports.MovieCard = MovieCard;
 MovieCard.propTypes = {
@@ -41786,8 +41795,7 @@ MovieCard.propTypes = {
     Title: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
     ImagePath: _propTypes.default.string.isRequired
-  }).isRequired,
-  onClick: _propTypes.default.func.isRequired
+  }).isRequired
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"../node_modules/react-bootstrap/esm/ListGroupItem.js":[function(require,module,exports) {
 "use strict";
@@ -43589,7 +43597,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var favoriteMovieList = movies.filter(function (movie) {
         return _this3.state.favoriteMovies.includes(movie._id);
       });
-      return _react.default.createElement("div", null, _react.default.createElement(_Container.default, null, _react.default.createElement("h1", null, "My Profile"), _react.default.createElement("br", null), _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Text, null, "Username: ", this.state.Username), _react.default.createElement(_Card.default.Text, null, "Password: xxxxxx"), _react.default.createElement(_Card.default.Text, null, "Email: ", this.state.Email), _react.default.createElement(_Card.default.Text, null, "Birthday ", this.state.Birthday), "Favorite Movies:", favoriteMovieList.map(function (movie) {
+      return _react.default.createElement("div", null, _react.default.createElement(_Container.default, null, _react.default.createElement("h3", null, _react.default.createElement("b", null, "Account settings")), _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Text, null, "Username: ", this.state.Username), _react.default.createElement(_Card.default.Text, null, "Password: "), _react.default.createElement(_Card.default.Text, null, "Email: ", this.state.Email), _react.default.createElement(_Card.default.Text, null, "Date of birth: ", this.state.Birthday), "Favorites:", favoriteMovieList.map(function (movie) {
         return _react.default.createElement("div", {
           key: movie._id,
           className: "fav-movies-button"
@@ -43775,13 +43783,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_Navbar.default, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, user ? _react.default.createElement(_Navbar.default, {
         bg: "light",
         expand: "lg"
       }, _react.default.createElement(_Navbar.default.Brand, {
         as: _reactRouterDom.Link,
         to: "/"
-      }, "MyFlix"), _react.default.createElement(_Navbar.default.Toggle, {
+      }, _react.default.createElement("b", null, "MyFlix")), _react.default.createElement(_Navbar.default.Toggle, {
         "aria-controls": "basic-navbar-nav"
       }), _react.default.createElement(_Navbar.default.Collapse, {
         id: "basic-navbar-nav"
@@ -43804,7 +43812,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.onLogout();
         }
-      }, _react.default.createElement("b", null, "Log Out"))))), _react.default.createElement("br", null), _react.default.createElement("div", {
+      }, _react.default.createElement("b", null, "Log Out"))))) : null, _react.default.createElement("br", null), _react.default.createElement("div", {
         className: "main-view"
       }, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,

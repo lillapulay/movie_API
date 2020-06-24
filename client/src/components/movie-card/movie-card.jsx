@@ -22,17 +22,29 @@ export class MovieCard extends React.Component {
               <b>View details</b>
             </Button>
           </Link>
+          <br />
+          <Link to={`/movies/director/${movie.Director.Name}`}>
+            <Button variant="info">
+              <b>View Director</b>
+            </Button>
+          </Link>
+          <br />
+          <Link to={`/movies/genres/${movie.Genre.Name}`}>
+            <Button variant="info">
+              <b>View Genre</b>
+            </Button>
+          </Link>
         </Card.Body>
       </Card >
     );
   }
 }
 
+// Needs to be updated
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
-  }).isRequired,
-  onClick: PropTypes.func.isRequired
+  }).isRequired
 };
