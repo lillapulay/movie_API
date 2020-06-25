@@ -42,6 +42,11 @@ export function ProfileView(props) {
       });
   };
 
+  /* Need to add:
+  - favorites + add / remove function
+  - delete account function
+  */
+
   return (
 
     <Container className="profile-container">

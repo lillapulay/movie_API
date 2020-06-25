@@ -43547,6 +43547,11 @@ function ProfileView(props) {
       alert("Something went wrong.");
     });
   };
+  /* Need to add:
+  - favorites + add / remove function
+  - delete account function
+  */
+
 
   return _react.default.createElement(_Container.default, {
     className: "profile-container"
