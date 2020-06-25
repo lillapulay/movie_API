@@ -23,7 +23,7 @@ export function ProfileView(props) {
     e.preventDefault();
     console.log();
     /* Send a request to the server for authentication */
-    axios.put('https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}', {
+    axios.put(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}`, { // Not ''!!!
       Username: username,
       Password: password,
       Email: email,
@@ -42,9 +42,26 @@ export function ProfileView(props) {
       });
   };
 
+  const deleteAccount = (e) => {
+    e.preventDefault();
+    console.log();
+    axios.delete(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}`, { // Not ''!!!
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+      .then((response) => {
+        const data = response.data;
+        alert("Account successfully deleted.");
+        console.log(data);
+        localStorage.removeItem("token", "user");
+        window.open("/", "_self");
+      })
+      .catch((e) => {
+        alert("Something went wrong.");
+      });
+  };
+
   /* Need to add:
   - favorites + add / remove function
-  - delete account function
   */
 
   return (
@@ -87,7 +104,13 @@ export function ProfileView(props) {
               </Form.Text>
             </Form.Group>
 
-            <Button variant="info" type="submit" onClick={handleUpdate}><b>Update details</b></Button>
+            <Button variant="info" type="submit" onClick={handleUpdate}>
+              <b>Update details</b>
+            </Button>
+            <br />
+            <Button variant="info" type="submit" onClick={deleteAccount}>
+              <b>Delete account</b>
+            </Button>
             <br />
             <Link to={`/`}>
               <Button variant="info">

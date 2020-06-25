@@ -43527,7 +43527,8 @@ function ProfileView(props) {
     console.log();
     /* Send a request to the server for authentication */
 
-    _axios.default.put('https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}', {
+    _axios.default.put("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user")), {
+      // Not ''!!!
       Username: username,
       Password: password,
       Email: email,
@@ -43547,9 +43548,28 @@ function ProfileView(props) {
       alert("Something went wrong.");
     });
   };
+
+  var deleteAccount = function deleteAccount(e) {
+    e.preventDefault();
+    console.log();
+
+    _axios.default.delete("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user")), {
+      // Not ''!!!
+      headers: {
+        Authorization: "Bearer ".concat(localStorage.getItem("token"))
+      }
+    }).then(function (response) {
+      var data = response.data;
+      alert("Account successfully deleted.");
+      console.log(data);
+      localStorage.removeItem("token", "user");
+      window.open("/", "_self");
+    }).catch(function (e) {
+      alert("Something went wrong.");
+    });
+  };
   /* Need to add:
   - favorites + add / remove function
-  - delete account function
   */
 
 
@@ -43603,7 +43623,11 @@ function ProfileView(props) {
     variant: "info",
     type: "submit",
     onClick: handleUpdate
-  }, _react.default.createElement("b", null, "Update details")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+  }, _react.default.createElement("b", null, "Update details")), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
+    variant: "info",
+    type: "submit",
+    onClick: deleteAccount
+  }, _react.default.createElement("b", null, "Delete account")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, _react.default.createElement(_Button.default, {
     variant: "info"
