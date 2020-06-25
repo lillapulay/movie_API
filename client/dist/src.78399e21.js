@@ -43791,7 +43791,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, "Contact"), _react.default.createElement(_Button.default, {
         variant: "info",
         onClick: function onClick() {
-          return _this3.onLogout();
+          return _this3.onLoggedOut();
         }
       }, _react.default.createElement("b", null, "Log Out"))))) : null, _react.default.createElement("br", null), _react.default.createElement("div", {
         className: "main-view"

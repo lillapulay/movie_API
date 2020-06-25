@@ -104,7 +104,7 @@ export class MainView extends React.Component {
               <Nav.Link as={Link} to="/contact">
                 Contact
 							</Nav.Link>
-              <Button variant="info" onClick={() => this.onLogout()}>
+              <Button variant="info" onClick={() => this.onLoggedOut()}>
                 <b>Log Out</b>
               </Button>
             </Nav>
