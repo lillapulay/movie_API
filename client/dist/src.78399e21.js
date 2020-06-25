@@ -43457,9 +43457,9 @@ module.hot.accept(reloadCSS);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ProfileView = void 0;
+exports.ProfileView = ProfileView;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -43485,168 +43485,126 @@ require("./profile-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function ProfileView(props) {
+  var _useState = (0, _react.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      username = _useState2[0],
+      updateUsername = _useState2[1];
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+  var _useState3 = (0, _react.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      updatePassword = _useState4[1];
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  var _useState5 = (0, _react.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      email = _useState6[0],
+      updateEmail = _useState6[1];
 
-// Better solution in order to display data of the current user? And props?
-// https://stackoverflow.com/questions/47443099/constructorprops-and-superprops-vs-constructor-and-super-in-react
-var ProfileView = /*#__PURE__*/function (_React$Component) {
-  _inherits(ProfileView, _React$Component);
+  var _useState7 = (0, _react.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      birthday = _useState8[0],
+      updateBirthday = _useState8[1];
 
-  var _super = _createSuper(ProfileView);
+  var handleUpdate = function handleUpdate(e) {
+    e.preventDefault();
+    console.log();
+    /* Send a request to the server for authentication */
 
-  function ProfileView(props) {
-    var _this;
+    _axios.default.put('https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    }, {
+      headers: {
+        Authorization: "Bearer ".concat(localStorage.getItem("token"))
+      } // Not ''!!!
 
-    _classCallCheck(this, ProfileView);
+    }).then(function (response) {
+      var data = response.data;
+      alert('Account successfully updated.'); // Will remove this later
 
-    _this = _super.call(this, props);
-    _this.state = {
-      username: null,
-      password: null,
-      email: null,
-      birthday: null,
-      favorites: [],
-      movies: []
-    };
-    return _this;
-  } // Auth. current user + need to fix backend (params=user)!!!
+      console.log(data);
+      window.open("/", "_self"); // _self - URL replaces the current page
+    }).catch(function (e) {
+      alert("Something went wrong.");
+    });
+  };
 
-
-  _createClass(ProfileView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var accessToken = localStorage.getItem('token');
-      this.getUser(accessToken);
+  return _react.default.createElement(_Container.default, {
+    className: "profile-container"
+  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
+    className: "profile-form"
+  }, _react.default.createElement("h3", {
+    className: "form-title"
+  }, _react.default.createElement("b", null, "Account Settings")), _react.default.createElement(_Form.default.Group, {
+    controlId: "updateUsername"
+  }, _react.default.createElement(_Form.default.Label, null, " Username: "), _react.default.createElement(_Form.default.Control, {
+    type: "text",
+    placeholder: "Enter new username",
+    onChange: function onChange(e) {
+      return updateUsername(e.target.value);
     }
-  }, {
-    key: "getUser",
-    value: function getUser(token) {
-      var _this2 = this;
-
-      var username = localStorage.getItem('user');
-
-      _axios.default.get('https://mymovieapi2020.herokuapp.com/users/${username}', {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        } // Not ''!!!
-
-      }).then(function (response) {
-        _this2.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-          Favorites: response.data.Favorites
-        });
-      }).catch(function (error) {
-        console.log(error);
-      });
+  }), _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, _react.default.createElement("i", null, "Username must be at least 5 characters long."))), _react.default.createElement(_Form.default.Group, {
+    controlId: "updatePassword"
+  }, _react.default.createElement(_Form.default.Label, null, " Password: "), _react.default.createElement(_Form.default.Control, {
+    type: "password",
+    placeholder: "Enter new password",
+    onChange: function onChange(e) {
+      return updatePassword(e.target.value);
     }
-  }, {
-    key: "deleteAccount",
-    value: function deleteAccount(e) {
-      _axios.default.delete("https://https://myflix-db.herokuapp.com/users/".concat(localStorage.getItem('user')), {
-        headers: {
-          Authorization: "Bearer ".concat(localStorage.getItem('token'))
-        }
-      }).then(function (response) {
-        alert("Account successfully deleted!");
-        localStorage.removeItem('token', 'user');
-        window.open("/");
-      }).catch(function (event) {
-        alert("Account could not be deleted.");
-      });
+  }), _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, _react.default.createElement("i", null, "Password must be at least 8 characters long and must contain at least one number."))), _react.default.createElement(_Form.default.Group, {
+    controlId: "updateEmail"
+  }, _react.default.createElement(_Form.default.Label, null, " Email address: "), _react.default.createElement(_Form.default.Control, {
+    type: "email",
+    placeholder: "Enter new email",
+    onChange: function onChange(e) {
+      return updateEmail(e.target.value);
     }
-    /* Need to create:
-    - update profile function
-    - delete account function
-    - delete favorite movie function
-    */
-
-  }, {
-    key: "render",
-    value: function render() {
-      return _react.default.createElement(_Container.default, {
-        className: "profile-container"
-      }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
-        className: "profile-form"
-      }, _react.default.createElement("h3", {
-        className: "form-title"
-      }, _react.default.createElement("b", null, "Account Settings")), _react.default.createElement(_Form.default.Group, {
-        controlId: "updateUsername"
-      }, _react.default.createElement(_Form.default.Label, null, " Username: ", this.state.Username, " "), _react.default.createElement(_Form.default.Control, {
-        type: "text",
-        placeholder: "Enter new username",
-        onChange: function onChange(e) {
-          return updateUsername(e.target.value);
-        }
-      }), _react.default.createElement(_Form.default.Text, {
-        className: "text-muted"
-      }, _react.default.createElement("i", null, "Username must be at least 5 characters long."))), _react.default.createElement(_Form.default.Group, {
-        controlId: "updatePassword"
-      }, _react.default.createElement(_Form.default.Label, null, " Password: ", this.state.Password, " "), _react.default.createElement(_Form.default.Control, {
-        type: "password",
-        placeholder: "Enter new password",
-        onChange: function onChange(e) {
-          return updatePassword(e.target.value);
-        }
-      }), _react.default.createElement(_Form.default.Text, {
-        className: "text-muted"
-      }, _react.default.createElement("i", null, "Password must be at least 8 characters long and must contain at least one number."))), _react.default.createElement(_Form.default.Group, {
-        controlId: "updateEmail"
-      }, _react.default.createElement(_Form.default.Label, null, " Email address: ", this.state.Email, " "), _react.default.createElement(_Form.default.Control, {
-        type: "email",
-        placeholder: "Enter new email",
-        onChange: function onChange(e) {
-          return updateEmail(e.target.value);
-        }
-      }), _react.default.createElement(_Form.default.Text, {
-        className: "text-muted"
-      }, _react.default.createElement("i", null, "Please make sure the email address entered is valid."))), _react.default.createElement(_Form.default.Group, {
-        controlId: "updateBirthday"
-      }, _react.default.createElement(_Form.default.Label, null, " Date of birth:", this.state.Birthday, " "), _react.default.createElement(_Form.default.Control, {
-        type: "date",
-        placeholder: "Enter new date of birth",
-        onChange: function onChange(e) {
-          return updateBirthday(e.target.value);
-        }
-      }), _react.default.createElement(_Form.default.Text, {
-        className: "text-muted"
-      }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement(_Button.default, {
-        variant: "info",
-        type: "submit"
-      }, _react.default.createElement("b", null, "Update details")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, _react.default.createElement(_Button.default, {
-        variant: "info"
-      }, _react.default.createElement("b", null, "Back")))))));
+  }), _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, _react.default.createElement("i", null, "Please make sure the email address entered is valid."))), _react.default.createElement(_Form.default.Group, {
+    controlId: "updateBirthday"
+  }, _react.default.createElement(_Form.default.Label, null, " Date of birth: "), _react.default.createElement(_Form.default.Control, {
+    type: "date",
+    placeholder: "Enter new date of birth",
+    onChange: function onChange(e) {
+      return updateBirthday(e.target.value);
     }
-  }]);
-
-  return ProfileView;
-}(_react.default.Component);
-
-exports.ProfileView = ProfileView;
+  }), _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement(_Button.default, {
+    variant: "info",
+    type: "submit",
+    onClick: handleUpdate
+  }, _react.default.createElement("b", null, "Update details")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/"
+  }, _react.default.createElement(_Button.default, {
+    variant: "info"
+  }, _react.default.createElement("b", null, "Back")))))));
+}
+/* Need to add PropTypes */
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
