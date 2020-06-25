@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-import "./genre-view.scss";
+import './genre-view.scss';
 
 export class GenreView extends React.Component {
   constructor() {
@@ -20,7 +20,7 @@ export class GenreView extends React.Component {
 
   // Add movies that belong in this genre?
   render() {
-    const { movie, genre } = this.props;
+    const { genre } = this.props;
 
     if (!genre) return null;
 

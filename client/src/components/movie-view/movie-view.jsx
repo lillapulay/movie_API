@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Button from "react-bootstrap/Button";
-import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 
-import "./movie-view.scss";
+import './movie-view.scss';
 
 export class MovieView extends React.Component {
 
@@ -92,6 +92,7 @@ export class MovieView extends React.Component {
   }
 }
 
+// Needs fix - console throws error for 'movie' in Genre and Director views ????
 MovieView.propTypes = {
   movie: PropTypes.shape({
     ImagePath: PropTypes.string.isRequired,

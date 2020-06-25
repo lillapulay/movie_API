@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route } from "react-router-dom"; // BrowserRouter handles state-based routing, hash-based routing WOULD be handled by HashRouter
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom'; // BrowserRouter handles state-based routing, hash-based routing WOULD be handled by HashRouter
+import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -9,17 +9,17 @@ import Row from 'react-bootstrap/Row';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
-import Button from "react-bootstrap/Button";
+import Button from 'react-bootstrap/Button';
 
-import "./main-view.scss";
+import './main-view.scss';
 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
-import { DirectorView } from "../director-view/director-view";
-import { GenreView } from "../genre-view/genre-view";
-import { ProfileView } from "../profile-view/profile-view";
+import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view';
 
 export class MainView extends React.Component {
 
@@ -34,7 +34,7 @@ export class MainView extends React.Component {
 
   getMovies(token) {
     axios.get('https://mymovieapi2020.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` } // Not '' !!!!
+      headers: { Authorization: `Bearer ${token}` } // Not '' !!!
     })
       .then(response => {
         this.setState({

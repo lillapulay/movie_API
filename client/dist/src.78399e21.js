@@ -42096,7 +42096,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return MovieView;
-}(_react.default.Component);
+}(_react.default.Component); // Needs fix - console throws error for 'movie' in Genre and Director views ????
+
 
 exports.MovieView = MovieView;
 MovieView.propTypes = {
@@ -43425,9 +43426,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
   _createClass(GenreView, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          genre = _this$props.genre;
+      var genre = this.props.genre;
       if (!genre) return null;
       return _react.default.createElement("div", null, _react.default.createElement(_Container.default, null, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, genre.Name), _react.default.createElement(_Card.default.Text, null, "Description: ", genre.Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -43447,9 +43446,208 @@ GenreView.propTypes = {
     Description: _propTypes.default.string
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
 
-},{}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../home/lillapulay/.nvm/versions/node/v12.17.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ProfileView = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
+
+var _ListGroup = _interopRequireDefault(require("react-bootstrap/ListGroup"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Image = _interopRequireDefault(require("react-bootstrap/Image"));
+
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
+
+var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
+
+require("./profile-view.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+// Better solution in order to display data of the current user? And props?
+// https://stackoverflow.com/questions/47443099/constructorprops-and-superprops-vs-constructor-and-super-in-react
+var ProfileView = /*#__PURE__*/function (_React$Component) {
+  _inherits(ProfileView, _React$Component);
+
+  var _super = _createSuper(ProfileView);
+
+  function ProfileView(props) {
+    var _this;
+
+    _classCallCheck(this, ProfileView);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      username: null,
+      password: null,
+      email: null,
+      birthday: null,
+      favorites: [],
+      movies: []
+    };
+    return _this;
+  } // Auth. current user + need to fix backend (params=user)!!!
+
+
+  _createClass(ProfileView, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var accessToken = localStorage.getItem('token');
+      this.getUser(accessToken);
+    }
+  }, {
+    key: "getUser",
+    value: function getUser(token) {
+      var _this2 = this;
+
+      var username = localStorage.getItem('user');
+
+      _axios.default.get('https://mymovieapi2020.herokuapp.com/users/${username}', {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        } // Not ''!!!
+
+      }).then(function (response) {
+        _this2.setState({
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          Favorites: response.data.Favorites
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "deleteAccount",
+    value: function deleteAccount(e) {
+      _axios.default.delete("https://https://myflix-db.herokuapp.com/users/".concat(localStorage.getItem('user')), {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
+        alert("Account successfully deleted!");
+        localStorage.removeItem('token', 'user');
+        window.open("/");
+      }).catch(function (event) {
+        alert("Account could not be deleted.");
+      });
+    }
+    /* Need to create:
+    - update profile function
+    - delete account function
+    - delete favorite movie function
+    */
+
+  }, {
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_Container.default, {
+        className: "profile-container"
+      }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
+        className: "profile-form"
+      }, _react.default.createElement("h3", {
+        className: "form-title"
+      }, _react.default.createElement("b", null, "Account Settings")), _react.default.createElement(_Form.default.Group, {
+        controlId: "updateUsername"
+      }, _react.default.createElement(_Form.default.Label, null, " Username: ", this.state.Username, " "), _react.default.createElement(_Form.default.Control, {
+        type: "text",
+        placeholder: "Enter new username",
+        onChange: function onChange(e) {
+          return updateUsername(e.target.value);
+        }
+      }), _react.default.createElement(_Form.default.Text, {
+        className: "text-muted"
+      }, _react.default.createElement("i", null, "Username must be at least 5 characters long."))), _react.default.createElement(_Form.default.Group, {
+        controlId: "updatePassword"
+      }, _react.default.createElement(_Form.default.Label, null, " Password: ", this.state.Password, " "), _react.default.createElement(_Form.default.Control, {
+        type: "password",
+        placeholder: "Enter new password",
+        onChange: function onChange(e) {
+          return updatePassword(e.target.value);
+        }
+      }), _react.default.createElement(_Form.default.Text, {
+        className: "text-muted"
+      }, _react.default.createElement("i", null, "Password must be at least 8 characters long and must contain at least one number."))), _react.default.createElement(_Form.default.Group, {
+        controlId: "updateEmail"
+      }, _react.default.createElement(_Form.default.Label, null, " Email address: ", this.state.Email, " "), _react.default.createElement(_Form.default.Control, {
+        type: "email",
+        placeholder: "Enter new email",
+        onChange: function onChange(e) {
+          return updateEmail(e.target.value);
+        }
+      }), _react.default.createElement(_Form.default.Text, {
+        className: "text-muted"
+      }, _react.default.createElement("i", null, "Please make sure the email address entered is valid."))), _react.default.createElement(_Form.default.Group, {
+        controlId: "updateBirthday"
+      }, _react.default.createElement(_Form.default.Label, null, " Date of birth:", this.state.Birthday, " "), _react.default.createElement(_Form.default.Control, {
+        type: "date",
+        placeholder: "Enter new date of birth",
+        onChange: function onChange(e) {
+          return updateBirthday(e.target.value);
+        }
+      }), _react.default.createElement(_Form.default.Text, {
+        className: "text-muted"
+      }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement(_Button.default, {
+        variant: "info",
+        type: "submit"
+      }, _react.default.createElement("b", null, "Update details")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, _react.default.createElement(_Button.default, {
+        variant: "info"
+      }, _react.default.createElement("b", null, "Back")))))));
+    }
+  }]);
+
+  return ProfileView;
+}(_react.default.Component);
+
+exports.ProfileView = ProfileView;
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43542,7 +43740,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       _axios.default.get('https://mymovieapi2020.herokuapp.com/movies', {
         headers: {
-          Authorization: "Bearer ".concat(token) // Not '' !!!!
+          Authorization: "Bearer ".concat(token) // Not '' !!!
 
         }
       }).then(function (response) {
