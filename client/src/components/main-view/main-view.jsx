@@ -29,6 +29,7 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       user: null,
+      favorites: []
     };
   }
 
@@ -67,6 +68,13 @@ export class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token); // 'this' refers to the MainView class here
   }
+
+  getFavorites() {
+    this.setState({
+      favorites: authData.user.Favorites
+    });
+  }
+
 
   onLoggedOut() {
     localStorage.removeItem('token');

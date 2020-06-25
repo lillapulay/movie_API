@@ -43481,6 +43481,8 @@ var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
+var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
+
 require("./profile-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -43619,7 +43621,7 @@ function ProfileView(props) {
     }
   }), _react.default.createElement(_Form.default.Text, {
     className: "text-muted"
-  }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement(_Button.default, {
+  }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement("div", null, _react.default.createElement("h4", null, _react.default.createElement("b", null, "Favorites:"))), _react.default.createElement(_Button.default, {
     variant: "info",
     type: "submit",
     onClick: handleUpdate
@@ -43634,7 +43636,7 @@ function ProfileView(props) {
   }, _react.default.createElement("b", null, "Back")))))));
 }
 /* Need to add PropTypes */
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43715,7 +43717,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       movies: [],
-      user: null
+      user: null,
+      favorites: []
     };
     return _this;
   }
@@ -43764,6 +43767,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token); // 'this' refers to the MainView class here
+    }
+  }, {
+    key: "getFavorites",
+    value: function getFavorites() {
+      this.setState({
+        favorites: authData.user.Favorites
+      });
     }
   }, {
     key: "onLoggedOut",

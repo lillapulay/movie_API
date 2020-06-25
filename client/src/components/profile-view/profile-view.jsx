@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
 
 import './profile-view.scss';
 
@@ -60,6 +61,8 @@ export function ProfileView(props) {
       });
   };
 
+
+
   /* Need to add:
   - favorites + add / remove function
   */
@@ -103,6 +106,10 @@ export function ProfileView(props) {
                 <i>Please use the following format: dd/mm/yyyy.</i>
               </Form.Text>
             </Form.Group>
+
+            <div>
+              <h4><b>Favorites:</b></h4>
+            </div>
 
             <Button variant="info" type="submit" onClick={handleUpdate}>
               <b>Update details</b>
