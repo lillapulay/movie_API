@@ -70,6 +70,17 @@ export function ProfileView(props) {
   return (
 
     <Container className="profile-container">
+
+      <Row>
+        {props.favorites.map(m =>
+          <Col>
+            <Button>
+              {m}
+            </Button>
+          </Col>
+        )}
+      </Row>
+
       <Row>
         <Col>
           <Form className="profile-form">
@@ -109,6 +120,7 @@ export function ProfileView(props) {
 
             <div>
               <h4><b>Favorites:</b></h4>
+              <p> This is some dummy text. </p>
             </div>
 
             <Button variant="info" type="submit" onClick={handleUpdate}>

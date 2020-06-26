@@ -43577,7 +43577,9 @@ function ProfileView(props) {
 
   return _react.default.createElement(_Container.default, {
     className: "profile-container"
-  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
+  }, _react.default.createElement(_Row.default, null, props.favorites.map(function (m) {
+    return _react.default.createElement(_Col.default, null, _react.default.createElement(_Button.default, null, m));
+  })), _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
     className: "profile-form"
   }, _react.default.createElement("h3", {
     className: "form-title"
@@ -43621,7 +43623,7 @@ function ProfileView(props) {
     }
   }), _react.default.createElement(_Form.default.Text, {
     className: "text-muted"
-  }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement("div", null, _react.default.createElement("h4", null, _react.default.createElement("b", null, "Favorites:"))), _react.default.createElement(_Button.default, {
+  }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement("div", null, _react.default.createElement("h4", null, _react.default.createElement("b", null, "Favorites:")), _react.default.createElement("p", null, " This is some dummy text. ")), _react.default.createElement(_Button.default, {
     variant: "info",
     type: "submit",
     onClick: handleUpdate
@@ -43717,7 +43719,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       movies: [],
-      user: null
+      user: null,
+      favorites: []
     };
     return _this;
   }
@@ -43759,8 +43762,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       // Parameter renamed as we need to use both user and token
       console.log(authData);
       this.setState({
-        user: authData.user.Username // Username has been saved in the user state
-
+        user: authData.user.Username,
+        // Username has been saved in the user state
+        favorites: authData.user.Favorites
       });
       localStorage.setItem('token', authData.token); //Auth info received from the handleSubmit method (token+user) has been saved in localStorage
 
@@ -43786,7 +43790,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       var _this$state = this.state,
           movies = _this$state.movies,
-          user = _this$state.user;
+          user = _this$state.user,
+          favorites = _this$state.favorites;
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
@@ -43883,7 +43888,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         path: "/user",
         render: function render() {
           return _react.default.createElement(_profileView.ProfileView, {
-            movies: movies
+            favorites: favorites
           });
         }
       })));

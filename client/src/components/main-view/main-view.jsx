@@ -28,7 +28,8 @@ export class MainView extends React.Component {
 
     this.state = {
       movies: [],
-      user: null
+      user: null,
+      favorites: []
     };
   }
 
@@ -60,7 +61,8 @@ export class MainView extends React.Component {
   onLoggedIn(authData) {    // Parameter renamed as we need to use both user and token
     console.log(authData);
     this.setState({
-      user: authData.user.Username  // Username has been saved in the user state
+      user: authData.user.Username,  // Username has been saved in the user state
+      favorites: authData.user.Favorites
     });
 
     localStorage.setItem('token', authData.token);  //Auth info received from the handleSubmit method (token+user) has been saved in localStorage
@@ -79,7 +81,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
+    const { movies, user, favorites } = this.state;
 
     if (!movies) return <div className="main-view" />;
 
@@ -135,7 +137,7 @@ export class MainView extends React.Component {
             return (<GenreView genre={movies.find((m) => m.Genre.Name === match.params.name).Genre} />);
           }} />
 
-          <Route exact path="/user" render={() => <ProfileView movies={movies} />} />
+          <Route exact path="/user" render={() => <ProfileView favorites={favorites} />} />
 
         </div>
       </Router>
