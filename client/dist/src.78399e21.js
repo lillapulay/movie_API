@@ -43717,8 +43717,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       movies: [],
-      user: null,
-      favorites: []
+      user: null
     };
     return _this;
   }
@@ -43767,13 +43766,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token); // 'this' refers to the MainView class here
-    }
-  }, {
-    key: "getFavorites",
-    value: function getFavorites() {
-      this.setState({
-        favorites: authData.user.Favorites
-      });
     }
   }, {
     key: "onLoggedOut",
