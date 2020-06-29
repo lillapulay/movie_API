@@ -80,6 +80,16 @@ export class MainView extends React.Component {
     window.open('/', '_self');
   }
 
+  addFavorite() {
+
+  }
+
+  removeFavorite() {
+    this.setState({
+      favorites: false,
+    });
+  }
+
   render() {
     const { movies, user, favorites } = this.state;
 

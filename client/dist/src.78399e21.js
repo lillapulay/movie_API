@@ -42083,7 +42083,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, _react.default.createElement("b", null, "Back"))))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement("b", null, "Back")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, null, _react.default.createElement(_Button.default, {
+        variant: "info"
+      }, _react.default.createElement("b", null, "Add to favorites")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/director/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
@@ -42091,7 +42093,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/movies/genres/".concat(movie.Genre.Name)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, _react.default.createElement("b", null, "View Genre")))), _react.default.createElement("br", null)));
+      }, _react.default.createElement("b", null, "View Genre"))))), _react.default.createElement("br", null)));
     }
   }]);
 
@@ -43569,6 +43571,25 @@ function ProfileView(props) {
     }).catch(function (e) {
       alert("Something went wrong.");
     });
+  }; //URL needs to be corrected?
+
+
+  var deleteFavorite = function deleteFavorite(e) {
+    e.preventDefault();
+    console.log(movie._id);
+
+    _axios.default.delete("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user"), "/movies/").concat(movie._id), {
+      // Not ''!!!
+      headers: {
+        Authorization: "Bearer ".concat(localStorage.getItem("token"))
+      }
+    }).then(function (response) {
+      var data = response.data;
+      alert("Movie removed from favorites.");
+      props.notFavorite();
+    }).catch(function (e) {
+      alert("Something went wrong.");
+    });
   };
   /* Need to add:
   - favorites + add / remove function
@@ -43578,7 +43599,11 @@ function ProfileView(props) {
   return _react.default.createElement(_Container.default, {
     className: "profile-container"
   }, _react.default.createElement(_Row.default, null, props.favorites.map(function (m) {
-    return _react.default.createElement(_Col.default, null, _react.default.createElement(_Button.default, null, m));
+    return _react.default.createElement(_Col.default, null, _react.default.createElement(_Button.default, {
+      variant: "info",
+      type: "submit",
+      onClick: deleteFavorite
+    }, m));
   })), _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
     className: "profile-form"
   }, _react.default.createElement("h3", {
@@ -43782,6 +43807,16 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       alert("Goodbye!"); // Will remove this later, same for the registration one
 
       window.open('/', '_self');
+    }
+  }, {
+    key: "addFavorite",
+    value: function addFavorite() {}
+  }, {
+    key: "removeFavorite",
+    value: function removeFavorite() {
+      this.setState({
+        favorites: false
+      });
     }
   }, {
     key: "render",

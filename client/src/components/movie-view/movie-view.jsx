@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroup from 'react-bootstrap/ListGroup'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
@@ -68,22 +68,32 @@ export class MovieView extends React.Component {
                 </Button>
               </Link>
             </ListGroup.Item>
-          </ListGroup>
 
-          <ListGroup.Item>
-            <Link to={`/movies/director/${movie.Director.Name}`}>
-              <Button variant="info">
-                <b>View Director</b>
-              </Button>
-            </Link>
-          </ListGroup.Item>
-          <ListGroup.Item>
-            <Link to={`/movies/genres/${movie.Genre.Name}`}>
-              <Button variant="info">
-                <b>View Genre</b>
-              </Button>
-            </Link>
-          </ListGroup.Item>
+            <ListGroup.Item>
+              <Link>
+                <Button variant="info">
+                  <b>Add to favorites</b>
+                </Button>
+              </Link>
+            </ListGroup.Item>
+
+            <ListGroup.Item>
+              <Link to={`/movies/director/${movie.Director.Name}`}>
+                <Button variant="info">
+                  <b>View Director</b>
+                </Button>
+              </Link>
+            </ListGroup.Item>
+
+            <ListGroup.Item>
+              <Link to={`/movies/genres/${movie.Genre.Name}`}>
+                <Button variant="info">
+                  <b>View Genre</b>
+                </Button>
+              </Link>
+            </ListGroup.Item>
+
+          </ListGroup>
 
           <br />
         </div>

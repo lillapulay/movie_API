@@ -61,6 +61,22 @@ export function ProfileView(props) {
       });
   };
 
+  //URL needs to be corrected?
+  const deleteFavorite = (e) => {
+    e.preventDefault();
+    console.log(movie._id);
+    axios.delete(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movie._id}`, { // Not ''!!!
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+      .then((response) => {
+        const data = response.data;
+        alert("Movie removed from favorites.");
+        props.notFavorite();
+      })
+      .catch((e) => {
+        alert("Something went wrong.");
+      });
+  };
 
 
   /* Need to add:
@@ -74,7 +90,7 @@ export function ProfileView(props) {
       <Row>
         {props.favorites.map(m =>
           <Col>
-            <Button>
+            <Button variant="info" type="submit" onClick={deleteFavorite}>
               {m}
             </Button>
           </Col>
