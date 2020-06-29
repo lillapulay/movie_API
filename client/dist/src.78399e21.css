@@ -63,6 +63,12 @@ body {
   margin-top: 10%;
   background-color: #FFDAB9;
 }
+.card-body {
+  padding-bottom: 50px;
+}
+.update-button, .delete-button, .back-button {
+  margin-bottom: 10px;
+}
 .my-flix {
   color: steelblue;
 }
