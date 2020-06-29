@@ -18,6 +18,21 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  addFavorite(e, movieID) {
+    axios.post(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`, { // Not ''!!!
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+      .then((response) => {
+        const data = response.data;
+        console.log(data); // Check to see how the object looks like!
+        alert("Movie added to favorites.");
+        props.setFavorites(data.Favorites);
+      })
+      .catch((e) => {
+        alert("Something went wrong.");
+      });
+  }
+
   render() {
     const { movie } = this.props;
 
@@ -71,7 +86,7 @@ export class MovieView extends React.Component {
 
             <ListGroup.Item>
               <Link>
-                <Button variant="info">
+                <Button variant="info" onClick={(e) => { addFavorite(e, m) }}>
                   <b>Add to favorites</b>
                 </Button>
               </Link>

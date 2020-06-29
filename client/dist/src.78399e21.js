@@ -37494,6 +37494,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }), _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
       }, _react.default.createElement(_Button.default, {
+        className: "details-button",
         variant: "info"
       }, _react.default.createElement("b", null, "View details")))));
     }
@@ -37893,6 +37894,24 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(MovieView, [{
+    key: "addFavorite",
+    value: function addFavorite(e, movieID) {
+      axios.post("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user"), "/movies/").concat(movieID), {
+        // Not ''!!!
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem("token"))
+        }
+      }).then(function (response) {
+        var data = response.data;
+        console.log(data); // Check to see how the object looks like!
+
+        alert("Movie added to favorites.");
+        props.setFavorites(data.Favorites);
+      }).catch(function (e) {
+        alert("Something went wrong.");
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var movie = this.props.movie;
@@ -37931,7 +37950,10 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         variant: "info"
       }, _react.default.createElement("b", null, "Back")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, null, _react.default.createElement(_Button.default, {
-        variant: "info"
+        variant: "info",
+        onClick: function onClick(e) {
+          addFavorite(e, m);
+        }
       }, _react.default.createElement("b", null, "Add to favorites")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/director/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
@@ -39485,7 +39507,7 @@ function ProfileView(props) {
     });
   };
 
-  return _react.default.createElement(_Container.default, {
+  return _react.default.createElement("div", null, _react.default.createElement(_Container.default, {
     className: "profile-container"
   }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
     className: "profile-form"
@@ -39531,19 +39553,26 @@ function ProfileView(props) {
     }
   }), _react.default.createElement(_Form.default.Text, {
     className: "text-muted"
-  }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy."))), _react.default.createElement(_Button.default, {
-    variant: "info",
+  }, _react.default.createElement("i", null, "Please use the following format: dd/mm/yyyy.")))), _react.default.createElement(_Button.default, {
+    className: "update-button",
+    variant: "warning",
     type: "submit",
     onClick: handleUpdate
   }, _react.default.createElement("b", null, "Update details")), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
-    variant: "info",
+    className: "delete-button",
+    variant: "danger",
     type: "submit",
     onClick: deleteAccount
   }, _react.default.createElement("b", null, "Delete account")), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, _react.default.createElement(_Button.default, {
+    className: "back-button",
     variant: "info"
-  }, _react.default.createElement("b", null, "Back")), _react.default.createElement("br", null))))), _react.default.createElement(_Row.default, null, props.favorites.map(function (m) {
+  }, _react.default.createElement("b", null, "Back")), _react.default.createElement("br", null))))), _react.default.createElement(_Container.default, {
+    className: "fav-movies"
+  }, _react.default.createElement(_Row.default, null, _react.default.createElement("h3", {
+    className: "form-title"
+  }, _react.default.createElement("b", null, "Your favorites"))), _react.default.createElement(_Row.default, null, props.favorites.map(function (m) {
     return _react.default.createElement(_Col.default, null, _react.default.createElement(_Button.default, {
       variant: "info",
       type: "submit",
@@ -39551,7 +39580,7 @@ function ProfileView(props) {
         deleteFavorite(e, m);
       }
     }, m));
-  })));
+  }))));
 }
 /* Need to add PropTypes */
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
@@ -39736,8 +39765,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, "About"), _react.default.createElement(_Nav.default.Link, {
         as: _reactRouterDom.Link,
         to: "/contact"
-      }, "Contact"), _react.default.createElement(_Button.default, {
-        variant: "info",
+      }, "Contact"), _react.default.createElement(_Nav.default.Link, {
         onClick: function onClick() {
           return _this3.onLoggedOut();
         }
