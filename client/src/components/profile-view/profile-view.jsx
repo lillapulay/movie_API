@@ -61,42 +61,28 @@ export function ProfileView(props) {
       });
   };
 
-  //URL needs to be corrected?
-  const deleteFavorite = (e) => {
+  // Deletes the movie, but throws an error ???
+  const deleteFavorite = (e, movieID) => { // Event object + movieID passed to it, same for the event listener (button)
     e.preventDefault();
-    console.log(movie._id);
-    axios.delete(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movie._id}`, { // Not ''!!!
+    axios.delete(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`, { // Not ''!!!
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((response) => {
         const data = response.data;
+        console.log(data); // Check to see how the object looks like!
         alert("Movie removed from favorites.");
-        props.notFavorite();
+        props.setFavorites(data.Favorites);
       })
       .catch((e) => {
         alert("Something went wrong.");
       });
   };
 
-
-  /* Need to add:
-  - favorites + add / remove function
-  */
-
   return (
 
     <Container className="profile-container">
 
-      <Row>
-        {props.favorites.map(m =>
-          <Col>
-            <Button variant="info" type="submit" onClick={deleteFavorite}>
-              {m}
-            </Button>
-          </Col>
-        )}
-      </Row>
-
+      {/* Enables user info to be updated */}
       <Row>
         <Col>
           <Form className="profile-form">
@@ -134,11 +120,6 @@ export function ProfileView(props) {
               </Form.Text>
             </Form.Group>
 
-            <div>
-              <h4><b>Favorites:</b></h4>
-              <p> This is some dummy text. </p>
-            </div>
-
             <Button variant="info" type="submit" onClick={handleUpdate}>
               <b>Update details</b>
             </Button>
@@ -151,9 +132,21 @@ export function ProfileView(props) {
               <Button variant="info">
                 <b>Back</b>
               </Button>
+              <br />
             </Link>
           </Form>
         </Col>
+      </Row>
+
+      {/* Returns a list of the user's favorite movies */}
+      <Row>
+        {props.favorites.map(m =>
+          <Col>
+            <Button variant="info" type="submit" onClick={(e) => { deleteFavorite(e, m) }}>
+              {m}
+            </Button>
+          </Col>
+        )}
       </Row>
     </Container>
   );

@@ -3,11 +3,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom'; // BrowserRouter handles state-based routing, hash-based routing WOULD be handled by HashRouter
 import { Link } from 'react-router-dom';
 
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import Navbar from 'react-bootstrap/Navbar';
-import Dropdown from 'react-bootstrap/Dropdown';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 
@@ -62,7 +58,7 @@ export class MainView extends React.Component {
     console.log(authData);
     this.setState({
       user: authData.user.Username,  // Username has been saved in the user state
-      favorites: authData.user.Favorites
+      favorites: authData.user.Favorites // Favorites -||-
     });
 
     localStorage.setItem('token', authData.token);  //Auth info received from the handleSubmit method (token+user) has been saved in localStorage
@@ -80,13 +76,10 @@ export class MainView extends React.Component {
     window.open('/', '_self');
   }
 
-  addFavorite() {
-
-  }
-
-  removeFavorite() {
+  // Allows the user to set the favorite state for a movie
+  setFavorites(newFavorites) {
     this.setState({
-      favorites: false,
+      favorites: favorites
     });
   }
 
@@ -147,7 +140,8 @@ export class MainView extends React.Component {
             return (<GenreView genre={movies.find((m) => m.Genre.Name === match.params.name).Genre} />);
           }} />
 
-          <Route exact path="/user" render={() => <ProfileView favorites={favorites} />} />
+          <Route exact path="/user" render={() =>
+            <ProfileView favorites={favorites} setFavorites={(newValue) => this.setFavorites(newValue)} />} /> { /*The prop function could be named sg else*/}
 
         </div>
       </Router>

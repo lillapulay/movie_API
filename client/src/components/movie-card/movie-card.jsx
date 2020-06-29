@@ -22,7 +22,6 @@ export class MovieCard extends React.Component {
               <b>View details</b>
             </Button>
           </Link>
-
         </Card.Body>
       </Card >
     );
