@@ -20,6 +20,11 @@ export function ProfileView(props) {
   const [email, updateEmail] = useState("");
   const [birthday, updateBirthday] = useState("");
 
+  // Contains the movie objects, not just the IDsm filters out the movies that are not amongst the favorites
+  let detailedMovies = props.movies.filter(movie => {
+    return props.favorites.includes(movie._id);
+  });
+
   const handleUpdate = (e) => {
     e.preventDefault();
     console.log();
@@ -141,16 +146,18 @@ export function ProfileView(props) {
 
       <Container className="fav-movies">
         <Row><h3 className="form-title"><b>Your favorites</b></h3></Row>
-        <Row>{props.favorites.map(m =>
+        <Row>{detailedMovies.map(m =>
           <Col>
-            <Button variant="info" type="submit" onClick={(e) => { deleteFavorite(e, m) }}>
-              {m}
+            <div><b>{m.Title}</b></div>
+            <div><i>{m.Description}</i></div>
+            <Button variant="info" type="submit" onClick={(e) => { deleteFavorite(e, m._id) }}>
+              Remove from favorites
             </Button>
           </Col>
         )}
         </Row>
-      </Container>
-    </div>
+      </Container >
+    </div >
   );
 }
 

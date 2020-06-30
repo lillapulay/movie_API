@@ -146,7 +146,11 @@ export class MainView extends React.Component {
           }} />
 
           <Route exact path="/user" render={() =>
-            <ProfileView favorites={favorites} setFavorites={(newValue) => this.setFavorites(newValue)} />} /> { /*The prop function could be named sg else*/}
+            <ProfileView favorites={favorites} movies={movies}
+              setFavorites={(newValue) => this.setFavorites(newValue)} />} />
+          { /* The prop function could be named sg else;
+              props.movies: array of movie objects with all details,
+              props.favorites: array of fav. movie IDs without details. */}
 
         </div>
       </Router>

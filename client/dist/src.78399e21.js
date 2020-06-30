@@ -39445,7 +39445,12 @@ function ProfileView(props) {
   var _useState7 = (0, _react.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
       birthday = _useState8[0],
-      updateBirthday = _useState8[1];
+      updateBirthday = _useState8[1]; // Contains the movie objects, not just the IDsm filters out the movies that are not amongst the favorites
+
+
+  var detailedMovies = props.movies.filter(function (movie) {
+    return props.favorites.includes(movie._id);
+  });
 
   var handleUpdate = function handleUpdate(e) {
     e.preventDefault();
@@ -39580,14 +39585,14 @@ function ProfileView(props) {
     className: "fav-movies"
   }, _react.default.createElement(_Row.default, null, _react.default.createElement("h3", {
     className: "form-title"
-  }, _react.default.createElement("b", null, "Your favorites"))), _react.default.createElement(_Row.default, null, props.favorites.map(function (m) {
-    return _react.default.createElement(_Col.default, null, _react.default.createElement(_Button.default, {
+  }, _react.default.createElement("b", null, "Your favorites"))), _react.default.createElement(_Row.default, null, detailedMovies.map(function (m) {
+    return _react.default.createElement(_Col.default, null, _react.default.createElement("div", null, _react.default.createElement("b", null, m.Title)), _react.default.createElement("div", null, _react.default.createElement("i", null, m.Description)), _react.default.createElement(_Button.default, {
       variant: "info",
       type: "submit",
       onClick: function onClick(e) {
-        deleteFavorite(e, m);
+        deleteFavorite(e, m._id);
       }
-    }, m));
+    }, "Remove from favorites"));
   }))));
 }
 /* Need to add PropTypes */
@@ -39852,12 +39857,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         render: function render() {
           return _react.default.createElement(_profileView.ProfileView, {
             favorites: favorites,
+            movies: movies,
             setFavorites: function setFavorites(newValue) {
               return _this3.setFavorites(newValue);
             }
           });
         }
-      }), " "));
+      })));
     }
   }]);
 
