@@ -39527,9 +39527,9 @@ function ProfileView(props) {
     });
   };
 
-  return _react.default.createElement("div", null, _react.default.createElement(_Container.default, {
+  return _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, {
     className: "profile-container"
-  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
+  }, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
     className: "profile-form"
   }, _react.default.createElement("h3", {
     className: "form-title"
@@ -39588,11 +39588,11 @@ function ProfileView(props) {
   }, _react.default.createElement(_Button.default, {
     className: "back-button",
     variant: "info"
-  }, _react.default.createElement("b", null, "Back")), _react.default.createElement("br", null))))), _react.default.createElement(_Container.default, {
-    className: "fav-movies"
-  }, _react.default.createElement(_Row.default, null, _react.default.createElement("h3", {
+  }, _react.default.createElement("b", null, "Back")), _react.default.createElement("br", null)))), _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement("h3", {
     className: "form-title"
-  }, _react.default.createElement("b", null, "Your favorites"))), _react.default.createElement(_Row.default, null, detailedMovies.map(function (m) {
+  }, _react.default.createElement("b", null, "Your favorites")))), _react.default.createElement(_Row.default, {
+    className: "fav-movies"
+  }, detailedMovies.map(function (m) {
     return _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Img, {
       className: "img-fluid",
       variant: "top",
@@ -39609,7 +39609,7 @@ function ProfileView(props) {
         deleteFavorite(e, m._id);
       }
     }, _react.default.createElement("b", null, "Remove")));
-  }))));
+  })))));
 }
 /* Need to add PropTypes */
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
