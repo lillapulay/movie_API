@@ -25,8 +25,8 @@ export class GenreView extends React.Component {
     if (!genre) return null;
 
     return (
-      <div>
-        <Container>
+      <Row>
+        <Col>
           <Card>
             <Card.Body>
               <Card.Title>{genre.Name}</Card.Title>
@@ -36,8 +36,8 @@ export class GenreView extends React.Component {
               </Link>
             </Card.Body>
           </Card>
-        </Container>
-      </div>
+        </Col>
+      </Row>
     );
   }
 }

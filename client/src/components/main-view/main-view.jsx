@@ -96,7 +96,7 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view" />;
 
     return (
-      <Container>
+      <Container fluid>
         <Router>
           {user ? (<Navbar bg="light" expand="lg">
             <Navbar.Brand as={Link} to="/">

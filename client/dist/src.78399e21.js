@@ -37659,7 +37659,10 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var movie = this.props.movie;
       return _react.default.createElement(_Col.default, {
-        lg: 4
+        xs: 12,
+        s: 6,
+        md: 3,
+        lg: 2
       }, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
         className: "img-fluid",
         variant: "top",
@@ -37972,9 +37975,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 
       var movie = this.props.movie;
       if (!movie) return null;
-      return _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+      return _react.default.createElement(_Row.default, {
         className: "movie-view"
-      }, _react.default.createElement(_ListGroup.default, null, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Image.default, {
+      }, _react.default.createElement(_Col.default, null, _react.default.createElement(_ListGroup.default, null, _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Image.default, {
         className: "img-fluid",
         src: movie.ImagePath
       })), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement("span", {
@@ -38018,7 +38021,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/movies/genres/".concat(movie.Genre.Name)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, _react.default.createElement("b", null, "View Genre"))))), _react.default.createElement("br", null)));
+      }, _react.default.createElement("b", null, "View Genre")))))));
     }
   }]);
 
@@ -39110,9 +39113,9 @@ function RegistrationView(props) {
   };
 
   return (// https://react-bootstrap.github.io/components/forms/ 
-    _react.default.createElement(_Container.default, {
+    _react.default.createElement(_Row.default, {
       className: "registration-container"
-    }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
+    }, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
       className: "registration-form"
     }, _react.default.createElement("h3", {
       className: "form-title"
@@ -39169,7 +39172,7 @@ function RegistrationView(props) {
     }, _react.default.createElement("button", {
       type: "button",
       className: "btn btn-link"
-    }, _react.default.createElement("i", null, "Already registered? Click here to log in!")))))))
+    }, _react.default.createElement("i", null, "Already registered? Click here to log in!"))))))
   );
 }
 /* Needs to be updated / removed?
@@ -39255,9 +39258,9 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       var director = this.props.director;
       if (!director) return null; // Death year needs to be added to the database! + Add movies that belong with this director?
 
-      return _react.default.createElement("div", {
+      return _react.default.createElement(_Row.default, {
         className: "director-view"
-      }, _react.default.createElement(_Container.default, null, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", director.Name), _react.default.createElement(_Card.default.Text, null, " ", director.Bio), _react.default.createElement(_Card.default.Text, null, " Born: ", director.Birth), _react.default.createElement(_Card.default.Text, null, " Died: ", director.Death), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Title, null, " ", director.Name), _react.default.createElement(_Card.default.Text, null, " ", director.Bio), _react.default.createElement(_Card.default.Text, null, " Born: ", director.Birth), _react.default.createElement(_Card.default.Text, null, " Died: ", director.Death), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "info"
@@ -39779,7 +39782,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_Container.default, null, _react.default.createElement(_reactRouterDom.BrowserRouter, null, user ? _react.default.createElement(_Navbar.default, {
+      return _react.default.createElement(_Container.default, {
+        fluid: true
+      }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, user ? _react.default.createElement(_Navbar.default, {
         bg: "light",
         expand: "lg"
       }, _react.default.createElement(_Navbar.default.Brand, {

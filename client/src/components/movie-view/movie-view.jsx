@@ -43,8 +43,8 @@ export class MovieView extends React.Component {
     if (!movie) return null;
 
     return (
-      <Col>
-        <div className="movie-view">
+      <Row className="movie-view">
+        <Col>
           <ListGroup>
             <ListGroup.Item>
               <Image className="img-fluid" src={movie.ImagePath} />
@@ -114,9 +114,8 @@ export class MovieView extends React.Component {
 
           </ListGroup>
 
-          <br />
-        </div>
-      </Col >
+        </Col >
+      </Row>
     );
   }
 }
