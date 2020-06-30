@@ -37196,7 +37196,176 @@ Button.displayName = 'Button';
 Button.defaultProps = defaultProps;
 var _default = Button;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./SafeAnchor":"../node_modules/react-bootstrap/esm/SafeAnchor.js"}],"../../../../../../../home/lillapulay/.nvm/versions/node/v12.17.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./SafeAnchor":"../node_modules/react-bootstrap/esm/SafeAnchor.js"}],"../node_modules/react-bootstrap/esm/Col.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DEVICE_SIZES = ['xl', 'lg', 'md', 'sm', 'xs'];
+
+var Col = _react.default.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "className", "as"]);
+  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'col');
+  var spans = [];
+  var classes = [];
+  DEVICE_SIZES.forEach(function (brkPoint) {
+    var propValue = props[brkPoint];
+    delete props[brkPoint];
+    var span, offset, order;
+
+    if (propValue != null && typeof propValue === 'object') {
+      var _propValue$span = propValue.span;
+      span = _propValue$span === void 0 ? true : _propValue$span;
+      offset = propValue.offset;
+      order = propValue.order;
+    } else {
+      span = propValue;
+    }
+
+    var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
+    if (span != null) spans.push(span === true ? "" + prefix + infix : "" + prefix + infix + "-" + span);
+    if (order != null) classes.push("order" + infix + "-" + order);
+    if (offset != null) classes.push("offset" + infix + "-" + offset);
+  });
+
+  if (!spans.length) {
+    spans.push(prefix); // plain 'col'
+  }
+
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({}, props, {
+    ref: ref,
+    className: _classnames.default.apply(void 0, [className].concat(spans, classes))
+  }));
+});
+
+Col.displayName = 'Col';
+var _default = Col;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/Row.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DEVICE_SIZES = ['xl', 'lg', 'md', 'sm', 'xs'];
+var defaultProps = {
+  noGutters: false
+};
+
+var Row = _react.default.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      noGutters = _ref.noGutters,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "className", "noGutters", "as"]);
+  var decoratedBsPrefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'row');
+  var sizePrefix = decoratedBsPrefix + "-cols";
+  var classes = [];
+  DEVICE_SIZES.forEach(function (brkPoint) {
+    var propValue = props[brkPoint];
+    delete props[brkPoint];
+    var cols;
+
+    if (propValue != null && typeof propValue === 'object') {
+      cols = propValue.cols;
+    } else {
+      cols = propValue;
+    }
+
+    var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
+    if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
+  });
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+    ref: ref
+  }, props, {
+    className: _classnames.default.apply(void 0, [className, decoratedBsPrefix, noGutters && 'no-gutters'].concat(classes))
+  }));
+});
+
+Row.displayName = 'Row';
+Row.defaultProps = defaultProps;
+var _default = Row;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var defaultProps = {
+  fluid: false
+};
+
+var Container = _react.default.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      fluid = _ref.fluid,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      className = _ref.className,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "fluid", "as", "className"]);
+  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'container');
+  var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
+    ref: ref
+  }, props, {
+    className: (0, _classnames.default)(className, fluid ? "" + prefix + suffix : prefix)
+  }));
+});
+
+Container.displayName = 'Container';
+Container.defaultProps = defaultProps;
+var _default = Container;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../../../../../../../home/lillapulay/.nvm/versions/node/v12.17.0/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -37649,132 +37818,7 @@ ListGroup.displayName = 'ListGroup';
 ListGroup.Item = _ListGroupItem.default;
 var _default = ListGroup;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","warning":"../node_modules/warning/warning.js","uncontrollable":"../node_modules/uncontrollable/esm/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./AbstractNav":"../node_modules/react-bootstrap/esm/AbstractNav.js","./ListGroupItem":"../node_modules/react-bootstrap/esm/ListGroupItem.js"}],"../node_modules/react-bootstrap/esm/Col.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _ThemeProvider = require("./ThemeProvider");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DEVICE_SIZES = ['xl', 'lg', 'md', 'sm', 'xs'];
-
-var Col = _react.default.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      className = _ref.className,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "className", "as"]);
-  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'col');
-  var spans = [];
-  var classes = [];
-  DEVICE_SIZES.forEach(function (brkPoint) {
-    var propValue = props[brkPoint];
-    delete props[brkPoint];
-    var span, offset, order;
-
-    if (propValue != null && typeof propValue === 'object') {
-      var _propValue$span = propValue.span;
-      span = _propValue$span === void 0 ? true : _propValue$span;
-      offset = propValue.offset;
-      order = propValue.order;
-    } else {
-      span = propValue;
-    }
-
-    var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
-    if (span != null) spans.push(span === true ? "" + prefix + infix : "" + prefix + infix + "-" + span);
-    if (order != null) classes.push("order" + infix + "-" + order);
-    if (offset != null) classes.push("offset" + infix + "-" + offset);
-  });
-
-  if (!spans.length) {
-    spans.push(prefix); // plain 'col'
-  }
-
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({}, props, {
-    ref: ref,
-    className: _classnames.default.apply(void 0, [className].concat(spans, classes))
-  }));
-});
-
-Col.displayName = 'Col';
-var _default = Col;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/Row.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _ThemeProvider = require("./ThemeProvider");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DEVICE_SIZES = ['xl', 'lg', 'md', 'sm', 'xs'];
-var defaultProps = {
-  noGutters: false
-};
-
-var Row = _react.default.forwardRef(function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      className = _ref.className,
-      noGutters = _ref.noGutters,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "className", "noGutters", "as"]);
-  var decoratedBsPrefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'row');
-  var sizePrefix = decoratedBsPrefix + "-cols";
-  var classes = [];
-  DEVICE_SIZES.forEach(function (brkPoint) {
-    var propValue = props[brkPoint];
-    delete props[brkPoint];
-    var cols;
-
-    if (propValue != null && typeof propValue === 'object') {
-      cols = propValue.cols;
-    } else {
-      cols = propValue;
-    }
-
-    var infix = brkPoint !== 'xs' ? "-" + brkPoint : '';
-    if (cols != null) classes.push("" + sizePrefix + infix + "-" + cols);
-  });
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
-    ref: ref
-  }, props, {
-    className: _classnames.default.apply(void 0, [className, decoratedBsPrefix, noGutters && 'no-gutters'].concat(classes))
-  }));
-});
-
-Row.displayName = 'Row';
-Row.defaultProps = defaultProps;
-var _default = Row;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/Image.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","warning":"../node_modules/warning/warning.js","uncontrollable":"../node_modules/uncontrollable/esm/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./AbstractNav":"../node_modules/react-bootstrap/esm/AbstractNav.js","./ListGroupItem":"../node_modules/react-bootstrap/esm/ListGroupItem.js"}],"../node_modules/react-bootstrap/esm/Image.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37990,51 +38034,7 @@ MovieView.propTypes = {
     ReleaseYear: _propTypes.default.string.isRequired
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _ThemeProvider = require("./ThemeProvider");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var defaultProps = {
-  fluid: false
-};
-
-var Container = _react.default.forwardRef(function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      fluid = _ref.fluid,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      className = _ref.className,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "fluid", "as", "className"]);
-  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'container');
-  var suffix = typeof fluid === 'string' ? "-" + fluid : '-fluid';
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({
-    ref: ref
-  }, props, {
-    className: (0, _classnames.default)(className, fluid ? "" + prefix + suffix : prefix)
-  }));
-});
-
-Container.displayName = 'Container';
-Container.defaultProps = defaultProps;
-var _default = Container;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/Feedback.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"../node_modules/react-bootstrap/esm/Feedback.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39586,13 +39586,22 @@ function ProfileView(props) {
   }, _react.default.createElement(_Row.default, null, _react.default.createElement("h3", {
     className: "form-title"
   }, _react.default.createElement("b", null, "Your favorites"))), _react.default.createElement(_Row.default, null, detailedMovies.map(function (m) {
-    return _react.default.createElement(_Col.default, null, _react.default.createElement("div", null, _react.default.createElement("b", null, m.Title)), _react.default.createElement("div", null, _react.default.createElement("i", null, m.Description)), _react.default.createElement(_Button.default, {
+    return _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Img, {
+      className: "img-fluid",
+      variant: "top",
+      src: m.ImagePath
+    }), _react.default.createElement(_reactRouterDom.Link, {
+      to: "/movies/".concat(m._id)
+    }, _react.default.createElement(_Button.default, {
+      className: "details-button",
+      variant: "info"
+    }, _react.default.createElement("b", null, "View details"))))), _react.default.createElement(_Button.default, {
       variant: "info",
       type: "submit",
       onClick: function onClick(e) {
         deleteFavorite(e, m._id);
       }
-    }, "Remove from favorites"));
+    }, _react.default.createElement("b", null, "Remove")));
   }))));
 }
 /* Need to add PropTypes */
@@ -39615,6 +39624,12 @@ var _Navbar = _interopRequireDefault(require("react-bootstrap/Navbar"));
 var _Nav = _interopRequireDefault(require("react-bootstrap/Nav"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Container = _interopRequireDefault(require("react-bootstrap/Container"));
 
 require("./main-view.scss");
 
@@ -39760,7 +39775,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, user ? _react.default.createElement(_Navbar.default, {
+      return _react.default.createElement(_Container.default, null, _react.default.createElement(_reactRouterDom.BrowserRouter, null, user ? _react.default.createElement(_Navbar.default, {
         bg: "light",
         expand: "lg"
       }, _react.default.createElement(_Navbar.default.Brand, {
@@ -39863,7 +39878,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             }
           });
         }
-      })));
+      }))));
     }
   }]);
 
@@ -39871,7 +39886,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MainView = MainView;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Navbar":"../node_modules/react-bootstrap/esm/Navbar.js","react-bootstrap/Nav":"../node_modules/react-bootstrap/esm/Nav.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./main-view.scss":"components/main-view/main-view.scss","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx"}],"index.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Navbar":"../node_modules/react-bootstrap/esm/Navbar.js","react-bootstrap/Nav":"../node_modules/react-bootstrap/esm/Nav.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","./main-view.scss":"components/main-view/main-view.scss","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
