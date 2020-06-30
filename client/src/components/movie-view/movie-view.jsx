@@ -19,17 +19,18 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  //Axios post and put methods: 1. URL 2. data 3. config.
   addFavorite(e, movieID) {
     axios.post(
       `https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`,
-      {}, // Empty object as the 2nd argument?
+      {},
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } },
     )
       .then((response) => {
         const data = response.data;
         console.log(data); // Check to see how the object looks like!
         alert("Movie added to favorites.");
-        this.props.setFavorites(data.Favorites);
+        this.props.setFavorites(data.Favorites); // MovieView is a class component, so it needs 'this', also in the button callback
       })
       .catch((e) => {
         alert("Something went wrong.");
@@ -37,7 +38,7 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie, movieID } = this.props;
+    const { movie } = this.props;
 
     if (!movie) return null;
 
@@ -89,7 +90,7 @@ export class MovieView extends React.Component {
 
             <ListGroup.Item>
               <Link>
-                <Button variant="info" onClick={(e) => { this.addFavorite(e, movieID) }}> {/* Callback? */}
+                <Button variant="info" onClick={(e) => { this.addFavorite(e, movie._id) }}>
                   <b>Add to favorites</b>
                 </Button>
               </Link>

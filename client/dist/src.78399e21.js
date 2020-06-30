@@ -37893,15 +37893,15 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {};
     return _this;
-  }
+  } //Axios post and put methods: 1. URL 2. data 3. config.
+
 
   _createClass(MovieView, [{
     key: "addFavorite",
     value: function addFavorite(e, movieID) {
       var _this2 = this;
 
-      _axios.default.post("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user"), "/movies/").concat(movieID), {}, // Empty object as the 2nd argument?
-      {
+      _axios.default.post("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user"), "/movies/").concat(movieID), {}, {
         headers: {
           Authorization: "Bearer ".concat(localStorage.getItem("token"))
         }
@@ -37911,7 +37911,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 
         alert("Movie added to favorites.");
 
-        _this2.props.setFavorites(data.Favorites);
+        _this2.props.setFavorites(data.Favorites); // MovieView is a class component, so it needs 'this', also in the button callback
+
       }).catch(function (e) {
         alert("Something went wrong.");
       });
@@ -37921,9 +37922,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          movieID = _this$props.movieID;
+      var movie = this.props.movie;
       if (!movie) return null;
       return _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
@@ -37961,9 +37960,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("b", null, "Back")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, null, _react.default.createElement(_Button.default, {
         variant: "info",
         onClick: function onClick(e) {
-          _this3.addFavorite(e, movieID);
+          _this3.addFavorite(e, movie._id);
         }
-      }, " ", _react.default.createElement("b", null, "Add to favorites")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement("b", null, "Add to favorites")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/director/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
