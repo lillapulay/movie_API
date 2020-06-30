@@ -39688,7 +39688,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       if (accessToken !== null) {
         this.setState({
-          user: localStorage.getItem('user')
+          user: localStorage.getItem('user'),
+          favorites: JSON.parse(localStorage.getItem('favorites')) // Gets what's stored in loc.St. and converts this stringified array back to an actual array
+
         });
         this.getMovies(accessToken);
       }
@@ -39707,6 +39709,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.setItem('token', authData.token); //Auth info received from the handleSubmit method (token+user) has been saved in localStorage
 
       localStorage.setItem('user', authData.user.Username);
+      localStorage.setItem('favorites', JSON.stringify(authData.user.Favorites)); // Persists the fav. data in loc.St -> reload, etc. fixed
+
       this.getMovies(authData.token); // 'this' refers to the MainView class here
     }
   }, {
@@ -39726,8 +39730,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     key: "setFavorites",
     value: function setFavorites(newFavorites) {
       this.setState({
-        favorites: favorites
+        favorites: newFavorites // (favorites: favorites -> was the reason behind the delete favorite error!)
+
       });
+      localStorage.setItem('favorites', JSON.stringify(newFavorites)); // Persists in loc.St., reload fixed
     }
   }, {
     key: "render",
@@ -39799,7 +39805,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return _react.default.createElement(_movieView.MovieView, {
             movie: movies.find(function (m) {
               return m._id === match.params.movieId;
-            })
+            }),
+            favorites: favorites,
+            setFavorites: function setFavorites(newValue) {
+              return _this3.setFavorites(newValue);
+            }
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {

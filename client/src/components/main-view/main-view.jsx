@@ -48,7 +48,8 @@ export class MainView extends React.Component {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
       this.setState({
-        user: localStorage.getItem('user')
+        user: localStorage.getItem('user'),
+        favorites: JSON.parse(localStorage.getItem('favorites')) // Gets what's stored in loc.St. and converts this stringified array back to an actual array
       });
       this.getMovies(accessToken);
     }
@@ -63,6 +64,7 @@ export class MainView extends React.Component {
 
     localStorage.setItem('token', authData.token);  //Auth info received from the handleSubmit method (token+user) has been saved in localStorage
     localStorage.setItem('user', authData.user.Username);
+    localStorage.setItem('favorites', JSON.stringify(authData.user.Favorites)); // Persists the fav. data in loc.St -> reload, etc. fixed
     this.getMovies(authData.token); // 'this' refers to the MainView class here
   }
 
@@ -79,8 +81,10 @@ export class MainView extends React.Component {
   // Allows the user to set the favorite state for a movie
   setFavorites(newFavorites) {
     this.setState({
-      favorites: favorites
+      favorites: newFavorites // (favorites: favorites -> was the reason behind the delete favorite error!)
     });
+
+    localStorage.setItem('favorites', JSON.stringify(newFavorites)); // Persists in loc.St., reload fixed
   }
 
   render() {
@@ -127,7 +131,8 @@ export class MainView extends React.Component {
           <Route path="/register" render={() => <RegistrationView />} />
 
           <Route path="/movies/:movieId" render={({ match }) => (
-            <MovieView movie={movies.find((m) => m._id === match.params.movieId)} />
+            <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
+              setFavorites={(newValue) => this.setFavorites(newValue)} />
           )} />
 
           <Route path="/movies/director/:name" render={({ match }) => {
