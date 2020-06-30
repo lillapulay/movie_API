@@ -32,33 +32,31 @@ export function LoginView(props) {
   };
 
   return (
-    <Container className="login-container">
-      <Row>
-        <Col>
-          <Form className="login-form">
-            <Form.Group controlId="formBasicUsername">
-              <h3 className="form-title"><b>Log In</b></h3>
-              <Form.Label>Username:</Form.Label>
-              <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
-            </Form.Group>
+    <Row className="login-container">
+      <Col>
+        <Form className="login-form">
+          <Form.Group controlId="formBasicUsername">
+            <h3 className="form-title"><b>Log In</b></h3>
+            <Form.Label>Username:</Form.Label>
+            <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password:</Form.Label>
+            <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </Form.Group>
 
-            <Button variant="info" type="submit" onClick={handleSubmit}><b>Sign In</b></Button>
-            <br />
+          <Button variant="info" type="submit" onClick={handleSubmit}><b>Sign In</b></Button>
+          <br />
 
-            <Link to={`/register`}>
-              <button type="button" className="btn btn-link">
-                <i>Not a member yet? Click here to register!</i>
-              </button>
-            </Link>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+          <Link to={`/register`}>
+            <button type="button" className="btn btn-link">
+              <i>Not a member yet? Click here to register!</i>
+            </button>
+          </Link>
+        </Form>
+      </Col>
+    </Row>
   );
 }
 

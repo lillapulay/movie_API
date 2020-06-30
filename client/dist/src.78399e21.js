@@ -37615,6 +37615,8 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
 
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
+
 require("./movie-card.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -37656,7 +37658,9 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var movie = this.props.movie;
-      return _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
+      return _react.default.createElement(_Col.default, {
+        lg: 4
+      }, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
         className: "img-fluid",
         variant: "top",
         src: movie.ImagePath
@@ -37665,7 +37669,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         className: "details-button",
         variant: "info"
-      }, _react.default.createElement("b", null, "View details")))));
+      }, _react.default.createElement("b", null, "View details"))))));
     }
   }]);
 
@@ -37680,7 +37684,7 @@ MovieCard.propTypes = {
     ImagePath: _propTypes.default.string.isRequired
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"../node_modules/react-bootstrap/esm/ListGroupItem.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"../node_modules/react-bootstrap/esm/ListGroupItem.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38975,9 +38979,9 @@ function LoginView(props) {
     });
   };
 
-  return _react.default.createElement(_Container.default, {
+  return _react.default.createElement(_Row.default, {
     className: "login-container"
-  }, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
+  }, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
     className: "login-form"
   }, _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicUsername"
@@ -39008,7 +39012,7 @@ function LoginView(props) {
   }, _react.default.createElement("button", {
     type: "button",
     className: "btn btn-link"
-  }, _react.default.createElement("i", null, "Not a member yet? Click here to register!")))))));
+  }, _react.default.createElement("i", null, "Not a member yet? Click here to register!"))))));
 }
 
 LoginView.propTypes = {
@@ -39803,9 +39807,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.onLoggedOut();
         }
-      }, _react.default.createElement("b", null, "Log Out"))))) : null, _react.default.createElement("br", null), _react.default.createElement("div", {
-        className: "main-view"
-      }, _react.default.createElement(_reactRouterDom.Route, {
+      }, _react.default.createElement("b", null, "Log Out"))))) : null, _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
@@ -39814,12 +39816,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               return _this3.onLoggedIn(user);
             }
           });
-          return movies.map(function (m) {
+          return _react.default.createElement(_Row.default, null, " ", movies.map(function (m) {
             return _react.default.createElement(_movieCard.MovieCard, {
               key: m._id,
               movie: m
             });
-          });
+          }), " ");
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/register",
@@ -39878,7 +39880,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             }
           });
         }
-      }))));
+      })));
     }
   }]);
 
