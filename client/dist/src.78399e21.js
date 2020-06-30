@@ -37840,6 +37840,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _reactRouterDom = require("react-router-dom");
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
@@ -37896,8 +37898,10 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieView, [{
     key: "addFavorite",
     value: function addFavorite(e, movieID) {
-      axios.post("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user"), "/movies/").concat(movieID), {
-        // Not ''!!!
+      var _this2 = this;
+
+      _axios.default.post("https://mymovieapi2020.herokuapp.com/users/".concat(localStorage.getItem("user"), "/movies/").concat(movieID), {}, // Empty object as the 2nd argument?
+      {
         headers: {
           Authorization: "Bearer ".concat(localStorage.getItem("token"))
         }
@@ -37906,7 +37910,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         console.log(data); // Check to see how the object looks like!
 
         alert("Movie added to favorites.");
-        props.setFavorites(data.Favorites);
+
+        _this2.props.setFavorites(data.Favorites);
       }).catch(function (e) {
         alert("Something went wrong.");
       });
@@ -37914,7 +37919,11 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
+      var _this3 = this;
+
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          movieID = _this$props.movieID;
       if (!movie) return null;
       return _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "movie-view"
@@ -37952,9 +37961,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("b", null, "Back")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, null, _react.default.createElement(_Button.default, {
         variant: "info",
         onClick: function onClick(e) {
-          addFavorite(e, m);
+          _this3.addFavorite(e, movieID);
         }
-      }, _react.default.createElement("b", null, "Add to favorites")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+      }, " ", _react.default.createElement("b", null, "Add to favorites")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/director/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
         variant: "info"
@@ -37982,7 +37991,7 @@ MovieView.propTypes = {
     ReleaseYear: _propTypes.default.string.isRequired
   }).isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"../node_modules/react-bootstrap/esm/Container.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

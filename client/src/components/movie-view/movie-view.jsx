@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
@@ -19,14 +20,16 @@ export class MovieView extends React.Component {
   }
 
   addFavorite(e, movieID) {
-    axios.post(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`, { // Not ''!!!
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
+    axios.post(
+      `https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`,
+      {}, // Empty object as the 2nd argument?
+      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } },
+    )
       .then((response) => {
         const data = response.data;
         console.log(data); // Check to see how the object looks like!
         alert("Movie added to favorites.");
-        props.setFavorites(data.Favorites);
+        this.props.setFavorites(data.Favorites);
       })
       .catch((e) => {
         alert("Something went wrong.");
@@ -34,7 +37,7 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, movieID } = this.props;
 
     if (!movie) return null;
 
@@ -86,7 +89,7 @@ export class MovieView extends React.Component {
 
             <ListGroup.Item>
               <Link>
-                <Button variant="info" onClick={(e) => { addFavorite(e, m) }}>
+                <Button variant="info" onClick={(e) => { this.addFavorite(e, movieID) }}> {/* Callback? */}
                   <b>Add to favorites</b>
                 </Button>
               </Link>
