@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 import './main-view.scss';
 
@@ -93,67 +96,69 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view" />;
 
     return (
-      <Router>
-        {user ? (<Navbar bg="light" expand="lg">
-          <Navbar.Brand as={Link} to="/">
-            <b>MyFlix</b>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/">
-                Home
+      <Container>
+        <Router>
+          {user ? (<Navbar bg="light" expand="lg">
+            <Navbar.Brand as={Link} to="/">
+              <b>MyFlix</b>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link as={Link} to="/">
+                  Home
 							</Nav.Link>
-              <Nav.Link as={Link} to="/user">
-                Account
+                <Nav.Link as={Link} to="/user">
+                  Account
 							</Nav.Link>
-              <Nav.Link as={Link} to="/about">
-                About
+                <Nav.Link as={Link} to="/about">
+                  About
 							</Nav.Link>
-              <Nav.Link as={Link} to="/contact">
-                Contact
+                <Nav.Link as={Link} to="/contact">
+                  Contact
 							</Nav.Link>
-              <Nav.Link onClick={() => this.onLoggedOut()}>
-                <b>Log Out</b>
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>) : null}
-        <br />
+                <Nav.Link onClick={() => this.onLoggedOut()}>
+                  <b>Log Out</b>
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>) : null}
+          <br />
 
-        <div className="main-view">
+          <div className="main-view">
 
-          <Route exact path="/" render={() => {
-            if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
-            return movies.map((m) => <MovieCard key={m._id} movie={m} />);
-          }} />
+            <Route exact path="/" render={() => {
+              if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
+              return movies.map((m) => <MovieCard key={m._id} movie={m} />);
+            }} />
 
-          <Route path="/register" render={() => <RegistrationView />} />
+            <Route path="/register" render={() => <RegistrationView />} />
 
-          <Route path="/movies/:movieId" render={({ match }) => (
-            <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
-              setFavorites={(newValue) => this.setFavorites(newValue)} />
-          )} />
+            <Route path="/movies/:movieId" render={({ match }) => (
+              <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
+                setFavorites={(newValue) => this.setFavorites(newValue)} />
+            )} />
 
-          <Route path="/movies/director/:name" render={({ match }) => {
-            if (!movies) return <div className="main-view" />;
-            return (<DirectorView director={movies.find((m) => m.Director.Name === match.params.name).Director} />);
-          }} />
+            <Route path="/movies/director/:name" render={({ match }) => {
+              if (!movies) return <div className="main-view" />;
+              return (<DirectorView director={movies.find((m) => m.Director.Name === match.params.name).Director} />);
+            }} />
 
-          <Route path="/movies/genres/:name" render={({ match }) => {
-            if (!movies) return <div className="main-view" />;
-            return (<GenreView genre={movies.find((m) => m.Genre.Name === match.params.name).Genre} />);
-          }} />
+            <Route path="/movies/genres/:name" render={({ match }) => {
+              if (!movies) return <div className="main-view" />;
+              return (<GenreView genre={movies.find((m) => m.Genre.Name === match.params.name).Genre} />);
+            }} />
 
-          <Route exact path="/user" render={() =>
-            <ProfileView favorites={favorites} movies={movies}
-              setFavorites={(newValue) => this.setFavorites(newValue)} />} />
-          { /* The prop function could be named sg else;
+            <Route exact path="/user" render={() =>
+              <ProfileView favorites={favorites} movies={movies}
+                setFavorites={(newValue) => this.setFavorites(newValue)} />} />
+            { /* The prop function could be named sg else;
               props.movies: array of movie objects with all details,
               props.favorites: array of fav. movie IDs without details. */}
 
-        </div>
-      </Router>
+          </div>
+        </Router>
+      </Container>
     );
   }
 }
