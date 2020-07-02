@@ -109,12 +109,14 @@ export class MainView extends React.Component {
                 <Nav.Link as={Link} to="/user">
                   Account
 							</Nav.Link>
+                {/*
                 <Nav.Link as={Link} to="/about">
                   About
 							</Nav.Link>
                 <Nav.Link as={Link} to="/contact">
                   Contact
-							</Nav.Link>
+              </Nav.Link>
+                */}
                 <Nav.Link onClick={() => this.onLoggedOut()}>
                   <b>Log Out</b>
                 </Nav.Link>
