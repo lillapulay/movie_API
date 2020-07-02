@@ -173,5 +173,14 @@ export function ProfileView(props) {
 }
 
 ProfileView.propTypes = {
+  favorites: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      Title: PropTypes.string,
+      ImagePath: PropTypes.string
+    })
+  ).isRequired,
   setFavorites: PropTypes.func.isRequired
 };
