@@ -119,6 +119,7 @@ export class MovieView extends React.Component {
 }
 
 // Needs fix - console throws error for 'movie' in Genre and Director views ????
+// main-view.jsx -> line 133???
 MovieView.propTypes = {
   movie: PropTypes.shape({
     ImagePath: PropTypes.string.isRequired,

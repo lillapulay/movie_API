@@ -37661,8 +37661,9 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       return _react.default.createElement(_Col.default, {
         xs: 12,
         s: 6,
-        md: 3,
-        lg: 2
+        md: 4,
+        l: 4,
+        xl: 3
       }, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
         className: "img-fluid",
         variant: "top",
@@ -38027,6 +38028,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 
   return MovieView;
 }(_react.default.Component); // Needs fix - console throws error for 'movie' in Genre and Director views ????
+// main-view.jsx -> line 133???
 
 
 exports.MovieView = MovieView;
@@ -39582,23 +39584,25 @@ function ProfileView(props) {
     className: "fav-movies"
   }, detailedMovies.map(function (m) {
     return _react.default.createElement(_Col.default, {
-      key: m._id
+      key: m._id,
+      xs: 12,
+      s: 6,
+      md: 4,
+      l: 4,
+      xl: 3
     }, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Img, {
       className: "img-fluid",
       variant: "top",
       src: m.ImagePath
     }), _react.default.createElement(_reactRouterDom.Link, {
       to: "/movies/".concat(m._id)
-    }, _react.default.createElement(_Button.default, {
-      className: "details-button",
-      variant: "info"
-    }, _react.default.createElement("b", null, "View details"))))), _react.default.createElement(_Button.default, {
+    }, _react.default.createElement(_Card.default.Title, null, m.Title)), _react.default.createElement(_Button.default, {
       variant: "info",
       type: "submit",
       onClick: function onClick(e) {
         deleteFavorite(e, m._id);
       }
-    }, _react.default.createElement("b", null, "Remove")));
+    }, _react.default.createElement("b", null, "Remove from favorites")))));
   })))));
 }
 
@@ -39792,12 +39796,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         as: _reactRouterDom.Link,
         to: "/user"
       }, "Account"), _react.default.createElement(_Nav.default.Link, {
-        as: _reactRouterDom.Link,
-        to: "/about"
-      }, "About"), _react.default.createElement(_Nav.default.Link, {
-        as: _reactRouterDom.Link,
-        to: "/contact"
-      }, "Contact"), _react.default.createElement(_Nav.default.Link, {
         onClick: function onClick() {
           return _this3.onLoggedOut();
         }
