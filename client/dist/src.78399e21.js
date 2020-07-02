@@ -39818,12 +39818,21 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/register",
         render: function render() {
+          if (user) return _react.default.createElement(_reactRouterDom.Redirect, {
+            to: "/"
+          });
           return _react.default.createElement(_registrationView.RegistrationView, null);
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/:movieId",
         render: function render(_ref) {
           var match = _ref.match;
+          if (!user) return _react.default.createElement(_loginView.LoginView, {
+            onSignedIn: function onSignedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          }); // Can't use Redirect as there is no /login endpoint!
+
           return _react.default.createElement(_movieView.MovieView, {
             movie: movies.find(function (m) {
               return m._id === match.params.movieId;
@@ -39838,6 +39847,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         path: "/movies/director/:name",
         render: function render(_ref2) {
           var match = _ref2.match;
+          if (!user) return _react.default.createElement(_loginView.LoginView, {
+            onSignedIn: function onSignedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          });
           if (!movies) return _react.default.createElement("div", {
             className: "main-view"
           });
@@ -39851,6 +39865,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         path: "/movies/genres/:name",
         render: function render(_ref3) {
           var match = _ref3.match;
+          if (!user) return _react.default.createElement(_loginView.LoginView, {
+            onSignedIn: function onSignedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          });
           if (!movies) return _react.default.createElement("div", {
             className: "main-view"
           });

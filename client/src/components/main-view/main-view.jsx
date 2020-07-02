@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom'; // BrowserRouter handles state-based routing, hash-based routing WOULD be handled by HashRouter
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -130,19 +130,54 @@ export class MainView extends React.Component {
             return <Row> {movies.map((m) => <MovieCard key={m._id} movie={m} />)} </Row>
           }} />
 
-          <Route path="/register" render={() => <RegistrationView />} />
+          {/* <Route path="/register" render={() => <RegistrationView />} /> */}
 
-          <Route path="/movies/:movieId" render={({ match }) => (
+          {/* <Route path="/register" render={() => {
+            return <RegistrationView />;
+          }} /> */}
+
+          {/* <Route path="/register" render={() => {
+            if (user) return <Row> {movies.map((m) => <MovieCard key={m._id} movie={m} />)} </Row>;
+            return <RegistrationView />;
+          }} /> */}
+
+          {/* Need to import Redirect for it! */}
+          <Route path="/register" render={() => {
+            if (user) return <Redirect to='/' />;
+            return <RegistrationView />;
+          }} />
+
+          {/* <Route path="/movies/:movieId" render={({ match }) => (
             <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
               setFavorites={(newValue) => this.setFavorites(newValue)} />
-          )} />
+          )} /> */}
+
+          {/* <Route path="/movies/:movieId" render={({ match }) => {
+            return (
+              <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
+                setFavorites={(newValue) => this.setFavorites(newValue)} />);
+          }} /> */}
+
+          <Route path="/movies/:movieId" render={({ match }) => {
+            if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />); // Can't use Redirect as there is no /login endpoint!
+            return (
+              <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
+                setFavorites={(newValue) => this.setFavorites(newValue)} />);
+          }} />
+
+          {/* <Route path="/movies/director/:name" render={({ match }) => {
+            if (!movies) return <div className="main-view" />;
+            return (<DirectorView director={movies.find((m) => m.Director.Name === match.params.name).Director} />);
+          }} /> */}
 
           <Route path="/movies/director/:name" render={({ match }) => {
+            if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
             if (!movies) return <div className="main-view" />;
             return (<DirectorView director={movies.find((m) => m.Director.Name === match.params.name).Director} />);
           }} />
 
           <Route path="/movies/genres/:name" render={({ match }) => {
+            if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
             if (!movies) return <div className="main-view" />;
             return (<GenreView genre={movies.find((m) => m.Genre.Name === match.params.name).Genre} />);
           }} />
