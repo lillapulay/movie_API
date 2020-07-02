@@ -38027,9 +38027,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return MovieView;
-}(_react.default.Component); // Needs fix - console throws error for 'movie' in Genre and Director views ???? - Seems to be a bug
-// main-view.jsx -> line 133???
-
+}(_react.default.Component);
 
 exports.MovieView = MovieView;
 MovieView.propTypes = {
@@ -38041,7 +38039,9 @@ MovieView.propTypes = {
     Director: _propTypes.default.object.isRequired,
     Actors: _propTypes.default.array.isRequired,
     ReleaseYear: _propTypes.default.string.isRequired
-  }).isRequired
+  }).isRequired,
+  favorites: _propTypes.default.arrayOf(_propTypes.default.string).isRequired,
+  setFavorites: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"../node_modules/react-bootstrap/esm/Feedback.js":[function(require,module,exports) {
 "use strict";
