@@ -3,7 +3,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
@@ -20,7 +19,6 @@ export function RegistrationView(props) {
   const handleRegistration = (e) => {
     e.preventDefault();
 
-    // https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index
     axios.post("https://mymovieapi2020.herokuapp.com/users", {
       Username: username,
       Password: password,
@@ -29,7 +27,7 @@ export function RegistrationView(props) {
     })
       .then((response) => {
         const data = response.data;
-        alert('Account successfully created. Please log in to continue.'); // Will remove this later
+        alert('Account successfully created. Please log in to continue.');
         console.log(data);
         window.open("/", "_self"); // _self - URL replaces the current page
       })
@@ -39,7 +37,6 @@ export function RegistrationView(props) {
   };
 
   return (
-    // https://react-bootstrap.github.io/components/forms/ 
     <Row className="registration-container">
       <Col>
         <Form className="registration-form">
@@ -90,9 +87,3 @@ export function RegistrationView(props) {
     </Row>
   );
 }
-
-/* Needs to be updated / removed?
-RegistrationView.propTypes = {
-  notReggedYet: PropTypes.func.isRequired
-};
-*/
