@@ -88,11 +88,21 @@ export class MovieView extends React.Component {
               </Link>
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            {/* <ListGroup.Item>
               <Button variant="info" onClick={(e) => { this.addFavorite(e, movie._id) }}>
                 <b>Add to favorites</b>
               </Button>
-            </ListGroup.Item>
+            </ListGroup.Item> */}
+
+            {this.props.favorites.includes(this.props.movie._id) ?
+              <ListGroup.Item>
+                <b>Already added to favorites.</b>
+              </ListGroup.Item>
+              : <ListGroup.Item>
+                <Button variant="info" onClick={(e) => { this.addFavorite(e, movie._id) }}>
+                  <b>Add to favorites</b>
+                </Button>
+              </ListGroup.Item>}
 
             <ListGroup.Item>
               <Link to={`/movies/director/${movie.Director.Name}`}>
@@ -118,7 +128,7 @@ export class MovieView extends React.Component {
   }
 }
 
-// Needs fix - console throws error for 'movie' in Genre and Director views ????
+// Needs fix - console throws error for 'movie' in Genre and Director views ???? - Seems to be a bug
 // main-view.jsx -> line 133???
 MovieView.propTypes = {
   movie: PropTypes.shape({
