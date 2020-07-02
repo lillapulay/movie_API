@@ -39581,7 +39581,9 @@ function ProfileView(props) {
   }, _react.default.createElement("b", null, "Your favorites")))), _react.default.createElement(_Row.default, {
     className: "fav-movies"
   }, detailedMovies.map(function (m) {
-    return _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Img, {
+    return _react.default.createElement(_Col.default, {
+      key: m._id
+    }, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Img, {
       className: "img-fluid",
       variant: "top",
       src: m.ImagePath

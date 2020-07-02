@@ -150,7 +150,7 @@ export function ProfileView(props) {
             </Col>
           </Row>
           <Row className="fav-movies">{detailedMovies.map(m =>
-            <Col>
+            <Col key={m._id}>
               <Card>
                 <Card.Body>
                   <Card.Img className="img-fluid" variant="top" src={m.ImagePath} />
