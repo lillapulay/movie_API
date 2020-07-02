@@ -147,9 +147,11 @@ export class MainView extends React.Component {
             return (<GenreView genre={movies.find((m) => m.Genre.Name === match.params.name).Genre} />);
           }} />
 
-          <Route exact path="/user" render={() =>
-            <ProfileView favorites={favorites} movies={movies}
-              setFavorites={(newValue) => this.setFavorites(newValue)} />} />
+          <Route exact path="/user" render={() => {
+            if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
+            return <ProfileView favorites={favorites} movies={movies}
+              setFavorites={(newValue) => this.setFavorites(newValue)} />
+          }} />
           { /* The prop function could be named sg else;
               props.movies: array of movie objects with all details,
               props.favorites: array of fav. movie IDs without details. */}

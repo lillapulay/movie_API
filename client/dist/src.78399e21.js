@@ -39864,6 +39864,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         exact: true,
         path: "/user",
         render: function render() {
+          if (!user) return _react.default.createElement(_loginView.LoginView, {
+            onSignedIn: function onSignedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          });
           return _react.default.createElement(_profileView.ProfileView, {
             favorites: favorites,
             movies: movies,
