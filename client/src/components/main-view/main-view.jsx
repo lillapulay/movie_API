@@ -142,7 +142,7 @@ export class MainView extends React.Component {
           }} /> */}
 
           {/* Need to import Redirect for it! */}
-          <Route path="/register" render={() => {
+          <Route exact path="/register" render={() => {
             if (user) return <Redirect to='/' />;
             return <RegistrationView />;
           }} />
@@ -158,7 +158,7 @@ export class MainView extends React.Component {
                 setFavorites={(newValue) => this.setFavorites(newValue)} />);
           }} /> */}
 
-          <Route path="/movies/:movieId" render={({ match }) => {
+          <Route exact path="/movies/:movieId" render={({ match }) => {
             if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />); // Can't use Redirect as there is no /login endpoint!
             return (
               <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
@@ -170,13 +170,13 @@ export class MainView extends React.Component {
             return (<DirectorView director={movies.find((m) => m.Director.Name === match.params.name).Director} />);
           }} /> */}
 
-          <Route path="/movies/director/:name" render={({ match }) => {
+          <Route exact path="/movies/director/:name" render={({ match }) => {
             if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
             if (!movies) return <div className="main-view" />;
             return (<DirectorView director={movies.find((m) => m.Director.Name === match.params.name).Director} />);
           }} />
 
-          <Route path="/movies/genres/:name" render={({ match }) => {
+          <Route exact path="/movies/genres/:name" render={({ match }) => {
             if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
             if (!movies) return <div className="main-view" />;
             return (<GenreView genre={movies.find((m) => m.Genre.Name === match.params.name).Genre} />);
