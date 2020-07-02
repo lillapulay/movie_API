@@ -174,5 +174,6 @@ export function ProfileView(props) {
   );
 }
 
-
-/* Need to add PropTypes */
+ProfileView.propTypes = {
+  setFavorites: PropTypes.func.isRequired
+};
