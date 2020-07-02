@@ -39467,9 +39467,10 @@ function ProfileView(props) {
 
     }).then(function (response) {
       var data = response.data;
-      alert('Account successfully updated.'); // Will remove this later
+      alert('Account successfully updated. Please log in again.'); // Will remove this later
 
       console.log(data);
+      localStorage.removeItem("token", "user", "favorites");
       window.open("/", "_self"); // _self - URL replaces the current page
     }).catch(function (e) {
       alert("Something went wrong.");
@@ -39487,9 +39488,9 @@ function ProfileView(props) {
       }
     }).then(function (response) {
       var data = response.data;
+      localStorage.removeItem("token", "user");
       alert("Account successfully deleted.");
       console.log(data);
-      localStorage.removeItem("token", "user");
       window.open("/", "_self");
     }).catch(function (e) {
       alert("Something went wrong.");

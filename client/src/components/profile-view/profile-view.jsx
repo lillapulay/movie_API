@@ -39,8 +39,9 @@ export function ProfileView(props) {
     })
       .then((response) => {
         const data = response.data;
-        alert('Account successfully updated.'); // Will remove this later
+        alert('Account successfully updated. Please log in again.'); // Will remove this later
         console.log(data);
+        localStorage.removeItem("token", "user", "favorites");
         window.open("/", "_self"); // _self - URL replaces the current page
       })
       .catch((e) => {
@@ -58,7 +59,7 @@ export function ProfileView(props) {
         const data = response.data;
         alert("Account successfully deleted.");
         console.log(data);
-        localStorage.removeItem("token", "user");
+        localStorage.removeItem("token", "user", "favorites");
         window.open("/", "_self");
       })
       .catch((e) => {
