@@ -96,7 +96,7 @@ export class MovieView extends React.Component {
 
             {this.props.favorites.includes(this.props.movie._id) ?
               <ListGroup.Item>
-                <b>Already added to favorites.</b>
+                <b>Added to favorites.</b>
               </ListGroup.Item>
               : <ListGroup.Item>
                 <Button variant="info" onClick={(e) => { this.addFavorite(e, movie._id) }}>

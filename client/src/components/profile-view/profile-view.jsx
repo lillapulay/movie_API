@@ -66,7 +66,6 @@ export function ProfileView(props) {
       });
   };
 
-  // Deletes the movie, but throws an error ???
   const deleteFavorite = (e, movieID) => { // Event object + movieID passed to it, same for the event listener (button)
     e.preventDefault();
     axios.delete(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`, { // Not ''!!!

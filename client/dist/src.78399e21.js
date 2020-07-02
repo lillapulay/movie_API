@@ -38009,7 +38009,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "info"
-      }, _react.default.createElement("b", null, "Back")))), _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Button.default, {
+      }, _react.default.createElement("b", null, "Back")))), this.props.favorites.includes(this.props.movie._id) ? _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement("b", null, "Added to favorites.")) : _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Button.default, {
         variant: "info",
         onClick: function onClick(e) {
           _this3.addFavorite(e, movie._id);
@@ -38027,7 +38027,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return MovieView;
-}(_react.default.Component); // Needs fix - console throws error for 'movie' in Genre and Director views ????
+}(_react.default.Component); // Needs fix - console throws error for 'movie' in Genre and Director views ???? - Seems to be a bug
 // main-view.jsx -> line 133???
 
 
@@ -39494,8 +39494,7 @@ function ProfileView(props) {
     }).catch(function (e) {
       alert("Something went wrong.");
     });
-  }; // Deletes the movie, but throws an error ???
-
+  };
 
   var deleteFavorite = function deleteFavorite(e, movieID) {
     // Event object + movieID passed to it, same for the event listener (button)
@@ -39607,6 +39606,11 @@ function ProfileView(props) {
 }
 
 ProfileView.propTypes = {
+  favorites: _propTypes.default.arrayOf(_propTypes.default.string).isRequired,
+  movies: _propTypes.default.arrayOf(_propTypes.default.shape({
+    Title: _propTypes.default.string,
+    ImagePath: _propTypes.default.string
+  })).isRequired,
   setFavorites: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/ListGroup":"../node_modules/react-bootstrap/esm/ListGroup.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Image":"../node_modules/react-bootstrap/esm/Image.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
@@ -39816,6 +39820,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           }), " ");
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/register",
         render: function render() {
           if (user) return _react.default.createElement(_reactRouterDom.Redirect, {
@@ -39824,6 +39829,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return _react.default.createElement(_registrationView.RegistrationView, null);
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/movies/:movieId",
         render: function render(_ref) {
           var match = _ref.match;
@@ -39844,6 +39850,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/movies/director/:name",
         render: function render(_ref2) {
           var match = _ref2.match;
@@ -39862,6 +39869,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
         path: "/movies/genres/:name",
         render: function render(_ref3) {
           var match = _ref3.match;
