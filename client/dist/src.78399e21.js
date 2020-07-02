@@ -38010,7 +38010,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         variant: "info"
       }, _react.default.createElement("b", null, "Back")))), this.props.favorites.includes(this.props.movie._id) ? _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement("b", null, "Added to favorites.")) : _react.default.createElement(_ListGroup.default.Item, null, _react.default.createElement(_Button.default, {
-        variant: "info",
+        variant: "success",
         onClick: function onClick(e) {
           _this3.addFavorite(e, movie._id);
         }
@@ -39516,7 +39516,9 @@ function ProfileView(props) {
     });
   };
 
-  return _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, {
+  return _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Container.default, {
+    fluid: true
+  }, _react.default.createElement(_Row.default, {
     className: "profile-container"
   }, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
     className: "profile-form"
@@ -39596,7 +39598,7 @@ function ProfileView(props) {
     }), _react.default.createElement(_reactRouterDom.Link, {
       to: "/movies/".concat(m._id)
     }, _react.default.createElement(_Card.default.Title, null, m.Title)), _react.default.createElement(_Button.default, {
-      variant: "info",
+      variant: "warning",
       type: "submit",
       onClick: function onClick(e) {
         deleteFavorite(e, m._id);

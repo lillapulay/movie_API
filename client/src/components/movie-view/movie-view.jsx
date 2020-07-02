@@ -99,7 +99,7 @@ export class MovieView extends React.Component {
                 <b>Added to favorites.</b>
               </ListGroup.Item>
               : <ListGroup.Item>
-                <Button variant="info" onClick={(e) => { this.addFavorite(e, movie._id) }}>
+                <Button variant="success" onClick={(e) => { this.addFavorite(e, movie._id) }}>
                   <b>Add to favorites</b>
                 </Button>
               </ListGroup.Item>}

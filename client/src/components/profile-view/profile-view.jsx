@@ -85,7 +85,7 @@ export function ProfileView(props) {
   return (
     <Row>
       <Col>
-        <Container>
+        <Container fluid>
           <Row className="profile-container">
             <Col>
               <Form className="profile-form">
@@ -156,7 +156,7 @@ export function ProfileView(props) {
                   <Link to={`/movies/${m._id}`}>
                     <Card.Title>{m.Title}</Card.Title>
                   </Link>
-                  <Button variant="info" type="submit" onClick={(e) => { deleteFavorite(e, m._id) }}>
+                  <Button variant="warning" type="submit" onClick={(e) => { deleteFavorite(e, m._id) }}>
                     <b>Remove from favorites</b>
                   </Button>
                 </Card.Body>
