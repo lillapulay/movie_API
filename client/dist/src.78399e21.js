@@ -39488,9 +39488,9 @@ function ProfileView(props) {
       }
     }).then(function (response) {
       var data = response.data;
-      localStorage.removeItem("token", "user");
       alert("Account successfully deleted.");
       console.log(data);
+      localStorage.removeItem("token", "user", "favorites");
       window.open("/", "_self");
     }).catch(function (e) {
       alert("Something went wrong.");
@@ -40009,7 +40009,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50963" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62090" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
