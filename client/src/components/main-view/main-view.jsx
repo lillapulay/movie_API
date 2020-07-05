@@ -2,6 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route } from 'react-router-dom'; // BrowserRouter handles state-based routing, hash-based routing WOULD be handled by HashRouter
 import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'; // Used to extract the movies state from the store
+
+// #0
+import { setMovies } from '../../actions/actions';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -10,6 +14,8 @@ import Container from 'react-bootstrap/Container';
 
 import './main-view.scss';
 
+// We haven't written this one yet
+import MoviesList from '../movies-list/movies-list';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
@@ -18,30 +24,16 @@ import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 
-export class MainView extends React.Component {
+class MainView extends React.Component { // export removed!
 
   constructor() {
     super();
 
     this.state = {
-      movies: [],
+      // movies: [], // private state removed -> uses Redux to update the store
       user: null,
       favorites: []
     };
-  }
-
-  getMovies(token) {
-    axios.get('https://mymovieapi2020.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` } // Not '' !!!
-    })
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   componentDidMount() {
@@ -54,6 +46,22 @@ export class MainView extends React.Component {
       });
       this.getMovies(accessToken);
     }
+  }
+
+  getMovies(token) {
+    axios.get('https://mymovieapi2020.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` } // Not '' !!!
+    })
+      .then(response => {
+        // #1
+        this.props.setMovies(response.data);
+        /* this.setState({
+          movies: response.data
+        }); */
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   onLoggedIn(authData) {    // Parameter renamed as we need to use both user and token
@@ -89,10 +97,13 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user, favorites } = this.state;
+    // #2
+    let { movies } = this.props;
+    const { user, favorites } = this.state; // let or const?
 
     if (!movies) return <div className="main-view" />;
 
+    // Example uses <div className="main-view"> - ok without it?
     return (
       <Container fluid>
         <Router>
@@ -127,36 +138,14 @@ export class MainView extends React.Component {
 
           <Route exact path="/" render={() => {
             if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
-            return <Row> {movies.map((m) => <MovieCard key={m._id} movie={m} />)} </Row>
+            // return <Row> {movies.map((m) => <MovieCard key={m._id} movie={m} />)} </Row>
+            return <Row><MoviesList movies={movies} /></Row>;        // Movies from the store now, passed as props to MoviesList
           }} />
 
-          {/* <Route path="/register" render={() => <RegistrationView />} /> */}
-
-          {/* <Route path="/register" render={() => {
-            return <RegistrationView />;
-          }} /> */}
-
-          {/* <Route path="/register" render={() => {
-            if (user) return <Row> {movies.map((m) => <MovieCard key={m._id} movie={m} />)} </Row>;
-            return <RegistrationView />;
-          }} /> */}
-
-          {/* Need to import Redirect for it! */}
           <Route exact path="/register" render={() => {
             if (user) return <Redirect to='/' />;
             return <RegistrationView />;
           }} />
-
-          {/* <Route path="/movies/:movieId" render={({ match }) => (
-            <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
-              setFavorites={(newValue) => this.setFavorites(newValue)} />
-          )} /> */}
-
-          {/* <Route path="/movies/:movieId" render={({ match }) => {
-            return (
-              <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
-                setFavorites={(newValue) => this.setFavorites(newValue)} />);
-          }} /> */}
 
           <Route exact path="/movies/:movieId" render={({ match }) => {
             if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />); // Can't use Redirect as there is no /login endpoint!
@@ -164,11 +153,6 @@ export class MainView extends React.Component {
               <MovieView movie={movies.find((m) => m._id === match.params.movieId)} favorites={favorites}
                 setFavorites={(newValue) => this.setFavorites(newValue)} />);
           }} />
-
-          {/* <Route path="/movies/director/:name" render={({ match }) => {
-            if (!movies) return <div className="main-view" />;
-            return (<DirectorView director={movies.find((m) => m.Director.Name === match.params.name).Director} />);
-          }} /> */}
 
           <Route exact path="/movies/director/:name" render={({ match }) => {
             if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
@@ -197,3 +181,17 @@ export class MainView extends React.Component {
     );
   }
 }
+
+// #3
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// #4 - higher order component
+export default connect(mapStateToProps, { setMovies })(MainView);  // MainView no longer carries its own state -> movies from the store
+                                                                    // MovieCard components -> MoviesList component
+
+/* function connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)
+mapStateToProps */
+/* if defined, mapStateToProps allows the component to subscribe to store updates - whenever the store is updated,
+this function is called */

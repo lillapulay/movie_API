@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import { MainView } from './components/main-view/main-view';
+import MainView from './components/main-view/main-view'; // MainView is the default component, so {} have been removed
 import moviesApp from './reducers/reducers'; // Imports the reducer ( state + action = new state )
 
 // Import statement to indicate that we need to bundle `./index.scss`
