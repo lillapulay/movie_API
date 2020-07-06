@@ -83,7 +83,7 @@ class MainView extends React.Component { // export removed!
       user: null,
     });
     alert("Goodbye!");  // Will remove this later, same for the registration one
-    window.open('/', '_self');
+    window.open('/client', '_self');
   }
 
   // Allows the user to set the favorite state for a movie
