@@ -13,7 +13,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
 
     return (
-      <Col xs={12} s={6} md={4} l={4} xl={3}>
+      <Col>
         <Card>
           <Card.Img className="img-fluid" variant="top" src={movie.ImagePath} />
           <Card.Body>

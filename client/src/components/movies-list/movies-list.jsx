@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import { MovieCard } from '../movie-card/movie-card';
 
@@ -23,10 +26,14 @@ function MoviesList(props) {
   //return filteredMovies.map(m => <MovieCard key={m._id} movie={m} />);
 
   // The app now has an input to filter any movie that isn't tied to its parent containers.
-  return <div className="movies-list">
+  return <Row className="movies-list">
     <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-    {filteredMovies.map(m => <MovieCard key={m._id} movie={m} />)}
-  </div>;
+    {filteredMovies.map(m =>
+      <Col key={m._id} xs={12} s={6} md={4} lg={4} xl={3}>
+        <MovieCard movie={m} /> {/* The console threw missing key error, so moved it to Col tag */}
+      </Col>
+    )}
+  </Row>;
 }
 
 export default connect(mapStateToProps)(MoviesList);

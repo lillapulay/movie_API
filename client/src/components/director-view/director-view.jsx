@@ -25,8 +25,8 @@ export class DirectorView extends React.Component {
 
     // Death year needs to be added to the database! + Add movies that belong with this director?
     return (
-      <Row className="director-view">
-        <Col>
+      <Row>
+        <Col className="director-view">
           <Card>
             <Card.Body>
               <Card.Title> {director.Name}</Card.Title>

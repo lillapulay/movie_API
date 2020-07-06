@@ -149,19 +149,20 @@ export function ProfileView(props) {
               </h3>
             </Col>
           </Row>
+
           <Row className="fav-movies">{detailedMovies.map(m =>
             <Col key={m._id} xs={12} s={6} md={4} l={4} xl={3}>
               <Card>
-                <Card.Body>
-                  <Card.Img className="img-fluid" variant="top" src={m.ImagePath} />
+                <Card.Img className="img-fluid" variant="top" src={m.ImagePath} />
+                <Card.Body className="profile-card-body">
                   <Link to={`/movies/${m._id}`}>
                     <Card.Title>{m.Title}</Card.Title>
                   </Link>
-                  <Button variant="warning" type="submit" onClick={(e) => { deleteFavorite(e, m._id) }}>
-                    <b>Remove from favorites</b>
-                  </Button>
                 </Card.Body>
               </Card >
+              <Button className="remove-fav" variant="warning" type="submit" onClick={(e) => { deleteFavorite(e, m._id) }}>
+                <b>Remove from favorites</b>
+              </Button>
             </Col>
           )}
           </Row>

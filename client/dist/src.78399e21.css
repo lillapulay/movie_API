@@ -5,6 +5,7 @@
 
 body {
   background-color: #FFEFD5;
+  padding: 10px;
 }
 
 .movie-view {
@@ -30,14 +31,14 @@ body {
   font-weight: bold;
 }
 
+.movies-filter {
+  margin: 0 auto;
+  width: 80%;
+}
+
 .card {
   margin-top: 5%;
   margin-bottom: 5%;
-  height: 100%;
-}
-
-.card-title {
-  font-weight: bold;
 }
 
 .card-img-top {
@@ -46,10 +47,80 @@ body {
   object-fit: cover;
 }
 
+.card-title {
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 2.4em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  font-weight: 600;
+}
+
+.card-title:before {
+  content: "...";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.card-title:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+
+/* Solution from http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/ */
+.card-text {
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 3.6em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+.card-text:before {
+  content: "...";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.card-text:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
+}
+
+/* ... */
+.card-body {
+  padding: 20px;
+  height: 12rem;
+}
+
+.profile-card-body {
+  height: 10%;
+}
+
 .card button {
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 2%;
+  left: 3%;
+}
+
+.remove-fav {
+  margin-bottom: 10%;
 }
 
 .login-container, .registration-container {
@@ -62,9 +133,6 @@ body {
   margin-right: auto;
   margin-top: 10%;
   background-color: #FFDAB9;
-}
-.card-body {
-  padding-bottom: 50px;
 }
 .update-button, .delete-button, .back-button {
   margin-bottom: 10px;

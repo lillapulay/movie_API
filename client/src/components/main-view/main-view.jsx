@@ -139,7 +139,7 @@ class MainView extends React.Component { // export removed!
           <Route exact path="/" render={() => {
             if (!user) return (<LoginView onSignedIn={(user) => this.onLoggedIn(user)} />);
             // return <Row> {movies.map((m) => <MovieCard key={m._id} movie={m} />)} </Row>
-            return <Row><MoviesList movies={movies} /></Row>;        // Movies from the store now, passed as props to MoviesList
+            return <MoviesList movies={movies} />;        // Movies from the store now, passed as props to MoviesList
           }} />
 
           <Route exact path="/register" render={() => {

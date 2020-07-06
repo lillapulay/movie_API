@@ -10,10 +10,10 @@ import { setFilter } from '../../actions/actions';
 // It's basically a wrapper around a React Bootstrap text imput + connected to the store
 // The VisibilityFilterInput component will be used as a sub-component of MoviesList
 function VisibilityFilterInput(props) {
-  return <Form.Control
+  return <Form.Control className="movies-filter"
     onChange={e => props.setFilter(e.target.value)}
     value={props.visibilityFilter}
-    placeholder="filter"
+    placeholder="Filter..."
   />;
 }
 
