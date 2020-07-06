@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'; // Used to extract the movies state from the store
 
 // #0
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -14,7 +14,6 @@ import Container from 'react-bootstrap/Container';
 
 import './main-view.scss';
 
-// We haven't written this one yet
 import MoviesList from '../movies-list/movies-list';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -188,7 +187,7 @@ let mapStateToProps = state => {
 }
 
 // #4 - higher order component
-export default connect(mapStateToProps, { setMovies })(MainView);  // MainView no longer carries its own state -> movies from the store
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);  // MainView no longer carries its own state -> movies from the store
                                                                     // MovieCard components -> MoviesList component
 
 /* function connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)

@@ -42432,7 +42432,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, {
-  setMovies: _actions.setMovies
+  setMovies: _actions.setMovies,
+  setUser: _actions.setUser
 })(MainView); // MainView no longer carries its own state -> movies from the store
 // MovieCard components -> MoviesList component
 
