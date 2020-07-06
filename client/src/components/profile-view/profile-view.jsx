@@ -60,7 +60,7 @@ export function ProfileView(props) {
         alert("Account successfully deleted.");
         console.log(data);
         localStorage.removeItem("token", "user", "favorites");
-        window.open("/", "_self");
+        window.open("/client", "_self");
       })
       .catch((e) => {
         alert("Something went wrong.");
