@@ -23,7 +23,6 @@ export class DirectorView extends React.Component {
 
     if (!director) return null;
 
-    // Death year needs to be added to the database! + Add movies that belong with this director?
     return (
       <Row>
         <Col className="director-view">
