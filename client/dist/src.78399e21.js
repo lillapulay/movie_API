@@ -42500,6 +42500,19 @@ function movies() {
       return state;
   }
 }
+
+function activeUser() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_USER:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
 /* Combined reducer - separating concerns
 It groups all the reducers together and only passes them the state that they care about: 
 the filter for the first reducer and the movies for the last one. */
@@ -42516,7 +42529,8 @@ function moviesApp(state = {}, action) {
 
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
-  movies: movies
+  movies: movies,
+  activeUser: activeUser
 });
 var _default = moviesApp;
 exports.default = _default;

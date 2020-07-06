@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'; // Built-in func -> to keep the code clean comb. redus split into 2 smaller redus
 
-import { SET_FILTER, SET_MOVIES } from '../actions/actions';
+import { SET_FILTER, SET_MOVIES, SET_USER } from '../actions/actions';
 
 /* Each reducer takes a state and an action, and if it’s concerned by the action, it changes the state.
 Reducers are pure functions; they only depend on their parameters, and they don't change anything. 
@@ -27,6 +27,15 @@ function movies(state = [], action) {
   }
 }
 
+function activeUser(state = [], action) {
+  switch (action.type) {
+    case SET_USER:
+      return action.value;
+    default:
+      return state;
+  }
+}
+
 /* Combined reducer - separating concerns
 It groups all the reducers together and only passes them the state that they care about: 
 the filter for the first reducer and the movies for the last one. */
@@ -41,7 +50,8 @@ function moviesApp(state = {}, action) {
 
 const moviesApp = combineReducers({
   visibilityFilter,
-  movies
+  movies,
+  activeUser
 });
 
 export default moviesApp;
