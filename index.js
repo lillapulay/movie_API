@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -16,8 +17,13 @@ mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnified
 // Middleware
 app.use(bodyParser.json()); // Parsing JSON
 app.use(express.static('public')); // Returning documentation.html
+app.use("/client", express.static(path.join(__dirname, "client", "dist")));
 app.use(morgan('common')); // Logging requests using Morgan
 app.use(cors()); // CORS allows requests from all origins by default
+
+app.get("/client/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 // Importing Passport and auth
 let auth = require('./auth')(app); // Needs to be after the bodyParser middleware
