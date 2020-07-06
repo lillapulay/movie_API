@@ -29,7 +29,7 @@ export function RegistrationView(props) {
         const data = response.data;
         alert('Account successfully created. Please log in to continue.');
         console.log(data);
-        window.open("/", "_self"); // _self - URL replaces the current page
+        window.open("/client", "_self"); // _self - URL replaces the current page
       })
       .catch((e) => {
         alert("Something went wrong.");

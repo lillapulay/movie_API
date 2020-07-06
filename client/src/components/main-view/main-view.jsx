@@ -105,7 +105,7 @@ class MainView extends React.Component { // export removed!
     // Example uses <div className="main-view"> - ok without it?
     return (
       <Container fluid>
-        <Router>
+        <Router basename="/client">
           {user ? (<Navbar bg="light" expand="lg">
             <Navbar.Brand as={Link} to="/">
               <b>MyFlix</b>
