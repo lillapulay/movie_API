@@ -25,6 +25,18 @@ export function ProfileView(props) {
     return props.favorites.includes(movie._id);
   });
 
+  /**
+  * Updates the user's details
+  * After authorizing the user, it confirms changes in an alert and prompts to log in again
+  * Redirects to login screen
+  * @param {e}  
+  * @param {string} username
+  * @param {string} password
+  * @param {string} email
+  * @param {date} birthday
+  * @axios
+  */
+
   const handleUpdate = (e) => {
     e.preventDefault();
     console.log();
@@ -49,6 +61,15 @@ export function ProfileView(props) {
       });
   };
 
+  /**
+  * Deletes the user's account
+  * After authorizing the user, it confirms deletion in an alert 
+  * Then it logs the user out and empties local storage
+  * Redirects to login screen
+  * @param {e}  
+  * @axios
+  */
+
   const deleteAccount = (e) => {
     e.preventDefault();
     console.log();
@@ -66,7 +87,13 @@ export function ProfileView(props) {
         alert("Something went wrong.");
       });
   };
-
+  /**
+   * Removes a movie from the user's favorites
+   * Confirms action in an alert
+   * @param {*} e 
+   * @param {*} movieID
+   * @axios
+   */
   const deleteFavorite = (e, movieID) => { // Event object + movieID passed to it, same for the event listener (button)
     e.preventDefault();
     axios.delete(`https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`, { // Not ''!!!

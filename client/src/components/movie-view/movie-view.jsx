@@ -19,7 +19,15 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
-  //Axios post and put methods: 1. URL 2. data 3. config.
+  /**
+   * Adds the current movie to the user's favorites list
+   * Axios 'post' and 'put' methods: 1. URL 2. data 3. config.
+   * @function addFavorite
+   * @param {e} buttonClick
+   * @param {movieID} 
+   * @returns {alert} - "Movie added to favorites."
+   */
+
   addFavorite(e, movieID) {
     axios.post(
       `https://mymovieapi2020.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieID}`,

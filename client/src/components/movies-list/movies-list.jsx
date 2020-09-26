@@ -13,7 +13,13 @@ const mapStateToProps = state => {
   return { visibilityFilter };
 };
 
-// MoviesList's props contains 2 properties - movies passed in MainView's render()
+/**
+ * Allows users to filter the list of movies
+ * MoviesList's props contains 2 properties - movies passed in MainView's render()
+ * @function MoviesList
+ * @param {*} props 
+ */
+
 function MoviesList(props) {
   const { movies, visibilityFilter } = props;
   let filteredMovies = movies;

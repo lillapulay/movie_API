@@ -35,17 +35,32 @@ class MainView extends React.Component { // export removed!
     };
   }
 
+  /**
+  * Upon loading component
+  * Gets what's stored in local storage and converts this stringified array back to an actual array
+  * @function componentDidMount
+  */
+
   componentDidMount() {
     // Persisting auth. data
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
       this.setState({
         user: localStorage.getItem('user'),
-        favorites: JSON.parse(localStorage.getItem('favorites')) // Gets what's stored in loc.St. and converts this stringified array back to an actual array
+        favorites: JSON.parse(localStorage.getItem('favorites'))
       });
       this.getMovies(accessToken);
     }
   }
+
+  /**
+   * Loads all movies from the database
+   * User needs to be logged in
+   * @function getMovies  
+   * @param {string} token 
+   * @returns {array} movies
+   * @axios
+   */
 
   getMovies(token) {
     axios.get('https://mymovieapi2020.herokuapp.com/movies', {
@@ -63,6 +78,15 @@ class MainView extends React.Component { // export removed!
       });
   }
 
+  /**
+   * If login is successful
+   * Sets the state according to current user
+   * @function onLoggedIn
+   * @param {object} authData - from login-view
+   * @returns {state} 
+   * @returns {localStorage}
+   */
+
   onLoggedIn(authData) {    // Parameter renamed as we need to use both user and token
     console.log(authData);
     this.setState({
@@ -76,6 +100,12 @@ class MainView extends React.Component { // export removed!
     this.getMovies(authData.token); // 'this' refers to the MainView class here
   }
 
+  /**
+   * When user logs in, removes their data from the local storage
+   * After user dismisses the alert, it redirects them to the login screen
+   * @function onLoggedOut
+   */
+
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -86,7 +116,11 @@ class MainView extends React.Component { // export removed!
     window.open('/client', '_self');
   }
 
-  // Allows the user to set the favorite state for a movie
+  /**
+   * Allows the user to add movies to their favorites
+   * @param {*} newFavorites 
+   */
+
   setFavorites(newFavorites) {
     this.setState({
       favorites: newFavorites // (favorites: favorites -> was the reason behind the delete favorite error!)

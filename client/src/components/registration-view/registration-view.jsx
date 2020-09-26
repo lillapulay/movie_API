@@ -16,6 +16,19 @@ export function RegistrationView(props) {
   const [email, createEmail] = useState("");
   const [birthday, createBirthday] = useState("");
 
+  /**
+   * Registers a new user
+   * Confirms registration in an alert
+   * Redirects to login screen
+   * @function handleSubmit
+   * @axios
+   * @param {*} e
+   * @param {string} username
+   * @param {string} password
+   * @param {string} email
+   * @param {date} birthday
+   */
+
   const handleRegistration = (e) => {
     e.preventDefault();
 

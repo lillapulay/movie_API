@@ -14,6 +14,14 @@ export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  /**
+  * Posts username and password to the /login endpoint
+  * Uses Axios with a post method
+  * @function handleSubmit
+  * @param {event}
+  * @return {object} User 
+  */
+
   const handleSubmit = (e) => {
     e.preventDefault();
     /* Send a request to the server for authentication */
@@ -26,7 +34,7 @@ export function LoginView(props) {
         props.onSignedIn(data); // Username changed to data because we also need the token
       })
       .catch(e => {
-        console.log('User not found.')
+        alert('User not found.')
       });
   };
 
