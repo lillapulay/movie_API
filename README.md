@@ -41,7 +41,7 @@ The **server side** of the web application consists of a REST API and a database
 REST API can be accessed via commonly used HTTP methods like GET, PUT, POST and DELETE. CRUD methods are used to retrieve data from the database and store that
 data in a non-relational way. I used Postman for endpoint testing and Mongoose for the business layer logic. The database was built with MongoDB; the final project is hosted on Heroku. 
 
-The **client side** was built with React. While intimidating at first, I really enjoyed working with this [library/framework](https://develoger.com/is-reactjs-library-or-a-framework-a14786f681a0) and I'm looking forward to gaining a deeper understanding of it. The goal was to develop a single-page, responsive application that uses routing, different interactions and has several interface views:
+The **client side** was built with React. The goal was to develop a single-page, responsive application that uses routing, different interactions and has several interface views:
 
 #### Main view
 - Returns a list of ALL movies to the user (each listed item with an image, title, and description)
