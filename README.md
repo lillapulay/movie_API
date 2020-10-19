@@ -63,7 +63,6 @@ The **client side** was built with React. The goal was to develop a single-page,
 
 #### Director view
 - Returns data about a director (name, bio, birth year, death year)
-- Displays example movies
 
 #### Profile view
 - Allows users to update their user info (username, password, email, date of birth)
